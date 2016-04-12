@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="layout_basic_style">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:layout_gravity">center_vertical|center_horizontal</item>
+    </style>
+
+    <style name="layout_basic_style.button_style_1">
+        <item name="android:padding">@dimen/default_btn_padding</item>
+        <item name="android:layout_width">@dimen/default_home_btn_width</item>
+        <item name="android:background">@color/secondary_color</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/default_text_size</item>
+    </style>
+
+    <style name="layout_basic_style.button_style_1.margin_top">
+        <item name="android:layout_marginTop">@dimen/default_margin</item>
+    </style>
+
+    <style name="edit_text_view">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:padding">@dimen/default_text_padding</item>
+        <item name="android:layout_marginTop">@dimen/default_margin</item>
+        <item name="android:imeOptions">actionNext</item>
+        <item name="android:inputType">text</item>
+    </style>
+
+    <style name="edit_text_view.password">
+        <item name="android:inputType">textPassword</item>
+        <item name="android:hint">@string/password</item>
+        <item name="android:password">true</item>
+    </style>
+
+    <style name="dialog_layout">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:padding">@dimen/default_padding</item>
+    </style>
+
+    <style name="search_view">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <style name="list_item">
+        <item name="android:background">@color/fifth_color</item>
+    </style>
+
+    <style name="list_item.icon">
+        <item name="android:layout_width">@dimen/list_icon_width_and_height</item>
+        <item name="android:layout_height">@dimen/list_icon_width_and_height</item>
+    </style>
+
+    <style name="list_item.main_text">
+        <item name="android:layout_height">@dimen/list_main_text</item>
+    </style>
+
+    <style name="list_item.secondary_text">
+        <item name="android:layout_height">@dimen/list_secondary_text</item>
+    </style>
+</resources>
