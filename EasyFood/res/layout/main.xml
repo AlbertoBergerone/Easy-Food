@@ -1,13 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
->
-    <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Hello World, MainActivity"
-    />
+              style="@style/layout_basic_style"
+              android:orientation="vertical">
+    <ImageView
+            android:id="@+id/imgView_logoContainer"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="7"
+            android:contentDescription="@string/logo_img_description"
+            android:src="@drawable/easy_food_logo"
+            android:padding="16dp"/>
+    <LinearLayout
+            style="@style/layout_basic_style"
+            android:orientation="vertical"
+            android:layout_weight="5"
+            android:layout_height="0dp"
+            android:background="@color/primary_color">
+        <Button
+                android:id="@+id/btn_home_login"
+                style="@style/layout_basic_style.button_style_1"
+                android:background="@color/secondary_color"
+                android:text="@string/login"/>
+        <Button
+                android:id="@+id/btn_home_signup"
+                style="@style/layout_basic_style.button_style_1.margin_top"
+                android:background="@color/secondary_color"
+                android:text="@string/sign_up"/>
+    </LinearLayout>
+
 </LinearLayout>
 

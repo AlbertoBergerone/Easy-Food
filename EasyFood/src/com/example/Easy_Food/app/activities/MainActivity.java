@@ -1,7 +1,8 @@
-package com.example.Easy_Food.app;
+package com.example.Easy_Food.app.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
+import com.example.Easy_Food.app.R;
 
 public class MainActivity extends Activity {
     /**
@@ -12,4 +13,6 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
     }
+
+
 }
