@@ -109,7 +109,7 @@ public class User {
 			try{
 				JSONObject json_data = userInfo.getJSONObject(0);
                 /* Getting return message */
-				ret = json_data.getInt(R.contants.SIGNUP_RESPONSE);
+				ret = json_data.getInt(String.valueOf(R.string.SIGNUP_RESPONSE));
 			}catch(JSONException e){
 				Log.e("log_tag", "Error parsing data " + e.toString());
 			}
@@ -118,7 +118,7 @@ public class User {
     }
 
 	
-    /* Getters & setters */
+    /* Getters */
     public String getUsername() {
         return _username;
     }
@@ -156,38 +156,5 @@ public class User {
         return _municipality;
     }
 
-    public void set_username(String username) {
-        this._username = username;
-    }
-    public void set_password(String password) {
-        this._password = password;
-    }
-    public void set_name(String name) {
-        this._name = name;
-    }
-    public void set_last_name(String last_name) {
-        this._last_name = last_name;
-    }
-    public void set_email(String email) {
-        this._email = email;
-    }
-    public void set_userID(int _userID) {
-        this._userID = _userID;
-    }
-    public void set_address(String _address) {
-        this._address = _address;
-    }
-    public void set_phone(String _phone) {
-        this._phone = _phone;
-    }
-    public void set_region(String _region) {
-        this._region = _region;
-    }
-    public void set_province(String _province) {
-        this._province = _province;
-    }
-    public void set_municipality(String _municipality) {
-        this._municipality = _municipality;
-    }
 }
 
