@@ -1,0 +1,63 @@
+<component name="libraryTable">
+  <library name="appcompat">
+    <ANNOTATIONS>
+      <root url="file://F:/EasyFood/Libraries/v7/appcompat" />
+      <root url="file://F:/EasyFood/Libraries/v7/cardview" />
+      <root url="file://F:/EasyFood/Libraries/v7/gridlayout" />
+      <root url="file://F:/EasyFood/Libraries/v7/mediarouter" />
+      <root url="file://F:/EasyFood/Libraries/v7/palette" />
+      <root url="file://F:/EasyFood/Libraries/v7/preference" />
+      <root url="file://F:/EasyFood/Libraries/v7/recyclerview" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="file://F:/EasyFood/Libraries/v7/appcompat" />
+      <root url="file://F:/EasyFood/Libraries/v7/cardview" />
+      <root url="file://F:/EasyFood/Libraries/v7/gridlayout" />
+      <root url="file://F:/EasyFood/Libraries/v7/mediarouter" />
+      <root url="file://F:/EasyFood/Libraries/v7/palette" />
+      <root url="file://F:/EasyFood/Libraries/v7/preference" />
+      <root url="file://F:/EasyFood/Libraries/v7/recyclerview" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="file://F:/EasyFood/Libraries/v7/appcompat" />
+      <root url="file://F:/EasyFood/Libraries/v7/cardview" />
+      <root url="file://F:/EasyFood/Libraries/v7/gridlayout" />
+      <root url="file://F:/EasyFood/Libraries/v7/mediarouter" />
+      <root url="file://F:/EasyFood/Libraries/v7/palette" />
+      <root url="file://F:/EasyFood/Libraries/v7/preference" />
+      <root url="file://F:/EasyFood/Libraries/v7/recyclerview" />
+    </JAVADOC>
+    <NATIVE>
+      <root url="file://F:/EasyFood/Libraries/v7/appcompat" />
+      <root url="file://F:/EasyFood/Libraries/v7/cardview" />
+      <root url="file://F:/EasyFood/Libraries/v7/gridlayout" />
+      <root url="file://F:/EasyFood/Libraries/v7/mediarouter" />
+      <root url="file://F:/EasyFood/Libraries/v7/palette" />
+      <root url="file://F:/EasyFood/Libraries/v7/preference" />
+      <root url="file://F:/EasyFood/Libraries/v7/recyclerview" />
+    </NATIVE>
+    <SOURCES>
+      <root url="file://F:/EasyFood/Libraries/v7/appcompat" />
+      <root url="file://F:/EasyFood/Libraries/v7/cardview" />
+      <root url="file://F:/EasyFood/Libraries/v7/gridlayout" />
+      <root url="file://F:/EasyFood/Libraries/v7/mediarouter" />
+      <root url="file://F:/EasyFood/Libraries/v7/palette" />
+      <root url="file://F:/EasyFood/Libraries/v7/preference" />
+      <root url="file://F:/EasyFood/Libraries/v7/recyclerview" />
+    </SOURCES>
+    <jarDirectory url="file://F:/EasyFood/Libraries/v7/appcompat" recursive="false" />
+    <jarDirectory url="file://F:/EasyFood/Libraries/v7/cardview" recursive="false" />
+    <jarDirectory url="file://F:/EasyFood/Libraries/v7/gridlayout" recursive="false" />
+    <jarDirectory url="file://F:/EasyFood/Libraries/v7/mediarouter" recursive="false" />
+    <jarDirectory url="file://F:/EasyFood/Libraries/v7/palette" recursive="false" />
+    <jarDirectory url="file://F:/EasyFood/Libraries/v7/preference" recursive="false" />
+    <jarDirectory url="file://F:/EasyFood/Libraries/v7/recyclerview" recursive="false" />
+    <jarDirectory url="file://F:/EasyFood/Libraries/v7/appcompat" recursive="false" type="SOURCES" />
+    <jarDirectory url="file://F:/EasyFood/Libraries/v7/cardview" recursive="false" type="SOURCES" />
+    <jarDirectory url="file://F:/EasyFood/Libraries/v7/gridlayout" recursive="false" type="SOURCES" />
+    <jarDirectory url="file://F:/EasyFood/Libraries/v7/mediarouter" recursive="false" type="SOURCES" />
+    <jarDirectory url="file://F:/EasyFood/Libraries/v7/palette" recursive="false" type="SOURCES" />
+    <jarDirectory url="file://F:/EasyFood/Libraries/v7/preference" recursive="false" type="SOURCES" />
+    <jarDirectory url="file://F:/EasyFood/Libraries/v7/recyclerview" recursive="false" type="SOURCES" />
+  </library>
+</component>
