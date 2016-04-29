@@ -17,5 +17,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="v7" level="project" />
     <orderEntry type="library" name="v4" level="project" />
+    <orderEntry type="library" name="appcompat" level="project" />
   </component>
 </module>

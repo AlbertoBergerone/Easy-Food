@@ -3,12 +3,14 @@ package com.example.Easy_Food.app.activities;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import com.example.Easy_Food.app.R;
 import com.example.Easy_Food.app.Restaurant;
@@ -20,10 +22,13 @@ import java.util.List;
 /**
  * Created by Alberto on 13/04/2016.
  * Java code that manages the SearchFragment
+ *
+ * http://stackoverflow.com/questions/4249897/how-to-send-objects-through-bundle
  */
 public class SearchFragment extends Fragment {
-    FragmentActivity listener;
-    RestaurantListAdapter adapter;
+    private FragmentActivity _listener;
+    private RestaurantListAdapter _adapter;
+    private ListView _listView_search_reults;
 
     /* This event fires 1st, before creation of fragment or any views
      * The onAttach method is called when the Fragment instance is associated with an Activity.
@@ -33,7 +38,7 @@ public class SearchFragment extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         if (context instanceof Activity){
-            this.listener = (FragmentActivity) context;
+            this._listener = (FragmentActivity) context;
         }
     }
     /* This event fires 2nd, before views are created for the fragment
@@ -57,7 +62,7 @@ public class SearchFragment extends Fragment {
      */
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        ListView listView = (ListView) listener.findViewById(R.id.list_search_results);
+        _listView_search_reults = (ListView) _listener.findViewById(R.id.list_search_results);
         List list = new LinkedList();
         /* examples of data */
         list.add(new Restaurant("Kale's Bar", "Margarita", "Via Roma", "10", "Cuneo", "CN", 3.4));
@@ -67,7 +72,25 @@ public class SearchFragment extends Fragment {
         list.add(new Restaurant("Black Bull", "San Giovenale", "Via Funga di San Giovenale", "16", "Cuneo", "CN", 3.4));
         list.add(new Restaurant("McDonald's", "Cuneo", "Centro Commerciale Auchan, Via Margarita", "8", "Cuneo", "CN", 3.4));
         /* Setting the adapter to the listView */
-        listView.setAdapter((adapter = new RestaurantListAdapter(this.getActivity(), R.layout.list_item_search, list)));
+        _listView_search_reults.setAdapter((_adapter = new RestaurantListAdapter(this.getActivity(), R.layout.list_item_search, list)));
+
+        _listView_search_reults.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Restaurant selectedItem = (Restaurant) _adapter.getItemAtPosition(position);
+
+                Intent intent = new Intent(_listener.getContext(),RestaurantActivity.class);
+                /* adding a Restaurant object to the intent extras */
+                intent.putExtras("selectedRestaurant", new Gson().toJson(selectedItem));
+                /* starting the activity bounded */
+                _listener.getContext().startService(intent);
+
+            }
+
+
+        });
     }
 
     /* This method is called after the parent Activity's onCreate() method has completed.
@@ -77,5 +100,8 @@ public class SearchFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
     }
+
+
+
 
 }
