@@ -1,0 +1,109 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:fitsSystemWindows="true"
+    android:isScrollContainer="true"
+    tools:context=".Activities.LoginActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center_horizontal" >
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/easy_food_logo"
+                    android:padding="20sp"/>
+
+                <EditText
+                    android:id="@+id/txtLoginUsername"
+                    android:layout_width="300sp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/transparent_edit_text"
+                    android:textColorHint="@color/white"
+                    android:textColor="@color/white"
+                    android:padding="10sp"
+                    android:inputType="textPersonName"
+                    android:shadowRadius="200"
+                    android:textSize="18sp"
+                    android:hint="@string/Username"/>
+
+                <EditText
+                    android:id="@+id/txtLoginPassword"
+                    android:layout_width="300sp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10sp"
+                    android:background="@drawable/transparent_edit_text"
+                    android:textColorHint="@color/white"
+                    android:textColor="@color/white"
+                    android:padding="10sp"
+                    android:inputType="textPassword"
+                    android:hint="@string/Password"
+                    android:ems="10"
+                    android:textSize="18sp"
+                    android:textIsSelectable="false" />
+
+                <Button
+                    android:id="@+id/btnLogin"
+                    android:layout_width="300sp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/transparent_button"
+                    android:layout_marginTop="20sp"
+                    android:text="@string/Login"
+                    android:textColor="@color/white"
+                    android:padding="10sp"
+                    android:textStyle="bold"
+                    android:layout_gravity="center_horizontal"
+                    android:singleLine="true"
+                    android:textAllCaps="true"
+                    android:textSize="18sp"
+                    android:clickable="true" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_alignParentBottom="true">
+
+            <LinearLayout
+                android:id="@+id/takeMeToSignUpActivity"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center_horizontal|bottom"
+                android:layout_width="match_parent">
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="2sp"
+                    android:background="@color/white"
+                    android:minHeight="2sp"/>
+                <TextView
+                    android:id="@+id/txtTakeMeToSignUpActivity"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="match_parent"
+                    android:textAlignment="center"
+                    android:background="@color/white_overlay"
+                    android:textColor="@color/white"
+                    android:padding="10sp"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="@string/sign_up_if_do_not_have_account" />
+            </LinearLayout>
+        </FrameLayout>
+
+    </RelativeLayout>
+</RelativeLayout>

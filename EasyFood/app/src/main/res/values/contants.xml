@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Constants -->
+    <string name="TIMEOUT">10000</string><!-- 10 seconds -->
+    <string name="HTTP_STATUS_OK">200</string>
+    <string name="CONTENT_TYPE_JSON">application/json</string>
+    <string name="USER">user</string>
+    <string name="URL_LOGIN_SIGNUP">http://185.51.138.52:5005/serverForApplication/login_signup.php</string>
+    <string name="REQUEST_TYPE">request_type</string>
+    <string name="LOGIN_REQUEST">login_request</string>
+    <string name="SIGNUP_REQUEST">sigup_request</string>
+    <string name="USER_UPDATE_REQUEST">user_update_request</string>
+    <string name="SERVER_RESPONSE">response</string>
+    <string name="ALREADY_USED">already_used</string>
+    <string name="ADDED">added</string>
+    <string name="NOT_ADDED">not_added</string>
+    <!-- Database attribute names -->
+    <string name="DB_USERNAME">username</string>
+    <string name="DB_PASSWORD">password</string>
+    <string name="DB_NAME">nome</string>
+    <string name="DB_LAST_NAME">cognome</string>
+    <string name="DB_USER_EMAIL">emailUtente</string>
+    <string name="DB_ADDRESS">indirizzo</string>
+    <string name="DB_USER_PHONE">telUtente</string>
+    <string name="DB_USER_ID">codUente</string>
+    <string name="DB_REGION">nomeRegione</string>
+    <string name="DB_PROVINCE">nomeProvincia</string>
+    <string name="DB_MUNICIPALITY">nomeComune</string>
+
+</resources>
