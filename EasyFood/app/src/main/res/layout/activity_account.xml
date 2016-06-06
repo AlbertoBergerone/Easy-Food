@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/user_information_layout"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/userUsernameLabel"
+                style="@style/DefaultLabel"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/Username" />
+
+            <TextView
+                android:id="@+id/account_user_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Username" />
+
+            <TextView
+                android:id="@+id/userNameLabel"
+                style="@style/DefaultLabel"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/Name" />
+
+            <TextView
+                android:id="@+id/account_user_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Name" />
+
+            <TextView
+                android:id="@+id/userLastNameLabel"
+                style="@style/DefaultLabel"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/Last_name" />
+
+            <TextView
+                android:id="@+id/account_user_last_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="LastName" />
+
+            <TextView
+                android:id="@+id/userEmailLabel"
+                style="@style/DefaultLabel"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/Email"/>
+
+            <TextView
+                android:id="@+id/account_user_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Email" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:padding="12sp"
+            android:layout_below="@+id/user_information_layout">
+
+            <Button
+                android:id="@+id/btnUpdateUserInformation"
+                android:background="@drawable/transparent_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:width="300sp"
+                android:text="@string/Edit_user"/>
+        </RelativeLayout>
+    </RelativeLayout>
+
+</ScrollView>

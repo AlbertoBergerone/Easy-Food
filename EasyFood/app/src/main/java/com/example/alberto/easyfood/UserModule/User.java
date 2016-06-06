@@ -3,17 +3,17 @@ package com.example.alberto.easyfood.UserModule;
 import android.util.Log;
 
 import com.example.alberto.easyfood.DatabaseModule.CommunicationManager;
-import com.example.alberto.easyfood.DatabaseModule.UrlAndJSON;
-import com.example.alberto.easyfood.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.Serializable;
 
 
 /**
  * Created by Alberto on 13/04/2016.
  */
-public class User {
+public class User implements Serializable {
     private int _userID;
     private String _username;
     private String _password;
@@ -24,30 +24,34 @@ public class User {
 	private String _phone;
 	private String _region;
 	private String _province;
-	private String _municipality;
+	private String _residence;
     /*** Location which identifies actual user position ***/
     private final String TAG = "User";
-    /* Constants for communicate with the server */
-    private final String URL_LOGIN_SIGNUP = "http://185.51.138.52:5005/serverForApplication/login_signup.php";
-    private final String LOGIN_REQUEST = "login_request";
-    private final String SIGNUP_REQUEST = "sigup_request";
-    private final String USER_UPDATE_REQUEST = "user_update_request";
-    private final String SERVER_RESPONSE = "response";
-    private final String REQUEST_TYPE = "request_type";
-    private final String USER = "user";
-    private final String ADDED = "added";
-    private final String NOT_ADDED = "not_added";
-    private final String DB_USERNAME = "username";
-    private final String DB_PASSWORD = "password";
-    private final String DB_NAME = "nome";
-    private final String DB_LAST_NAME = "cognome";
-    private final String DB_USER_EMAIL = "emailUtente";
-    private final String DB_ADDRESS = "indirizzo";
-    private final String DB_USER_PHONE = "telUtente";
-    private final String DB_USER_ID = "codUente";
-    private final String DB_REGION = "nomeRegione";
-    private final String DB_PROVINCE = "nomeProvincia";
-    private final String DB_MUNICIPALITY = "nomeComune";
+    /* URL of the server */
+    private static final String URL_LOGIN_SIGNUP = "http://185.51.138.52:5005/serverForApplication/login_signup.php";
+	/* Database attributes */
+    private static final String LOGIN_REQUEST = "login_request";
+    private static final String SIGNUP_REQUEST = "sigup_request";
+    private static final String USER_DELETE_REQUEST = "user_delete_request";
+    private static final String USER_UPDATE_REQUEST = "user_update_request";
+    private static final String SERVER_RESPONSE = "response";
+    private static final String REQUEST_TYPE = "request_type";
+    private static final String USER = "user";
+    private static final String DELETED = "deleted";
+    private static final String UPDATED = "updated";
+    private static final String ADDED = "added";
+    private static final String NOT_ADDED = "not_added";
+    private static final String DB_USERNAME = "username";
+    private static final String DB_PASSWORD = "password";
+    private static final String DB_NAME = "nome";
+    private static final String DB_LAST_NAME = "cognome";
+    private static final String DB_USER_EMAIL = "emailUtente";
+    private static final String DB_ADDRESS = "indirizzo";
+    private static final String DB_USER_PHONE = "telUtente";
+    private static final String DB_USER_ID = "codUtente";
+    private static final String DB_REGION = "nomeRegione";
+    private static final String DB_PROVINCE = "nomeProvincia";
+    private static final String DB_RESIDENCE = "nomeComune";
 
 
 	/* Constructors */
@@ -59,6 +63,7 @@ public class User {
     public User(String username, String password){
         this._username = username;
         this._password = password;
+        this._userID = -1;
     }
 
     /**
@@ -70,14 +75,11 @@ public class User {
      * @param email (String) email
      */
     public User(String username, String password, String name, String last_name, String email){
-        this._username = username;
-        this._password = password;
+        this(username, password);
         this._name = name;
         this._last_name = last_name;
         this._email = email;
     }
-
-
 
     /**
      * Method that contacts a php page to authenticate the user.
@@ -87,36 +89,20 @@ public class User {
      */
     public boolean loginMe(){
 		boolean amILogged = false;
-		/* User information to send */
-		/*
-		ArrayList<NameValuePair> loginInformation = new ArrayList<NameValuePair>();
-		loginInformation.add(new BasicNameValuePair(valueOf(R.string.REQUEST_TYPE), valueOf(R.string.LOGIN_REQUEST)));
-		loginInformation.add(new BasicNameValuePair(valueOf(R.string.DB_USERNAME), this._username));
-		loginInformation.add(new BasicNameValuePair(valueOf(R.string.DB_PASSWORD), this._password));
-        */
-		/* Sending username a nd password to get other information if the user exist */
+		/* Sending username and password to get other information if the user exists */
 		JSONObject userInfo = CommunicationManager.postData(URL_LOGIN_SIGNUP, toJSON(LOGIN_REQUEST));
         if(userInfo != null){
 			try{
                 /* Getting user information */
                 fromJSON(userInfo.getJSONObject(USER));
-                /*
-				this._name = json_data.getString(valueOf(R.string.DB_NAME));
-                this._last_name = json_data.getString(valueOf(R.string.DB_LAST_NAME));
-                this._address = json_data.getString(valueOf(R.string.DB_ADDRESS));
-                this._phone = json_data.getString(valueOf(R.string.DB_USER_PHONE));
-                this._userID = json_data.getInt(valueOf(R.string.DB_USER_ID));
-                this._region = json_data.getString(valueOf(R.string.DB_REGION));
-                this._province = json_data.getString(valueOf(R.string.DB_PROVINCE));
-                this._municipality = json_data.getString(valueOf(R.string.DB_MUNICIPALITY));
-                */
-				
 				/* The login was successful */
 				amILogged = true;
 			}catch(JSONException e){
 				Log.e(TAG, "Error parsing data " + e.toString());
 			}
-		}
+		}else{
+            Log.e(TAG, "public boolean loginMe() - Error receiving data. The server returned null");
+        }
 		return amILogged;
     }
 	
@@ -128,30 +114,22 @@ public class User {
      */
     public boolean signupMe(){
         boolean AmISigned = false;
-		/* User information to send */
-		/*
-		ArrayList<NameValuePair> signupInformation = new ArrayList<NameValuePair>();
-		signupInformation.add(new BasicNameValuePair(valueOf(R.string.REQUEST_TYPE), valueOf(R.string.SIGNUP_REQUEST)));
-		signupInformation.add(new BasicNameValuePair(valueOf(R.string.DB_NAME), this._name));
-		signupInformation.add(new BasicNameValuePair(valueOf(R.string.DB_LAST_NAME), this._last_name));
-		signupInformation.add(new BasicNameValuePair(valueOf(R.string.DB_USER_EMAIL), this._email));
-		signupInformation.add(new BasicNameValuePair(valueOf(R.string.DB_USERNAME), this._username));
-		signupInformation.add(new BasicNameValuePair(valueOf(R.string.DB_PASSWORD), this._password));
-		*/
 		/* Sending user information and getting the response */
         JSONObject response = CommunicationManager.postData(URL_LOGIN_SIGNUP, toJSON(SIGNUP_REQUEST));
 		if(response != null){
 			try{
 				JSONObject json_data = response.getJSONObject(USER);
                 /* Getting return message */
-                if(json_data.getString(SERVER_RESPONSE).equals(ADDED)){
+                if(response.getString(SERVER_RESPONSE).equals(ADDED)){
                     /* The user has been signed */
                     int id;
-                    if((id = json_data.getInt(DB_USER_ID)) > 0){
-                        /* If the user ID is a valid number, it replace the current id (that might be equals to 0) */
+                    if((id = json_data.getInt(DB_USER_ID)) >= 0){
+                        /* If the user ID is a valid number, it replace the current id */
                         this._userID = id;
                         /* The user has been signed correctly */
                         AmISigned = true;
+                    }else{
+                        Log.e(TAG, "public boolean signupMe() - negative user id");
                     }
                 }else{
                     /* The user has not been signed */
@@ -169,39 +147,69 @@ public class User {
 				Log.e(TAG, "Error parsing data " + e.toString());
 			}
 		}else{
-            Log.e(TAG, "Error receiving data. The server returned null");
+            Log.e(TAG, "public boolean signupMe() - Error receiving data. The server returned null");
         }
         return AmISigned;
     }
-	
-	
+
+
+    /**
+     * Method that contacts a php page to delete the user.
+     * @return
+     * False --> the user has not been deleted
+     * True  --> the user has been deleted
+     */
+    public boolean deleteMe(){
+        boolean amIDeleted = false;
+        JSONObject response = CommunicationManager.postData(URL_LOGIN_SIGNUP, toJSON(USER_DELETE_REQUEST));
+        if(response != null){
+            try{
+                if(response.getString(SERVER_RESPONSE).equals(DELETED)){
+				    /* The user was successfully deleted */
+                    amIDeleted = true;
+                }
+            }catch(JSONException e){
+                Log.e(TAG, "Error parsing data " + e.toString());
+            }
+        }else{
+            Log.e(TAG, "public boolean deleteMe() - Error receiving data. The server returned null");
+        }
+        return amIDeleted;
+    }
+
 	/**
      * Method that contacts a php page to update the user information.
+     * @return
+     * False --> the user has not been updated
+     * True  --> the user has been updated
      */
-	public void updateMe(){
-        /*
-		ArrayList<NameValuePair> userInfo = new ArrayList<NameValuePair>();
-        userInfo.add(new BasicNameValuePair(valueOf(R.string.REQUEST_TYPE), valueOf(R.string.USER_UPDATE_REQUEST)));
-        userInfo.add(new BasicNameValuePair(valueOf(R.string.DB_USER_ID), valueOf(tmpUser.get_userID())));
-        userInfo.add(new BasicNameValuePair(valueOf(R.string.DB_USERNAME), tmpUser.get_username()));
-        userInfo.add(new BasicNameValuePair(valueOf(R.string.DB_PASSWORD), tmpUser.get_password()));
-        userInfo.add(new BasicNameValuePair(valueOf(R.string.DB_ADDRESS), tmpUser.get_address()));
-        userInfo.add(new BasicNameValuePair(valueOf(R.string.DB_LAST_NAME), tmpUser.get_last_name()));
-        userInfo.add(new BasicNameValuePair(valueOf(R.string.DB_NAME), tmpUser.get_name()));
-        userInfo.add(new BasicNameValuePair(valueOf(R.string.DB_USER_EMAIL), tmpUser.get_email()));
-        userInfo.add(new BasicNameValuePair(valueOf(R.string.DB_MUNICIPALITY), tmpUser.get_municipality()));
-        userInfo.add(new BasicNameValuePair(valueOf(R.string.DB_PROVINCE), tmpUser.get_province()));
-        userInfo.add(new BasicNameValuePair(valueOf(R.string.DB_REGION), tmpUser.get_region()));
-*/
-        JSONObject userInfo = CommunicationManager.postData(URL_LOGIN_SIGNUP, toJSON(USER_UPDATE_REQUEST));
-        if(userInfo != null){
-			try{
-                /* Setting user information */
-                fromJSON(userInfo.getJSONObject(USER));
-			}catch(JSONException e){
-				Log.e(TAG, "Error parsing data " + e.toString());
-			}
-		}
+	public boolean updateMe(){
+        boolean amIUpdated = false;
+        JSONObject response = CommunicationManager.postData(URL_LOGIN_SIGNUP, toJSON(USER_UPDATE_REQUEST));
+        if(response != null){
+            try{
+                JSONObject json_data = response.getJSONObject(USER);
+                /* Getting return message */
+                if(response.getString(SERVER_RESPONSE).equals(UPDATED)){
+                    /* The user has been updated */
+                    /* Getting user information */
+                    fromJSON(json_data);
+                    amIUpdated = true;
+                }else{
+                    /* The user has not been signed */
+                    /* Checking what is the problem */
+                    if(json_data.getString(DB_USER_EMAIL).isEmpty()){
+                        /* The email is invalid */
+                        this._email = null;
+                    }
+                }
+            }catch(JSONException e){
+                Log.e(TAG, "Error parsing data " + e.toString());
+            }
+        }else{
+            Log.e(TAG, "public boolean updateMe() - Error receiving data. The server returned null");
+        }
+        return amIUpdated;
 	}
 
     /**
@@ -235,6 +243,7 @@ public class User {
     public JSONObject toJSON(){
         JSONObject jsonObject = new JSONObject();
         try {
+            /* adding user information to a JSONObject */
             jsonObject.put(DB_USER_ID, get_userID());
             jsonObject.put(DB_NAME, get_name());
             jsonObject.put(DB_LAST_NAME, get_last_name());
@@ -243,7 +252,7 @@ public class User {
             jsonObject.put(DB_ADDRESS, get_address());
             jsonObject.put(DB_USER_EMAIL, get_email());
             jsonObject.put(DB_USER_PHONE, get_phone());
-            jsonObject.put(DB_MUNICIPALITY, get_municipality());
+            jsonObject.put(DB_RESIDENCE, get_residence());
             jsonObject.put(DB_PROVINCE, get_province());
             jsonObject.put(DB_REGION, get_region());
             /* return the JSONObject created */
@@ -267,7 +276,7 @@ public class User {
             _address = user.getString(DB_ADDRESS);
             _email = user.getString(DB_USER_EMAIL);
             _phone = user.getString(DB_USER_PHONE);
-            _municipality = user.getString(DB_MUNICIPALITY);
+            _residence = user.getString(DB_RESIDENCE);
             _province = user.getString(DB_PROVINCE);
             _region = user.getString(DB_REGION);
         } catch (JSONException e) {
@@ -316,39 +325,39 @@ public class User {
     public String get_province() {
         return _province;
     }
-    public String get_municipality() {
-        return _municipality;
+    public String get_residence() {
+        return _residence;
     }
     /* Setters */
-    public void set_username(String _username) {
-        this._username = _username;
+    public void set_username(String username) {
+        this._username = username;
     }
-    public void set_password(String _password) {
-        this._password = _password;
+    public void set_password(String password) {
+        this._password = password;
     }
-    public void set_name(String _name) {
-        this._name = _name;
+    public void set_name(String name) {
+        this._name = name;
     }
-    public void set_last_name(String _last_name) {
-        this._last_name = _last_name;
+    public void set_last_name(String last_name) {
+        this._last_name = last_name;
     }
-    public void set_email(String _email) {
-        this._email = _email;
+    public void set_email(String email) {
+        this._email = email;
     }
-    public void set_address(String _address) {
-        this._address = _address;
+    public void set_address(String address) {
+        this._address = address;
     }
-    public void set_phone(String _phone) {
-        this._phone = _phone;
+    public void set_phone(String phone) {
+        this._phone = phone;
     }
-    public void set_region(String _region) {
-        this._region = _region;
+    public void set_region(String region) {
+        this._region = region;
     }
-    public void set_province(String _province) {
-        this._province = _province;
+    public void set_province(String province) {
+        this._province = province;
     }
-    public void set_municipality(String _municipality) {
-        this._municipality = _municipality;
+    public void set_residence(String residence) {
+        this._residence = residence;
     }
 }
 

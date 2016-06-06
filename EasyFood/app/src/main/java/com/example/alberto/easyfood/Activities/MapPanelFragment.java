@@ -12,10 +12,10 @@ import com.example.alberto.easyfood.R;
 /**
  * Created by Alberto on 30/05/2016.
  */
-public class AccountFragment extends Fragment {
+public class MapPanelFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_account, container, false);
+        return inflater.inflate(R.layout.fragment_map_panel, container, false);
     }
 }

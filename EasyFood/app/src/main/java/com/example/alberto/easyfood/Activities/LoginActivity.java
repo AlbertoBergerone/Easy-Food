@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.alberto.easyfood.R;
 import com.example.alberto.easyfood.UserModule.User;
+import com.example.alberto.easyfood.DatabaseModule.InternetConnection;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -50,16 +51,27 @@ public class LoginActivity extends AppCompatActivity {
 
                     if(areAllTheDetailsEntered){
                         /* All information are valid */
-                        /* Trying to login the user */
-                        /* Creating a new User only with the username and the password properties.
-                         * The other properties will be loaded only if the user is already signed */
-                        User user = new User(String.valueOf(txtUsername.getText()), String.valueOf(txtPassword.getText()));
-                        //user.loginMe();
-                        Intent mainActivityIntent = new Intent(LoginActivity.this, MainActivity.class);
-                        LoginActivity.this.startActivity(mainActivityIntent);
+                        /* Checking if the internet connection is turned on */
+                        if(InternetConnection.haveIInternetConnection(getApplicationContext())){
+                            /* If it's turned on */
+                            /* Trying to login the user */
+                            /* Creating a new User only with the username and the password properties.
+                            * The other properties will be loaded only if the user is already signed */
+                            User user = new User(String.valueOf(txtUsername.getText()), String.valueOf(txtPassword.getText()));
+                            if(user.loginMe()){
+                                Intent mainActivityIntent = new Intent(LoginActivity.this, MainActivity.class).putExtra("user", user);
+                                LoginActivity.this.startActivity(mainActivityIntent);
+                            }else{
+                                /* Something went wrong with the login */
+                                Toast.makeText(getApplicationContext(), R.string.login_not_valid, Toast.LENGTH_LONG).show();
+                            }
+                        }else{
+                            /* There is no Internet connection */
+                            Toast.makeText(getApplicationContext(), R.string.No_internet_connection, Toast.LENGTH_LONG).show();
+                        }
                     }else{
                         /* At least one of the input fields are empty */
-                        Toast.makeText(getApplicationContext(), R.string.input_empty_fields, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), R.string.input_empty_fields, Toast.LENGTH_LONG).show();
                     }
                 }
             });

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/user_information_layout"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:id="@+id/userNameLabel"
+                style="@style/DefaultLabel"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/Name" />
+
+            <EditText
+                android:id="@+id/edit_account_user_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Name" />
+
+            <TextView
+                android:id="@+id/userLastNameLabel"
+                style="@style/DefaultLabel"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/Last_name" />
+
+            <EditText
+                android:id="@+id/edit_account_user_last_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="LastName" />
+
+            <TextView
+                android:id="@+id/userEmailLabel"
+                style="@style/DefaultLabel"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/Email"/>
+
+            <EditText
+                android:id="@+id/edit_account_user_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Email" />
+
+            <TextView
+                android:id="@+id/userPhoneNumberLabel"
+                style="@style/DefaultLabel"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/PhoneNumber"/>
+
+            <EditText
+                android:id="@+id/edit_account_user_phone_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/PhoneNumber" />
+
+            <TextView
+                android:id="@+id/userResidenceLabel"
+                style="@style/DefaultLabel"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/Residence"/>
+
+            <EditText
+                android:id="@+id/edit_account_user_residence"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/Residence" />
+
+            <TextView
+                android:id="@+id/userAddressLabel"
+                style="@style/DefaultLabel"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/Address"/>
+
+            <EditText
+                android:id="@+id/edit_account_user_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/Address" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:padding="12sp"
+            android:layout_below="@+id/user_information_layout">
+
+            <Button
+                android:id="@+id/btnUpdateUser"
+                android:background="@drawable/transparent_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:width="300sp"
+                android:text="@string/Update_profile"/>
+
+            <Button
+                android:id="@+id/btnDeleteUser"
+                android:layout_marginTop="10sp"
+                android:background="@drawable/transparent_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:width="300sp"
+                android:text="@string/Delete_profile"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+</ScrollView>

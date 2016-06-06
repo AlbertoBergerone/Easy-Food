@@ -47,7 +47,7 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
             case 0:
                 return new SearchFragment();
             case 1:
-                return new AccountFragment();
+                return new MapPanelFragment();
             default:
                 return null;
         }
