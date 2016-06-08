@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,7 +13,7 @@ import android.widget.Toast;
 
 import com.example.alberto.easyfood.R;
 import com.example.alberto.easyfood.UserModule.User;
-import com.example.alberto.easyfood.DatabaseModule.InternetConnection;
+import com.example.alberto.easyfood.ServerCommunicationModule.InternetConnection;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -38,42 +39,48 @@ public class LoginActivity extends AppCompatActivity {
          * If something is wrong it will ask again user information.
          * */
         if (btnLogin != null && txtSignUp != null && txtUsername != null && txtPassword != null) {
-            btnLogin.setOnClickListener(new View.OnClickListener() {
+            btnLogin.setOnTouchListener(new View.OnTouchListener() {
                 @Override
-                public void onClick(View v) {
-                    boolean areAllTheDetailsEntered = true;
+                public boolean onTouch(View v, MotionEvent event) {
+                    if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                        setBackgroundDrawable(btnLogin, R.drawable.transparent_button_pressed);
+						boolean areAllTheDetailsEntered = true;
 
-                    /* Checking the status of password and username fields */
-                    if(isTheFieldEmpty(txtUsername))
-                        areAllTheDetailsEntered = false;
-                    if(isTheFieldEmpty(txtPassword))
-                        areAllTheDetailsEntered = false;
+						/* Checking the status of password and username fields */
+						if(isTheFieldEmpty(txtUsername))
+							areAllTheDetailsEntered = false;
+						if(isTheFieldEmpty(txtPassword))
+							areAllTheDetailsEntered = false;
 
-                    if(areAllTheDetailsEntered){
-                        /* All information are valid */
-                        /* Checking if the internet connection is turned on */
-                        if(InternetConnection.haveIInternetConnection(getApplicationContext())){
-                            /* If it's turned on */
-                            /* Trying to login the user */
-                            /* Creating a new User only with the username and the password properties.
-                            * The other properties will be loaded only if the user is already signed */
-                            User user = new User(String.valueOf(txtUsername.getText()), String.valueOf(txtPassword.getText()));
-                            if(user.loginMe()){
-                                Intent mainActivityIntent = new Intent(LoginActivity.this, MainActivity.class).putExtra("user", user);
-                                LoginActivity.this.startActivity(mainActivityIntent);
-                            }else{
-                                /* Something went wrong with the login */
-                                Toast.makeText(getApplicationContext(), R.string.login_not_valid, Toast.LENGTH_LONG).show();
-                            }
-                        }else{
-                            /* There is no Internet connection */
-                            Toast.makeText(getApplicationContext(), R.string.No_internet_connection, Toast.LENGTH_LONG).show();
-                        }
-                    }else{
-                        /* At least one of the input fields are empty */
-                        Toast.makeText(getApplicationContext(), R.string.input_empty_fields, Toast.LENGTH_LONG).show();
-                    }
-                }
+						if(areAllTheDetailsEntered){
+							/* All information are valid */
+							/* Checking if the internet connection is turned on */
+							if(InternetConnection.haveIInternetConnection(getApplicationContext())){
+								/* If it's turned on */
+								/* Trying to login the user */
+								/* Creating a new User only with the username and the password properties.
+								* The other properties will be loaded only if the user is already signed */
+								User user = new User(String.valueOf(txtUsername.getText()), String.valueOf(txtPassword.getText()));
+								if(user.loginMe()){
+									Intent mainActivityIntent = new Intent(LoginActivity.this, HomeActivity.class).putExtra("user", user);
+									LoginActivity.this.startActivity(mainActivityIntent);
+								}else{
+									/* Something went wrong with the login */
+									Toast.makeText(getApplicationContext(), R.string.login_not_valid, Toast.LENGTH_LONG).show();
+								}
+							}else{
+								/* There is no Internet connection */
+								Toast.makeText(getApplicationContext(), R.string.No_internet_connection, Toast.LENGTH_LONG).show();
+							}
+						}else{
+							/* At least one of the input fields are empty */
+							Toast.makeText(getApplicationContext(), R.string.input_empty_fields, Toast.LENGTH_LONG).show();
+						}
+					}else if (event.getAction() == MotionEvent.ACTION_UP) {
+                        setBackgroundDrawable(btnLogin, R.drawable.transparent_button);
+					}
+                    return true;
+				}
             });
 
             /* On a click on the signup label it will open another activity which will ask user details to sign up him */

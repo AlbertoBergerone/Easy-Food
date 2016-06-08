@@ -64,7 +64,7 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
             case 0:
                 return context.getResources().getString(R.string.Search);
             case 1:
-                return context.getResources().getString(R.string.Account);
+                return context.getResources().getString(R.string.Map);
             default:
                 return null;
         }

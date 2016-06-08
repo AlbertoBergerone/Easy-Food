@@ -18,7 +18,7 @@ import android.view.ViewGroup;
 import com.example.alberto.easyfood.R;
 import com.example.alberto.easyfood.UserModule.User;
 
-public class MainActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity {
     private User user;
     private static final int ACCOUNT_ACTIVITY = 100;
 
@@ -94,8 +94,8 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
             return true;
         }else if (id == R.id.action_account){
-			Intent accountIntent = new Intent(MainActivity.this, AccountActivity.class).putExtra("user", user);
-			MainActivity.this.startActivityForResult(accountIntent, ACCOUNT_ACTIVITY);
+			Intent accountIntent = new Intent(HomeActivity.this, AccountActivity.class).putExtra("user", user);
+			HomeActivity.this.startActivityForResult(accountIntent, ACCOUNT_ACTIVITY);
 			return true;
 		}
 
@@ -124,8 +124,7 @@ public class MainActivity extends AppCompatActivity {
          */
         private static final String ARG_SECTION_NUMBER = "section_number";
 
-        public PlaceholderFragment() {
-        }
+        public PlaceholderFragment() {}
 
         /**
          * Returns a new instance of this fragment for the given section
@@ -133,9 +132,9 @@ public class MainActivity extends AppCompatActivity {
          */
         public static PlaceholderFragment newInstance(int sectionNumber) {
             PlaceholderFragment fragment = new PlaceholderFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
+            //Bundle args = new Bundle();
+            //args.putInt(ARG_SECTION_NUMBER, sectionNumber);
+            //fragment.setArguments(args);
             return fragment;
         }
 
@@ -147,7 +146,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        System.exit(0);
     }
 
     @Override

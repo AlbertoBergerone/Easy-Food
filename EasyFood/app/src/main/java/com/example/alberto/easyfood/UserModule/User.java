@@ -2,7 +2,7 @@ package com.example.alberto.easyfood.UserModule;
 
 import android.util.Log;
 
-import com.example.alberto.easyfood.DatabaseModule.CommunicationManager;
+import com.example.alberto.easyfood.ServerCommunicationModule.CommunicationManager;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -14,6 +14,10 @@ import java.io.Serializable;
  * Created by Alberto on 13/04/2016.
  */
 public class User implements Serializable {
+    //private static User userProfile;
+    /* Sarebbe meglio un singleton?
+    * http://www.devahead.com/blog/2011/06/extending-the-android-application-class-and-dealing-with-singleton/
+    * */
     private int _userID;
     private String _username;
     private String _password;
@@ -26,44 +30,45 @@ public class User implements Serializable {
 	private String _province;
 	private String _residence;
     /*** Location which identifies actual user position ***/
-    private final String TAG = "User";
+    private static final String TAG = "User";
     /* URL of the server */
     private static final String URL_LOGIN_SIGNUP = "http://185.51.138.52:5005/serverForApplication/login_signup.php";
-	/* Database attributes */
-    private static final String LOGIN_REQUEST = "login_request";
-    private static final String SIGNUP_REQUEST = "sigup_request";
+    /* Request values */
+    private static final String USER_LOGIN_REQUEST = "login_request";
+    private static final String USER_SIGNUP_REQUEST = "sigup_request";
     private static final String USER_DELETE_REQUEST = "user_delete_request";
     private static final String USER_UPDATE_REQUEST = "user_update_request";
-    private static final String SERVER_RESPONSE = "response";
+    /* Requests and responses */
     private static final String REQUEST_TYPE = "request_type";
+    private static final String SERVER_RESPONSE = "response";
     private static final String USER = "user";
+    /* Server response values */
     private static final String DELETED = "deleted";
     private static final String UPDATED = "updated";
     private static final String ADDED = "added";
     private static final String NOT_ADDED = "not_added";
+    /* Database attributes */
     private static final String DB_USERNAME = "username";
-    private static final String DB_PASSWORD = "password";
+    private static final String DB_PASSWORD = "passwordUtente";
     private static final String DB_NAME = "nome";
     private static final String DB_LAST_NAME = "cognome";
     private static final String DB_USER_EMAIL = "emailUtente";
-    private static final String DB_ADDRESS = "indirizzo";
+    private static final String DB_USER_ADDRESS = "indirizzoUtente";
     private static final String DB_USER_PHONE = "telUtente";
     private static final String DB_USER_ID = "codUtente";
-    private static final String DB_REGION = "nomeRegione";
-    private static final String DB_PROVINCE = "nomeProvincia";
+    private static final String DB_PROVINCE_ID = "codProvincia";
     private static final String DB_RESIDENCE = "nomeComune";
 
 
 	/* Constructors */
     /**
      * Constructor
-     * @param username (username)
-     * @param password (user password)
+     * @param username (String) username
+     * @param password (String) user password
      */
     public User(String username, String password){
         this._username = username;
         this._password = password;
-        this._userID = -1;
     }
 
     /**
@@ -90,10 +95,11 @@ public class User implements Serializable {
     public boolean loginMe(){
 		boolean amILogged = false;
 		/* Sending username and password to get other information if the user exists */
-		JSONObject userInfo = CommunicationManager.postData(URL_LOGIN_SIGNUP, toJSON(LOGIN_REQUEST));
+		JSONObject userInfo = CommunicationManager.postData(URL_LOGIN_SIGNUP, toJSON(USER_LOGIN_REQUEST));
         if(userInfo != null){
 			try{
                 /* Getting user information */
+                Log.e(TAG, userInfo.toString());
                 fromJSON(userInfo.getJSONObject(USER));
 				/* The login was successful */
 				amILogged = true;
@@ -115,7 +121,7 @@ public class User implements Serializable {
     public boolean signupMe(){
         boolean AmISigned = false;
 		/* Sending user information and getting the response */
-        JSONObject response = CommunicationManager.postData(URL_LOGIN_SIGNUP, toJSON(SIGNUP_REQUEST));
+        JSONObject response = CommunicationManager.postData(URL_LOGIN_SIGNUP, toJSON(USER_SIGNUP_REQUEST));
 		if(response != null){
 			try{
 				JSONObject json_data = response.getJSONObject(USER);
@@ -123,6 +129,7 @@ public class User implements Serializable {
                 if(response.getString(SERVER_RESPONSE).equals(ADDED)){
                     /* The user has been signed */
                     int id;
+                    Log.e(TAG, json_data.toString());
                     if((id = json_data.getInt(DB_USER_ID)) >= 0){
                         /* If the user ID is a valid number, it replace the current id */
                         this._userID = id;
@@ -214,7 +221,7 @@ public class User implements Serializable {
 
     /**
      * Method that converts to a JSONObject the request type (so the server will understand what to do) and all user information
-     * @param request_type
+     * @param request_type (String)
      * @return JSONObject containing user information and the request type
      */
     private JSONObject toJSON(String request_type){
@@ -249,12 +256,11 @@ public class User implements Serializable {
             jsonObject.put(DB_LAST_NAME, get_last_name());
             jsonObject.put(DB_USERNAME, get_username());
             jsonObject.put(DB_PASSWORD, get_password());
-            jsonObject.put(DB_ADDRESS, get_address());
+            jsonObject.put(DB_USER_ADDRESS, get_address());
             jsonObject.put(DB_USER_EMAIL, get_email());
             jsonObject.put(DB_USER_PHONE, get_phone());
             jsonObject.put(DB_RESIDENCE, get_residence());
-            jsonObject.put(DB_PROVINCE, get_province());
-            jsonObject.put(DB_REGION, get_region());
+            jsonObject.put(DB_PROVINCE_ID, get_province());
             /* return the JSONObject created */
             return jsonObject;
         } catch (JSONException e) {
@@ -269,16 +275,56 @@ public class User implements Serializable {
      */
     private void fromJSON(JSONObject user){
         try {
-            _name = user.getString(DB_NAME);
-            _last_name = user.getString(DB_LAST_NAME);
-            _username = user.getString(DB_USERNAME);
-            _password = user.getString(DB_PASSWORD);
-            _address = user.getString(DB_ADDRESS);
-            _email = user.getString(DB_USER_EMAIL);
-            _phone = user.getString(DB_USER_PHONE);
-            _residence = user.getString(DB_RESIDENCE);
-            _province = user.getString(DB_PROVINCE);
-            _region = user.getString(DB_REGION);
+            if(user.getString(DB_USER_ID) == null || user.getString(DB_USER_ID).isEmpty() || user.getInt(DB_USER_ID) < 0)
+                _userID = -1;
+            else
+                _userID = user.getInt(DB_USER_ID);
+
+            if(user.getString(DB_NAME) == null || user.getString(DB_NAME).isEmpty())
+                _name = null;
+            else
+                _name = user.getString(DB_NAME);
+
+            if(user.getString(DB_LAST_NAME) == null || user.getString(DB_LAST_NAME).isEmpty())
+                _last_name = null;
+            else
+                _last_name = user.getString(DB_LAST_NAME);
+
+            if(user.getString(DB_USERNAME) == null || user.getString(DB_USERNAME).isEmpty())
+                _username = null;
+            else
+                _username = user.getString(DB_USERNAME);
+
+            if(user.getString(DB_PASSWORD) == null || user.getString(DB_PASSWORD).isEmpty())
+                _password = null;
+            else
+                _password = user.getString(DB_PASSWORD);
+
+            if(user.getString(DB_USER_ADDRESS) == null || user.getString(DB_USER_ADDRESS).isEmpty())
+                _address = null;
+            else
+                _address = user.getString(DB_USER_ADDRESS);
+
+            if(user.getString(DB_USER_EMAIL) == null || user.getString(DB_USER_EMAIL).isEmpty())
+                _email = null;
+            else
+                _email = user.getString(DB_USER_EMAIL);
+
+            if(user.getString(DB_USER_PHONE) == null || user.getString(DB_USER_PHONE).isEmpty())
+                _phone = null;
+            else
+                _phone = user.getString(DB_USER_PHONE);
+
+            if(user.getString(DB_RESIDENCE) == null || user.getString(DB_RESIDENCE).isEmpty())
+                _residence = null;
+            else
+                _residence = user.getString(DB_RESIDENCE);
+
+            if(user.getString(DB_PROVINCE_ID) == null || user.getString(DB_PROVINCE_ID).isEmpty())
+                _province = null;
+            else
+                _province = user.getString(DB_PROVINCE_ID);
+
         } catch (JSONException e) {
             Log.e(TAG, "Error parsing data " + e.toString());
         }
@@ -286,7 +332,7 @@ public class User implements Serializable {
 
     /**
      * Method that check if the email is valid
-     * @param email
+     * @param email (String) email
      * @return TRUE if the email is valid. FALSE if it isn't.
      */
     public static boolean isValidEmail(String email) {

@@ -1,4 +1,4 @@
-A001;Abano Terme;35031;PD
+ÔªøA001;Abano Terme;35031;PD
 A004;Abbadia Cerreto;26834;LO
 A005;Abbadia Lariana;23821;LC
 A006;Abbadia San Salvatore;53021;SI
@@ -59,7 +59,7 @@ A069;Aggius;07020;OT
 A070;Agira;94011;EN
 A071;Agliana;51031;PT
 A072;Agliano Terme;14041;AT
-A074;AgliË;10011;TO
+A074;Agli√®;10011;TO
 H848;Aglientu;07020;OT
 A075;Agna;35021;PD
 A076;Agnadello;26020;CR
@@ -91,7 +91,7 @@ A111;Airole;18030;IM
 A112;Airuno;23881;LC
 A113;Aisone;12010;CN
 A116;Ala;38061;TN
-A115;Al‡ dei Sardi;07020;OT
+A115;Al√† dei Sardi;07020;OT
 A117;Ala di Stura;10070;TO
 A118;Alagna;27020;PV
 A119;Alagna Valsesia;13021;VC
@@ -153,8 +153,8 @@ A189;Alfiano Natta;15021;AL
 A191;Alfonsine;48011;RA
 A192;Alghero;07041;SS
 A193;Algua;24010;BG
-A194;AlÏ;98020;ME
-A201;AlÏ Terme;98021;ME
+A194;Al√¨;98020;ME
+A201;Al√¨ Terme;98021;ME
 A195;Alia;90021;PA
 A196;Aliano;75010;MT
 A197;Alice Bel Colle;15010;AL
@@ -169,8 +169,8 @@ A205;Allein;11010;AO
 A207;Allerona;05011;TR
 A208;Alliste;73040;LE
 A210;Allumiere;00051;RM
-A211;Alluvioni CambiÚ;15040;AL
-A214;AlmË;24011;BG
+A211;Alluvioni Cambi√≤;15040;AL
+A214;Alm√®;24011;BG
 A216;Almenno San Bartolomeo;24030;BG
 A217;Almenno San Salvatore;24031;BG
 A218;Almese;10040;TO
@@ -249,7 +249,7 @@ A302;Annone Veneto;30020;VE
 A303;Anoia;89020;RC
 A304;Antegnate;24051;BG
 A306;Anterivo;39040;BZ
-A305;Antey-Saint-AndrË;11020;AO
+A305;Antey-Saint-Andr√®;11020;AO
 A309;Anticoli Corrado;00022;RM
 A312;Antignano;14010;AT
 A313;Antillo;98030;ME
@@ -345,14 +345,14 @@ A430;Arosio;22060;CO
 A431;Arpaia;82011;BN
 A432;Arpaise;82010;BN
 A433;Arpino;03033;FR
-A434;Arqu‡ Petrarca;35032;PD
-A435;Arqu‡ Polesine;45031;RO
+A434;Arqu√† Petrarca;35032;PD
+A435;Arqu√† Polesine;45031;RO
 A437;Arquata del Tronto;63096;AP
 A436;Arquata Scrivia;15061;AL
 A438;Arre;35020;PD
 A439;Arrone;05031;TR
 A441;Arsago Seprio;21010;VA
-A443;ArsiË;32030;BL
+A443;Arsi√®;32030;BL
 A444;Arsiero;36011;VI
 A445;Arsita;64031;TE
 A446;Arsoli;00023;RM
@@ -548,16 +548,16 @@ A678;Barrea;67030;AQ
 A681;Barumini;09021;VS
 A683;Barzago;23890;LC
 A684;Barzana;24030;BG
-A686;BarzanÚ;23891;LC
+A686;Barzan√≤;23891;LC
 A687;Barzio;23816;LC
 A689;Basaluzzo;15060;AL
-A690;BascapË;27010;PV
+A690;Bascap√®;27010;PV
 A691;Baschi;05023;TR
 A692;Basciano;64030;TE
-A694;Baselga di PinË;38042;TN
+A694;Baselga di Pin√®;38042;TN
 A696;Baselice;82020;BN
 A697;Basiano;20060;MI
-A698;BasicÚ;98060;ME
+A698;Basic√≤;98060;ME
 A699;Basiglio;20080;MI
 A700;Basiliano;33031;UD
 A702;Bassano Bresciano;25020;BS
@@ -566,7 +566,7 @@ A706;Bassano in Teverina;01030;VT
 A704;Bassano Romano;01030;VT
 A707;Bassiano;04010;LT
 A708;Bassignana;15042;AL
-A709;Bastia MondovÏ;12060;CN
+A709;Bastia Mondov√¨;12060;CN
 A710;Bastia Umbra;06083;PG
 A711;Bastida de' Dossi;27050;PV
 A712;Bastida Pancarana;27050;PV
@@ -622,7 +622,7 @@ A774;Belvedere Langhe;12060;CN
 A773;Belvedere Marittimo;87021;CS
 A769;Belvedere Ostrense;60030;AN
 A770;Belveglio;14040;AT
-A776;BelvÏ;08030;NU
+A776;Belv√¨;08030;NU
 A777;Bema;23010;SO
 A778;Bene Lario;22010;CO
 A779;Bene Vagienna;12041;CN
@@ -678,7 +678,7 @@ A843;Bianco;89032;RC
 A844;Biandrate;28061;NO
 A845;Biandronno;21024;VA
 A846;Bianzano;24060;BG
-A847;BianzË;13041;VC
+A847;Bianz√®;13041;VC
 A848;Bianzone;23030;SO
 A849;Biassono;20853;MB
 A850;Bibbiano;42021;RE
@@ -687,7 +687,7 @@ A852;Bibbona;57020;LI
 A853;Bibiana;10060;TO
 A854;Biccari;71032;FG
 A855;Bicinicco;33050;UD
-A856;BidonÏ;09080;OR
+A856;Bidon√¨;09080;OR
 A859;Biella;13900;BI
 A861;Bienno;25040;BS
 A863;Bieno;38050;TN
@@ -970,7 +970,7 @@ B239;Bucciano;82010;BN
 B240;Buccinasco;20090;MI
 B242;Buccino;84021;SA
 B243;Bucine;52021;AR
-B246;BuddusÚ;07020;OT
+B246;Buddus√≤;07020;OT
 B247;Budoia;33070;PN
 B248;Budoni;08020;OT
 B249;Budrio;40054;BO
@@ -1040,7 +1040,7 @@ B355;Caglio;22030;CO
 B358;Cagnano Amiterno;67012;AQ
 B357;Cagnano Varano;71010;FG
 B359;Cagno;22070;CO
-B360;CagnÚ;38028;TN
+B360;Cagn√≤;38028;TN
 B361;Caianello;81059;CE
 B362;Caiazzo;81013;CE
 B364;Caines;39010;BZ
@@ -1234,7 +1234,7 @@ B594;Canelli;14053;AT
 B597;Canepina;01030;VT
 B598;Caneva;33070;PN
 B599;Canevino;27040;PV
-B602;CanicattÏ;92024;AG
+B602;Canicatt√¨;92024;AG
 B603;Canicattini Bagni;96010;SR
 B604;Canino;01011;VT
 B605;Canischio;10080;TO
@@ -1265,7 +1265,7 @@ B634;Cantello;21050;VA
 B635;Canterano;00020;RM
 B636;Cantiano;61044;PU
 B637;Cantoira;10070;TO
-B639;Cant˘;22063;CO
+B639;Cant√π;22063;CO
 B640;Canzano;64020;TE
 B641;Canzo;22035;CO
 B642;Caorle;30021;VE
@@ -1357,7 +1357,7 @@ B748;Carcare;17043;SV
 B749;Carceri;35040;PD
 B752;Carcoforo;13026;VC
 B754;Cardano al Campo;21010;VA
-B755;CardË;12030;CN
+B755;Card√®;12030;CN
 M285;Cardedu;08040;OG
 B756;Cardeto;89060;RC
 B758;Cardinale;88062;CZ
@@ -1419,12 +1419,12 @@ B826;Carpineto Sinello;66030;CH
 B829;Carpino;71010;FG
 B830;Carpinone;86093;IS
 B832;Carrara;54033;MS
-B835;CarrË;36010;VI
+B835;Carr√®;36010;VI
 B836;Carrega Ligure;15060;AL
 B838;Carro;19012;SP
 B839;Carrodano;19020;SP
 B840;Carrosio;15060;AL
-B841;Carr˘;12061;CN
+B841;Carr√π;12061;CN
 B842;Carsoli;67061;AQ
 B844;Cartigliano;36050;VI
 B845;Cartignano;12020;CN
@@ -1619,7 +1619,7 @@ C255;Castel Rozzone;24040;BG
 C259;Castel San Giorgio;84083;SA
 C261;Castel San Giovanni;29015;PC
 C262;Castel San Lorenzo;84049;SA
-C263;Castel San NiccolÚ;52018;AR
+C263;Castel San Niccol√≤;52018;AR
 C266;Castel San Pietro Romano;00030;RM
 C265;Castel San Pietro Terme;40024;BO
 C270;Castel San Vincenzo;86071;IS
@@ -1839,7 +1839,7 @@ C359;Cautano;82030;BN
 C361;Cava de' Tirreni;84013;SA
 C360;Cava Manara;27051;PV
 C362;Cavacurta;26844;LO
-C363;Cavagli‡;13881;BI
+C363;Cavagli√†;13881;BI
 C364;Cavaglietto;28010;NO
 C365;Cavaglio d'Agogna;28010;NO
 C367;Cavaglio-Spoccia;28825;VB
@@ -1881,8 +1881,8 @@ C414;Cecima;27050;PV
 C415;Cecina;57023;LI
 C417;Cedegolo;25051;BS
 C418;Cedrasco;23010;SO
-C420;Cefal‡ Diana;90030;PA
-C421;Cefal˘;90015;PA
+C420;Cefal√† Diana;90030;PA
+C421;Cefal√π;90015;PA
 C422;Ceggia;30022;VE
 C424;Ceglie Messapica;72013;BR
 C426;Celano;67043;AQ
@@ -1914,7 +1914,7 @@ C458;Cencenighe Agordino;32020;BL
 C459;Cene;24020;BG
 C461;Ceneselli;45030;RO
 C463;Cengio;17056;SV
-C467;Centa San NicolÚ;38040;TN
+C467;Centa San Nicol√≤;38040;TN
 C466;Centallo;12044;CN
 C469;Cento;44042;FE
 C470;Centola;84051;SA
@@ -2005,7 +2005,7 @@ C564;Cesana Torinese;10054;TO
 C565;Cesano Boscone;20090;MI
 C566;Cesano Maderno;20811;MB
 C567;Cesara;28891;VB
-C568;CesarÚ;98033;ME
+C568;Cesar√≤;98033;ME
 C569;Cesate;20020;MI
 C573;Cesena;4752x;FC
 C574;Cesenatico;47042;FC
@@ -2092,14 +2092,14 @@ C677;Ciciliano;00020;RM
 C678;Cicognolo;26030;CR
 C679;Ciconio;10080;TO
 C680;Cigliano;13043;VC
-C681;CigliË;12060;CN
+C681;Cigli√®;12060;CN
 C684;Cigognola;27040;PV
 C685;Cigole;25020;BS
 C686;Cilavegna;27024;PV
 C689;Cimadolmo;31010;TV
 C691;Cimbergo;25050;BS
 C694;Cimego;38082;TN
-C695;Cimin‡;89040;RC
+C695;Cimin√†;89040;RC
 C696;Ciminna;90023;PA
 C697;Cimitile;80030;NA
 C699;Cimolais;33080;PN
@@ -2121,11 +2121,11 @@ C715;Cinzano;10090;TO
 C716;Ciorlano;81010;CE
 C718;Cipressa;18017;IM
 C719;Circello;82020;BN
-C722;CiriË;10073;TO
+C722;Ciri√®;10073;TO
 C723;Cirigliano;75010;MT
 C724;Cirimido;22070;CO
-C725;CirÚ;88813;KR
-C726;CirÚ Marina;88811;KR
+C725;Cir√≤;88813;KR
+C726;Cir√≤ Marina;88811;KR
 C727;Cis;38020;TN
 C728;Cisano Bergamasco;24034;BG
 C729;Cisano sul Neva;17035;SV
@@ -2139,9 +2139,9 @@ C739;Cisterna d'Asti;14010;AT
 C740;Cisterna di Latina;04012;LT
 C741;Cisternino;72014;BR
 C742;Citerna;06010;PG
-C744;Citt‡ della Pieve;06062;PG
-C745;Citt‡ di Castello;06012;PG
-C750;Citt‡ Sant'Angelo;65013;PE
+C744;Citt√† della Pieve;06062;PG
+C745;Citt√† di Castello;06012;PG
+C750;Citt√† Sant'Angelo;65013;PE
 C743;Cittadella;35013;PD
 C746;Cittaducale;02015;RI
 C747;Cittanova;89022;RC
@@ -2195,7 +2195,7 @@ C811;Cocullo;67030;AQ
 C812;Codevigo;35020;PD
 C813;Codevilla;27050;PV
 C814;Codigoro;44021;FE
-C815;CodognË;31013;TV
+C815;Codogn√®;31013;TV
 C816;Codogno;26845;LO
 C817;Codroipo;33033;UD
 C818;Codrongianos;07040;SS
@@ -2298,7 +2298,7 @@ C952;Concorezzo;20863;MB
 C953;Condino;38083;TN
 C954;Condofuri;89030;RC
 C955;Condove;10055;TO
-C956;CondrÚ;98040;ME
+C956;Condr√≤;98040;ME
 C957;Conegliano;31015;TV
 C958;Confienza;27030;PV
 C959;Configni;02040;RI
@@ -2486,7 +2486,7 @@ D204;Cunardo;21035;VA
 D205;Cuneo;12100;CN
 D206;Cunevo;38010;TN
 D207;Cunico;14026;AT
-D208;CuorgnË;10082;TO
+D208;Cuorgn√®;10082;TO
 D209;Cupello;66051;CH
 D210;Cupra Marittima;63064;AP
 D211;Cupramontana;60034;AN
@@ -2520,9 +2520,9 @@ D245;Dalmine;24044;BG
 D246;Dambel;38010;TN
 D247;Danta di Cadore;32040;BL
 D248;Daone;38080;TN
-D250;DarË;38080;TN
+D250;Dar√®;38080;TN
 D251;Darfo Boario Terme;25047;BS
-D253;Das‡;89832;VV
+D253;Das√†;89832;VV
 D255;Davagna;16022;GE
 D256;Daverio;21020;VA
 D257;Davoli;88060;CZ
@@ -2563,11 +2563,11 @@ D305;Diso;73030;LE
 D309;Divignano;28010;NO
 D310;Dizzasco;22020;CO
 D311;Dobbiaco;39034;BZ
-D312;DoberdÚ del Lago;34070;GO
+D312;Doberd√≤ del Lago;34070;GO
 D314;Dogliani;12063;CN
 D315;Dogliola;66050;CH
 D316;Dogna;33010;UD
-D317;DolcË;37020;VR
+D317;Dolc√®;37020;VR
 D318;Dolceacqua;18035;IM
 D319;Dolcedo;18020;IM
 D321;Dolegna del Collio;34070;GO
@@ -2629,7 +2629,7 @@ D395;Elini;08040;OG
 D398;Ello;23848;LC
 D399;Elmas;09030;CA
 D401;Elva;12020;CN
-D402;EmarËse;11020;AO
+D402;Emar√®se;11020;AO
 D403;Empoli;50053;FI
 D406;Endine Gaiano;24060;BG
 D407;Enego;36052;VI
@@ -2641,7 +2641,7 @@ D412;Envie;12030;CN
 D414;Episcopia;85033;PZ
 D415;Eraclea;30020;VE
 D416;Erba;22036;CO
-D419;ErbË;37060;VR
+D419;Erb√®;37060;VR
 D420;Erbezzo;37020;VR
 D421;Erbusco;25030;BS
 D422;Erchie;72020;BR
@@ -2731,9 +2731,9 @@ D527;Felitto;84055;SA
 D528;Felizzano;15023;AL
 D529;Felonica;46022;MN
 D530;Feltre;32032;BL
-D531;FenegrÚ;22070;CO
+D531;Fenegr√≤;22070;CO
 D532;Fenestrelle;10060;TO
-D537;FÈnis;11020;AO
+D537;F√©nis;11020;AO
 D538;Ferentillo;05034;TR
 D539;Ferentino;03013;FR
 D540;Ferla;96010;SR
@@ -2755,13 +2755,13 @@ D560;Fiamignano;02023;RI
 D562;Fiano;10070;TO
 D561;Fiano Romano;00065;RM
 D564;Fiastra;62035;MC
-D565;FiavË;38075;TN
+D565;Fiav√®;38075;TN
 D567;Ficarazzi;90010;PA
 D568;Ficarolo;45036;RO
 D569;Ficarra;98062;ME
 D570;Ficulle;05016;TR
 B034;Fidenza;43036;PR
-D571;FiË allo Sciliar;39050;BZ
+D571;Fi√® allo Sciliar;39050;BZ
 D572;Fiera di Primiero;38054;TN
 D573;Fierozzo;38050;TN
 D574;Fiesco;26010;CR
@@ -2867,8 +2867,8 @@ D697;Foresto Sparso;24060;BG
 D700;Forgaria nel Friuli;33030;UD
 D701;Forino;83020;AV
 D702;Forio;80075;NA
-D704;ForlÏ;4712x;FC
-D703;ForlÏ del Sannio;86084;IS
+D704;Forl√¨;4712x;FC
+D703;Forl√¨ del Sannio;86084;IS
 D705;Forlimpopoli;47034;FC
 D706;Formazza;28863;VB
 D707;Formello;00060;RM
@@ -2890,7 +2890,7 @@ D727;Fornovo San Giovanni;24040;BG
 D730;Forte dei Marmi;55042;LU
 D731;Fortezza;39045;BZ
 D732;Fortunago;27040;PV
-D733;Forza d'AgrÚ;98030;ME
+D733;Forza d'Agr√≤;98030;ME
 D734;Fosciandora;55020;LU
 D735;Fosdinovo;54035;MS
 D736;Fossa;67020;AQ
@@ -2901,7 +2901,7 @@ D737;Fossalto;86020;CB
 D742;Fossano;12045;CN
 D745;Fossato di Vico;06022;PG
 D744;Fossato Serralta;88050;CZ
-D748;FossÚ;30030;VE
+D748;Foss√≤;30030;VE
 D749;Fossombrone;61034;PU
 D750;Foza;36010;VI
 D751;Frabosa Soprana;12082;CN
@@ -2941,7 +2941,7 @@ D787;Fratta Todina;06054;PG
 D789;Frattamaggiore;80027;NA
 D790;Frattaminore;80020;NA
 D791;Fratte Rosa;61040;PU
-D793;FrazzanÚ;98070;ME
+D793;Frazzan√≤;98070;ME
 D794;Fregona;31010;TV
 D796;Fresagrandinaria;66050;CH
 D797;Fresonara;15064;AL
@@ -3017,7 +3017,7 @@ D883;Gallipoli;73014;LE
 D884;Gallo Matese;81010;CE
 D885;Gallodoro;98030;ME
 D886;Galluccio;81044;CE
-D888;GaltellÏ;08020;NU
+D888;Galtell√¨;08020;NU
 D889;Galzignano Terme;35030;PD
 D890;Gamalero;15010;AL
 D891;Gambara;25020;BS
@@ -3028,7 +3028,7 @@ D896;Gambatesa;86013;CB
 D897;Gambellara;36053;VI
 D898;Gamberale;66040;CH
 D899;Gambettola;47035;FC
-D901;GambolÚ;27025;PV
+D901;Gambol√≤;27025;PV
 D902;Gambugliano;36050;VI
 D903;Gandellino;24020;BG
 D905;Gandino;24024;BG
@@ -3183,7 +3183,7 @@ E084;Goni;09040;CA
 E086;Gonnesa;09010;CI
 E087;Gonnoscodina;09090;OR
 E085;Gonnosfanadiga;09035;VS
-D585;GonnosnÚ;09090;OR
+D585;Gonnosn√≤;09090;OR
 E088;Gonnostramatza;09093;OR
 E089;Gonzaga;46023;MN
 E090;Gordona;23020;SO
@@ -3246,7 +3246,7 @@ E161;Greci;83030;AV
 E163;Greggio;13030;VC
 E164;Gremiasco;15056;AL
 E165;Gressan;11020;AO
-E167;Gressoney-la-TrinitË;11020;AO
+E167;Gressoney-la-Trinit√®;11020;AO
 E168;Gressoney-Saint-Jean;11025;AO
 E169;Greve in Chianti;50022;FI
 E170;Grezzago;20056;MI
@@ -3297,7 +3297,7 @@ E228;Gualdo;62020;MC
 E229;Gualdo Cattaneo;06035;PG
 E230;Gualdo Tadino;06023;PG
 E232;Gualtieri;42044;RE
-E233;Gualtieri SicaminÚ;98040;ME
+E233;Gualtieri Sicamin√≤;98040;ME
 E234;Guamaggiore;09040;CA
 E235;Guanzate;22070;CO
 E236;Guarcino;03016;FR
@@ -3625,7 +3625,7 @@ E644;Loceri;08040;OG
 E645;Locorotondo;70010;BA
 D976;Locri;89044;RC
 E646;Loculi;08020;NU
-E647;LodË;08020;NU
+E647;Lod√®;08020;NU
 E648;Lodi;26900;LO
 E651;Lodi Vecchio;26855;LO
 E649;Lodine;08020;NU
@@ -3654,7 +3654,7 @@ E678;Longobucco;87066;CS
 E679;Longone al Segrino;22030;CO
 E681;Longone Sabino;02020;RI
 E682;Lonigo;36045;VI
-E683;LoranzË;10010;TO
+E683;Loranz√®;10010;TO
 E684;Loreggia;35010;PD
 E685;Loreglia;28893;VB
 E687;Lorenzago di Cadore;32040;BL
@@ -3714,7 +3714,7 @@ E759;Lusernetta;10060;TO
 E760;Lusevera;33010;UD
 E761;Lusia;45020;RO
 E762;Lusiana;36046;VI
-E763;LusigliË;10080;TO
+E763;Lusigli√®;10080;TO
 E764;Luson;39040;BZ
 E767;Lustra;84050;SA
 E769;Luvinate;21020;VA
@@ -3764,10 +3764,10 @@ E819;Magnago;20020;MI
 E821;Magnano;13887;BI
 E820;Magnano in Riviera;33010;UD
 E825;Magomadas;08010;OR
-E829;MagrË sulla Strada del Vino;39040;BZ
+E829;Magr√® sulla Strada del Vino;39040;BZ
 E830;Magreglio;22030;CO
 E834;Maida;88025;CZ
-E835;Maier‡;87020;CS
+E835;Maier√†;87020;CS
 E836;Maierato;89843;VV
 E837;Maiolati Spontini;60030;AN
 E838;Maiolo;47862;RN
@@ -3780,7 +3780,7 @@ E843;Malagnino;26030;CR
 E844;Malalbergo;40051;BO
 E847;Malborghetto Valbruna;33010;UD
 E848;Malcesine;37018;VR
-E850;MalË;38027;TN
+E850;Mal√®;38027;TN
 E851;Malegno;25053;BS
 E852;Maleo;26847;LO
 E853;Malesco;28854;VB
@@ -3818,7 +3818,7 @@ M283;Maniace;95030;CT
 E889;Maniago;33085;PN
 E891;Manocalzati;83030;AV
 E892;Manoppello;65024;PE
-E893;MansuË;31040;TV
+E893;Mansu√®;31040;TV
 E894;Manta;12030;CN
 E896;Mantello;23016;SO
 E897;Mantova;46100;MN
@@ -3917,7 +3917,7 @@ F006;Maschito;85020;PZ
 F007;Masciago Primo;21030;VA
 F009;Maser;31010;TV
 F010;Masera;28855;VB
-F011;Maser‡ di Padova;35020;PD
+F011;Maser√† di Padova;35020;PD
 F012;Maserada sul Piave;31052;TV
 F013;Masi;35040;PD
 F016;Masi Torello;44020;FE
@@ -3959,9 +3959,9 @@ F061;Mazara del Vallo;91026;TP
 F063;Mazzano;25080;BS
 F064;Mazzano Romano;00060;RM
 F065;Mazzarino;93013;CL
-F066;Mazzarr‡ Sant'Andrea;98056;ME
+F066;Mazzarr√† Sant'Andrea;98056;ME
 M271;Mazzarrone;95040;CT
-F067;MazzË;10035;TO
+F067;Mazz√®;10035;TO
 F068;Mazzin;38030;TN
 F070;Mazzo di Valtellina;23030;SO
 F074;Meana di Susa;10050;TO
@@ -3989,7 +3989,7 @@ F100;Melegnano;20077;MI
 F101;Melendugno;73026;LE
 F102;Meleti;26843;LO
 F104;Melfi;85025;PZ
-F105;Melicucc‡;89020;RC
+F105;Melicucc√†;89020;RC
 F106;Melicucco;89020;RC
 F107;Melilli;96010;SR
 F108;Melissa;88814;KR
@@ -4024,7 +4024,7 @@ F141;Mercogliano;83013;AV
 F144;Mereto di Tomba;33036;UD
 F145;Mergo;60030;AN
 F146;Mergozzo;28802;VB
-F147;MerÏ;98040;ME
+F147;Mer√¨;98040;ME
 F148;Merlara;35040;PD
 F149;Merlino;26833;LO
 F151;Merone;22046;CO
@@ -4179,7 +4179,7 @@ F343;Moncucco Torinese;14024;AT
 F346;Mondaino;47836;RN
 F347;Mondavio;61040;PU
 F348;Mondolfo;61037;PU
-F351;MondovÏ;12084;CN
+F351;Mondov√¨;12084;CN
 F352;Mondragone;81034;CE
 F354;Moneglia;16030;GE
 F355;Monesiglio;12077;CN
@@ -4208,7 +4208,7 @@ F381;Monsano;60030;AN
 F382;Monselice;35043;PD
 F383;Monserrato;09042;CA
 F384;Monsummano Terme;51015;PT
-F385;Mont‡;12046;CN
+F385;Mont√†;12046;CN
 F386;Montabone;14040;AT
 F387;Montacuto;15050;AL
 F390;Montafia;14014;AT
@@ -4225,7 +4225,7 @@ F399;Montalbano Jonico;75023;MT
 F402;Montalcino;53024;SI
 F403;Montaldeo;15060;AL
 F404;Montaldo Bormida;15010;AL
-F405;Montaldo di MondovÏ;12080;CN
+F405;Montaldo di Mondov√¨;12080;CN
 F408;Montaldo Roero;12040;CN
 F409;Montaldo Scarampi;14048;AT
 F407;Montaldo Torinese;10020;TO
@@ -4465,7 +4465,7 @@ F694;Montoro Superiore;83026;AV
 F696;Montorso Vicentino;36050;VI
 F697;Montottone;63843;FM
 F698;Montresta;08010;OR
-F701;Mont˘ Beccaria;27040;PV
+F701;Mont√π Beccaria;27040;PV
 F703;Monvalle;21020;VA
 F704;Monza;20900;MB
 F705;Monzambano;46040;MN
@@ -4545,7 +4545,7 @@ F789;Mozzecane;37060;VR
 F791;Mozzo;24030;BG
 F793;Muccia;62034;MC
 F795;Muggia;34015;TS
-F797;MuggiÚ;20835;MB
+F797;Muggi√≤;20835;MB
 F798;Mugnano del Cardinale;83027;AV
 F799;Mugnano di Napoli;80018;NA
 F801;Mulazzano;26837;LO
@@ -4575,7 +4575,7 @@ F838;Nanto;36024;VI
 F839;Napoli;801xx;NA
 F840;Narbolia;09070;OR
 F841;Narcao;09010;CI
-F842;NardÚ;73048;LE
+F842;Nard√≤;73048;LE
 F843;Nardodipace;89824;VV
 F844;Narni;05035;TR
 F845;Naro;92028;AG
@@ -4641,7 +4641,7 @@ F918;Nogara;37054;VR
 F920;Nogaredo;38060;TN
 F921;Nogarole Rocca;37060;VR
 F922;Nogarole Vicentino;36070;VI
-F923;Noic‡ttaro;70016;BA
+F923;Noic√†ttaro;70016;BA
 F924;Nola;80035;NA
 F925;Nole;10076;TO
 F926;Noli;17026;SV
@@ -4681,7 +4681,7 @@ F967;Novi Velia;84060;SA
 F968;Noviglio;20082;MI
 F970;Novoli;73051;LE
 F972;Nucetto;12070;CN
-F975;Nughedu San NicolÚ;07010;SS
+F975;Nughedu San Nicol√≤;07010;SS
 F974;Nughedu Santa Vittoria;09080;OR
 F976;Nule;07010;SS
 F977;Nulvi;07032;SS
@@ -4752,7 +4752,7 @@ G058;Olzai;08020;NU
 G061;Ome;25050;BS
 G062;Omegna;28887;VB
 G063;Omignano;84060;SA
-G064;OnanÏ;08020;NU
+G064;Onan√¨;08020;NU
 G065;Onano;01010;VT
 G066;Oncino;12030;CN
 G068;Oneta;24020;BG
@@ -4951,14 +4951,14 @@ G293;Palombara Sabina;00018;RM
 G294;Palombaro;66010;CH
 G292;Palomonte;84020;SA
 G295;Palosco;24050;BG
-G297;Pal˘;37050;VR
-G296;Pal˘ del Fersina;38050;TN
+G297;Pal√π;37050;VR
+G296;Pal√π del Fersina;38050;TN
 G298;Paludi;87060;CS
 G300;Paluzza;33026;UD
 G302;Pamparato;12087;CN
 G303;Pancalieri;10060;TO
 G304;Pancarana;27050;PV
-G305;Panchi‡;38030;TN
+G305;Panchi√†;38030;TN
 G306;Pandino;26025;CR
 G307;Panettieri;87050;CS
 G308;Panicale;06064;PG
@@ -4974,7 +4974,7 @@ G324;Parabiago;20015;MI
 G325;Parabita;73052;LE
 G327;Paratico;25030;BS
 G328;Parcines;39020;BZ
-G329;ParË;22020;CO
+G329;Par√®;22020;CO
 G330;Parella;10010;TO
 G331;Parenti;87040;CS
 G333;Parete;81030;CE
@@ -5004,13 +5004,13 @@ G365;Pastrengo;37010;VR
 G367;Pasturana;15060;AL
 G368;Pasturo;23818;LC
 M269;Paterno;85050;PZ
-G371;PaternÚ;95047;CT
+G371;Patern√≤;95047;CT
 G372;Paterno Calabro;87040;CS
 G370;Paternopoli;83052;AV
 G374;Patrica;03010;FR
 G376;Pattada;07016;SS
 G377;Patti;98066;ME
-G378;Pat˘;73053;LE
+G378;Pat√π;73053;LE
 G379;Pau;09090;OR
 G381;Paularo;33027;UD
 G382;Pauli Arbarei;09020;VS
@@ -5125,7 +5125,7 @@ G514;Petriano;61020;PU
 G515;Petriolo;62014;MC
 G516;Petritoli;63848;FM
 G517;Petrizzi;88060;CZ
-G518;Petron‡;88050;CZ
+G518;Petron√†;88050;CZ
 M281;Petrosino;91020;TP
 G519;Petruro Irpino;83010;AV
 G520;Pettenasco;28028;NO
@@ -5267,7 +5267,7 @@ G687;Piombino;57025;LI
 G688;Piombino Dese;35017;PD
 G690;Pioraco;62025;MC
 G691;Piossasco;10045;TO
-G692;Piov‡ Massaia;14026;AT
+G692;Piov√† Massaia;14026;AT
 G693;Piove di Sacco;35028;PD
 G694;Piovene Rocchette;36013;VI
 G695;Piovera;15040;AL
@@ -5298,7 +5298,7 @@ G728;Pizzoni;89834;VV
 G729;Placanica;89040;RC
 G733;Plataci;87070;CS
 G734;Platania;88040;CZ
-G735;PlatÏ;89039;RC
+G735;Plat√¨;89039;RC
 G299;Plaus;39025;BZ
 G737;Plesio;22010;CO
 G740;Ploaghe;07017;SS
@@ -5393,7 +5393,7 @@ G847;Ponte Lambro;22037;CO
 B662;Ponte nelle Alpi;32014;BL
 G851;Ponte Nizza;27050;PV
 F941;Ponte Nossa;24028;BG
-G855;Ponte San NicolÚ;35020;PD
+G855;Ponte San Nicol√≤;35020;PD
 G856;Ponte San Pietro;24036;BG
 G831;Pontebba;33016;UD
 G834;Pontecagnano Faiano;84098;SA
@@ -5455,7 +5455,7 @@ G923;Porto Tolle;45018;RO
 G924;Porto Torres;07046;SS
 G907;Porto Valtravaglia;21010;VA
 G926;Porto Viro;45014;RO
-G909;PortobuffolË;31040;TV
+G909;Portobuffol√®;31040;TV
 G910;Portocannone;86045;CB
 G912;Portoferraio;57037;LI
 G913;Portofino;16034;GE
@@ -5540,7 +5540,7 @@ H020;Predore;24060;BG
 H021;Predosa;15077;AL
 H022;Preganziol;31022;TV
 H026;Pregnana Milanese;20010;MI
-H027;Prel‡;18020;IM
+H027;Prel√†;18020;IM
 H028;Premana;23834;LC
 H029;Premariacco;33040;UD
 H030;Premeno;28818;VB
@@ -5551,7 +5551,7 @@ H037;Premosello-Chiovenda;28803;VB
 H038;Preone;33020;UD
 H039;Preore;38070;TN
 H040;Prepotto;33040;UD
-H042;PrË-Saint-Didier;11010;AO
+H042;Pr√®-Saint-Didier;11010;AO
 H043;Preseglie;25070;BS
 H045;Presenzano;81050;CE
 H046;Presezzo;24030;BG
@@ -5699,7 +5699,7 @@ H247;Revello;12036;CN
 H248;Revere;46036;MN
 H250;Revigliasco d'Asti;14010;AT
 H253;Revine Lago;31020;TV
-H254;RevÚ;38028;TN
+H254;Rev√≤;38028;TN
 H255;Rezzago;22030;CO
 H256;Rezzato;25086;BS
 H257;Rezzo;18026;IM
@@ -5717,7 +5717,7 @@ H271;Ricadi;89866;VV
 H272;Ricaldone;15010;AL
 H273;Riccia;86016;CB
 H274;Riccione;47838;RN
-H275;RiccÚ del Golfo di Spezia;19020;SP
+H275;Ricc√≤ del Golfo di Spezia;19020;SP
 H276;Ricengo;26010;CR
 H277;Ricigliano;84020;SA
 H280;Riese Pio X;31039;TV
@@ -5803,7 +5803,7 @@ H377;Robilante;12017;CN
 H378;Roburent;12080;CN
 H386;Rocca Canavese;10070;TO
 H387;Rocca Canterano;00020;RM
-H391;Rocca CigliË;12060;CN
+H391;Rocca Cigli√®;12060;CN
 H392;Rocca d'Arazzo;14030;AT
 H393;Rocca d'Arce;03030;FR
 H395;Rocca de' Baldi;12047;CN
@@ -5838,7 +5838,7 @@ H405;Roccafiorita;98030;ME
 H390;Roccafluvione;63093;AP
 H408;Roccaforte del Greco;89060;RC
 H406;Roccaforte Ligure;15060;AL
-H407;Roccaforte MondovÏ;12088;CN
+H407;Roccaforte Mondov√¨;12088;CN
 H409;Roccaforzata;74020;TA
 H410;Roccafranca;25030;BS
 H411;Roccagiovine;00020;RM
@@ -5889,9 +5889,9 @@ H475;Rodengo;39037;BZ
 H477;Rodengo Saiano;25050;BS
 H478;Rodero;22070;CO
 H480;Rodi Garganico;71012;FG
-H479;RodÏ Milici;98059;ME
+H479;Rod√¨ Milici;98059;ME
 H481;Rodigo;46040;MN
-H484;RoË Volciano;25077;BS
+H484;Ro√® Volciano;25077;BS
 H485;Rofrano;84070;SA
 H486;Rogeno;23849;LC
 H488;Roggiano Gravina;87017;CS
@@ -5921,7 +5921,7 @@ H517;Romeno;38010;TN
 H518;Romentino;28068;NO
 H519;Rometta;98043;ME
 H521;Ronago;22027;CO
-H522;Ronc‡;37030;VR
+H522;Ronc√†;37030;VR
 H523;Roncade;31056;TV
 H525;Roncadelle;25030;BS
 H527;Roncaro;27010;PV
@@ -5947,8 +5947,8 @@ H549;Ronsecco;13036;VC
 M303;Ronzo-Chienis;38060;TN
 H552;Ronzone;38010;TN
 H553;Roppolo;13883;BI
-H554;Ror‡;10060;TO
-H556;Ros‡;36027;VI
+H554;Ror√†;10060;TO
+H556;Ros√†;36027;VI
 H558;Rosarno;89025;RC
 H559;Rosasco;27030;PV
 H560;Rosate;20088;MI
@@ -5989,9 +5989,9 @@ H601;Rovellasca;22069;CO
 H602;Rovello Porro;22070;CO
 H604;Roverbella;46048;MN
 H606;Roverchiara;37050;VR
-H607;RoverË della Luna;38030;TN
-H608;RoverË Veronese;37028;VR
-H610;Roveredo di Gu‡;37040;VR
+H607;Rover√® della Luna;38030;TN
+H608;Rover√® Veronese;37028;VR
+H610;Roveredo di Gu√†;37040;VR
 H609;Roveredo in Piano;33080;PN
 H612;Rovereto;38068;TN
 H614;Rovescala;27040;PV
@@ -6009,7 +6009,7 @@ H630;Rudiano;25030;BS
 H631;Rueglio;10010;TO
 H632;Ruffano;73049;LE
 H633;Ruffia;12030;CN
-H634;RuffrË-Mendola;38010;TN
+H634;Ruffr√®-Mendola;38010;TN
 H635;Rufina;50068;FI
 F271;Ruinas;09085;OR
 H637;Ruino;27040;PV
@@ -6040,7 +6040,7 @@ H671;Saint-Marcel;11020;AO
 H672;Saint-Nicolas;11010;AO
 H673;Saint-Oyen;11014;AO
 H674;Saint-Pierre;11010;AO
-H675;Saint-RhÈmy-en-Bosses;11010;AO
+H675;Saint-Rh√©my-en-Bosses;11010;AO
 H676;Saint-Vincent;11027;AO
 H682;Sala Baganza;43038;PR
 H681;Sala Biellese;13884;BI
@@ -6074,7 +6074,7 @@ H713;Salisano;02040;RI
 H714;Salizzole;37056;VR
 H715;Salle;65020;PE
 H716;Salmour;12040;CN
-H717;SalÚ;25087;BS
+H717;Sal√≤;25087;BS
 H719;Salorno;39040;BZ
 H720;Salsomaggiore Terme;43039;PR
 H721;Saltara;61030;PU
@@ -6161,7 +6161,7 @@ H815;San Daniele Po;26046;CR
 H818;San Demetrio Corone;87069;CS
 H819;San Demetrio ne' Vestini;67028;AQ
 H820;San Didero;10050;TO
-H823;San Don‡ di Piave;30027;VE
+H823;San Don√† di Piave;30027;VE
 H822;San Donaci;72025;BR
 H826;San Donato di Lecce;73010;LE
 H825;San Donato di Ninea;87010;CS
@@ -6328,7 +6328,7 @@ I040;San Michele al Tagliamento;30028;VE
 I042;San Michele all'Adige;38010;TN
 I035;San Michele di Ganzaria;95040;CT
 I034;San Michele di Serino;83020;AV
-I037;San Michele MondovÏ;12080;CN
+I037;San Michele Mondov√¨;12080;CN
 I045;San Michele Salentino;72018;BR
 I046;San Miniato;56028;PI
 I047;San Nazario;36020;VI
@@ -6342,9 +6342,9 @@ I058;San Nicola da Crissa;89821;VV
 I057;San Nicola dell'Alto;88817;KR
 I056;San Nicola la Strada;81020;CE
 I062;San Nicola Manfredi;82010;BN
-A368;San NicolÚ d'Arcidano;09097;OR
-I063;San NicolÚ di Comelico;32040;BL
-G383;San NicolÚ Gerrei;09040;CA
+A368;San Nicol√≤ d'Arcidano;09097;OR
+I063;San Nicol√≤ di Comelico;32040;BL
+G383;San Nicol√≤ Gerrei;09040;CA
 I065;San Pancrazio;39010;BZ
 I066;San Pancrazio Salentino;72026;BR
 G407;San Paolo;25020;BS
@@ -6367,7 +6367,7 @@ I095;San Pietro Apostolo;88040;CZ
 I096;San Pietro Avellana;86088;IS
 I098;San Pietro Clarenza;95030;CT
 I088;San Pietro di Cadore;32040;BL
-I102;San Pietro di Carid‡;89020;RC
+I102;San Pietro di Carid√†;89020;RC
 I103;San Pietro di Feletto;31020;TV
 I105;San Pietro di Morubio;37050;VR
 I108;San Pietro in Amantea;87030;CS
@@ -6453,7 +6453,7 @@ I417;San Zenone degli Ezzelini;31020;TV
 H757;Sanarica;73030;LE
 H821;Sandigliano;13876;BI
 H829;Sandrigo;36066;VI
-H851;SanfrË;12040;CN
+H851;Sanfr√®;12040;CN
 H852;Sanfront;12030;CN
 H855;Sangano;10090;TO
 H872;Sangiano;21038;VA
@@ -6504,9 +6504,9 @@ I238;Santa Maria del Molise;86096;IS
 I237;Santa Maria della Versa;27047;PV
 I240;Santa Maria di Licodia;95038;CT
 I242;Santa Maria di Sala;30036;VE
-I243;Santa Maria HoË;23889;LC
+I243;Santa Maria Ho√®;23889;LC
 I244;Santa Maria Imbaro;66030;CH
-M273;Santa Maria la Carit‡;80050;NA
+M273;Santa Maria la Carit√†;80050;NA
 I247;Santa Maria La Fossa;81050;CE
 I248;Santa Maria La Longa;33050;UD
 I249;Santa Maria Maggiore;28857;VB
@@ -6597,7 +6597,7 @@ I332;Sant'Eufemia a Maiella;65020;PE
 I333;Sant'Eufemia d'Aspromonte;89027;RC
 I335;Sant'Eusanio del Sangro;66037;CH
 I336;Sant'Eusanio Forconese;67020;AQ
-I337;Santhi‡;13048;VC
+I337;Santhi√†;13048;VC
 I339;Santi Cosma e Damiano;04020;LT
 I341;Sant'Ilario dello Ionio;89040;RC
 I342;Sant'Ilario d'Enza;42049;RE
@@ -6741,13 +6741,13 @@ I545;Scopello;13028;VC
 I546;Scoppito;67019;AQ
 I548;Scordia;95048;CT
 I549;Scorrano;73020;LE
-I551;ScorzË;30037;VE
+I551;Scorz√®;30037;VE
 I553;Scurcola Marsicana;67068;AQ
 I554;Scurelle;38050;TN
 I555;Scurzolengo;14030;AT
 I556;Seborga;18012;IM
 I558;Secinaro;67029;AQ
-I559;SeclÏ;73050;LE
+I559;Secl√¨;73050;LE
 I561;Secugnago;26826;LO
 I562;Sedegliano;33039;UD
 I563;Sedico;32036;BL
@@ -6793,7 +6793,7 @@ I611;Senna Comasco;22070;CO
 I612;Senna Lodigiana;26856;LO
 I613;Sennariolo;09078;OR
 I614;Sennori;07036;SS
-I615;SenorbÏ;09040;CA
+I615;Senorb√¨;09040;CA
 I618;Sepino;86017;CB
 I619;Seppiana;28843;VB
 I621;Sequals;33090;PN
@@ -6814,7 +6814,7 @@ I637;Serole;14050;AT
 I642;Serra d'Aiello;87030;CS
 I643;Serra de' Conti;60030;AN
 I650;Serra Pedace;87050;CS
-I640;Serra RiccÚ;16010;GE
+I640;Serra Ricc√≤;16010;GE
 I639;Serra San Bruno;89822;VV
 I653;Serra San Quirico;60048;AN
 I654;Serra Sant'Abbondio;61040;PU
@@ -6929,7 +6929,7 @@ I772;Smarano;38010;TN
 I774;Smerillo;63856;FM
 I775;Soave;37038;VR
 I777;Socchieve;33020;UD
-I778;SoddÏ;09080;OR
+I778;Sodd√¨;09080;OR
 I779;Sogliano al Rubicone;47030;FC
 I780;Sogliano Cavour;73010;LE
 I781;Soglio;14020;AT
@@ -6983,7 +6983,7 @@ I845;Sorbolo;43058;PR
 I847;Sordevolo;13817;BI
 I848;Sordio;26858;LO
 I849;Soresina;26015;CR
-I850;Sorg‡;37060;VR
+I850;Sorg√†;37060;VR
 I851;Sorgono;08038;NU
 I852;Sori;16030;GE
 I853;Sorianello;89831;VV
@@ -7057,7 +7057,7 @@ I930;Squinzano;73018;LE
 I932;Staffolo;60039;AN
 I935;Stagno Lombardo;26049;CR
 I936;Staiti;89030;RC
-I937;StalettÏ;88069;CZ
+I937;Stalett√¨;88069;CZ
 I938;Stanghella;35048;PD
 I939;Staranzano;34079;GO
 M298;Statte;74010;TA
@@ -7186,7 +7186,7 @@ L088;Telti;07020;OT
 L089;Telve;38050;TN
 L090;Telve di Sopra;38050;TN
 L093;Tempio Pausania;07029;OT
-L094;Tem˘;25050;BS
+L094;Tem√π;25050;BS
 L096;Tenna;38050;TN
 L097;Tenno;38060;TN
 L100;Teolo;35037;PD
@@ -7300,7 +7300,7 @@ L227;Tornimparte;67049;AQ
 L228;Torno;22020;CO
 L229;Tornolo;43059;PR
 L230;Toro;86018;CB
-L231;TorpË;08020;NU
+L231;Torp√®;08020;NU
 L233;Torraca;84030;SA
 L235;Torralba;07048;SS
 L237;Torrazza Coste;27050;PV
@@ -7324,7 +7324,7 @@ L240;Torre di Ruggiero;88060;CZ
 L244;Torre di Santa Maria;23020;SO
 L269;Torre d'Isola;27020;PV
 L272;Torre Le Nocelle;83030;AV
-L241;Torre MondovÏ;12080;CN
+L241;Torre Mondov√¨;12080;CN
 L274;Torre Orsaia;84077;SA
 L276;Torre Pallavicina;24050;BG
 L277;Torre Pellice;10066;TO
@@ -7359,7 +7359,7 @@ L299;Torrile;43056;PR
 L301;Torrioni;83010;AV
 L303;Torrita di Siena;53049;SI
 L302;Torrita Tiberina;00060;RM
-A355;TortolÏ;08048;OG
+A355;Tortol√¨;08048;OG
 L304;Tortona;15057;AL
 L305;Tortora;87020;CS
 L306;Tortorella;84030;SA
@@ -7390,7 +7390,7 @@ L335;Trasaghis;33010;UD
 L336;Trasquera;28868;VB
 L337;Tratalias;09010;CI
 L338;Trausella;10080;TO
-I236;TravacÚ Siccomario;27020;PV
+I236;Travac√≤ Siccomario;27020;PV
 L339;Travagliato;25039;BS
 L342;Travedona-Monate;21028;VA
 L345;Traversella;10080;TO
@@ -7459,8 +7459,8 @@ L423;Triei;08040;OG
 L424;Trieste;341xx;TS
 L425;Triggiano;70019;BA
 L426;Trigolo;26018;CR
-L427;Trinit‡;12049;CN
-L428;Trinit‡ d'Agultu e Vignola;07038;OT
+L427;Trinit√†;12049;CN
+L428;Trinit√† d'Agultu e Vignola;07038;OT
 B915;Trinitapoli;76015;BT
 L429;Trino;13039;VC
 L430;Triora;18010;IM
@@ -7513,7 +7513,7 @@ L483;Udine;33100;UD
 L484;Ugento;73059;LE
 L485;Uggiano La Chiesa;73020;LE
 L487;Uggiate-Trevano;22029;CO
-L488;Ul‡ Tirso;09080;OR
+L488;Ul√† Tirso;09080;OR
 L489;Ulassai;08040;OG
 L490;Ultimo;39016;BZ
 D786;Umbertide;06019;PG
@@ -7757,7 +7757,7 @@ L780;Veroli;03029;FR
 L781;Verona;371xx;VR
 D193;Veronella;37040;VR
 L783;Verrayes;11020;AO
-C282;VerrËs;11029;AO
+C282;Verr√®s;11029;AO
 L784;Verretto;27053;PV
 L785;Verrone;13871;BI
 L788;Verrua Po;27040;PV
@@ -7767,7 +7767,7 @@ L795;Vertova;24029;BG
 L797;Verucchio;47826;RN
 L798;Veruno;28010;NO
 L799;Vervio;23030;SO
-L800;VervÚ;38010;TN
+L800;Verv√≤;38010;TN
 L801;Verzegnis;33020;UD
 L802;Verzino;88819;KR
 L804;Verzuolo;12039;CN
@@ -7777,7 +7777,7 @@ L807;Vesime;14059;AT
 L808;Vespolate;28079;NO
 L809;Vessalico;18026;IM
 L810;Vestenanova;37030;VR
-L811;VestignË;10030;TO
+L811;Vestign√®;10030;TO
 L812;Vestone;25078;BS
 L813;Vestreno;23822;LC
 L814;Vetralla;01019;VT
@@ -7792,7 +7792,7 @@ L826;Viadana;46019;MN
 L827;Viadanica;24060;BG
 L828;Viagrande;95029;CT
 L829;Viale;14010;AT
-L830;VialfrË;10090;TO
+L830;Vialfr√®;10090;TO
 L831;Viano;42030;RE
 L833;Viareggio;55049;LU
 L834;Viarigi;14030;AT
@@ -7819,14 +7819,14 @@ L858;Vieste;71019;FG
 L859;Vietri di Potenza;85058;PZ
 L860;Vietri sul Mare;84019;SA
 L864;Viganella;28841;VB
-L866;ViganÚ;23897;LC
+L866;Vigan√≤;23897;LC
 L865;Vigano San Martino;24060;BG
 L868;Vigarano Mainarda;44049;FE
 L869;Vigasio;37068;VR
 L872;Vigevano;27029;PV
 L873;Viggianello;85040;PZ
 L874;Viggiano;85059;PZ
-L876;Viggi˘;21059;VA
+L876;Viggi√π;21059;VA
 L878;Vighizzolo d'Este;35040;PD
 L880;Vigliano Biellese;13856;BI
 L879;Vigliano d'Asti;14040;AT
@@ -7859,7 +7859,7 @@ L922;Villa Celiera;65010;PE
 L926;Villa Collemandina;55030;LU
 L928;Villa Cortese;20020;MI
 L929;Villa d'Adda;24030;BG
-A215;Villa d'AlmË;24018;BG
+A215;Villa d'Alm√®;24018;BG
 L933;Villa del Bosco;13868;BI
 L934;Villa del Conte;35010;PD
 D801;Villa di Briano;81030;CE
@@ -7928,7 +7928,7 @@ L985;Villanova del Ghebbo;45020;RO
 L977;Villanova del Sillaro;26818;LO
 L979;Villanova di Camposampiero;35010;PD
 L988;Villanova Marchesana;45030;RO
-L974;Villanova MondovÏ;12089;CN
+L974;Villanova Mondov√¨;12089;CN
 L972;Villanova Monferrato;15030;AL
 L989;Villanova Monteleone;07019;SS
 L990;Villanova Solaro;12030;CN
@@ -8003,7 +8003,7 @@ M090;Vittorito;67030;AQ
 M091;Vittuone;20010;MI
 M093;Vitulano;82038;BN
 M092;Vitulazio;81041;CE
-M094;Vi˘;10070;TO
+M094;Vi√π;10070;TO
 M096;Vivaro;33099;PN
 M095;Vivaro Romano;00020;RM
 M098;Viverone;13886;BI
@@ -8043,7 +8043,7 @@ M141;Zagarolo;00039;RM
 M142;Zambana;38010;TN
 M143;Zambrone;89868;VV
 M144;Zandobbio;24060;BG
-M145;ZanË;36010;VI
+M145;Zan√®;36010;VI
 M147;Zanica;24050;BG
 M267;Zapponeta;71030;FG
 M150;Zavattarello;27059;PV
@@ -8057,7 +8057,7 @@ M162;Zenevredo;27049;PV
 M163;Zenson di Piave;31050;TV
 M165;Zerba;29020;PC
 M166;Zerbo;27017;PV
-M167;ZerbolÚ;27020;PV
+M167;Zerbol√≤;27020;PV
 M168;Zerfaliu;09070;OR
 M169;Zeri;54029;MS
 M170;Zermeghedo;36050;VI
@@ -8078,7 +8078,7 @@ M185;Zola Predosa;40069;BO
 I345;Zoldo Alto;32010;BL
 M187;Zollino;73010;LE
 M188;Zone;25050;BS
-M189;ZoppË di Cadore;32010;BL
+M189;Zopp√® di Cadore;32010;BL
 M190;Zoppola;33080;PN
 M194;Zovencedo;36020;VI
 M196;Zubiena;13888;BI

@@ -1,4 +1,4 @@
-package com.example.alberto.easyfood.DatabaseModule;
+package com.example.alberto.easyfood.ServerCommunicationModule;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

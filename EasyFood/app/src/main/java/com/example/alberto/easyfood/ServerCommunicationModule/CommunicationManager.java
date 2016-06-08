@@ -1,9 +1,8 @@
-package com.example.alberto.easyfood.DatabaseModule;
+package com.example.alberto.easyfood.ServerCommunicationModule;
 
 
 import android.os.StrictMode;
 import android.util.Log;
-import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -92,53 +91,4 @@ public class CommunicationManager {
 		return jsonObject;
 	
     }
-/* Thread that makes a post request to a server url and get the JSON it responds
-    @Override
-    protected JSONObject doInBackground(UrlAndJSON... urlAndJson){
-        JSONObject jsonObject = null;
-        if(urlAndJson[0].getJson() != null && urlAndJson[0].getUrl() != null) {
-            URL serverURL = null;
-            String response = "";
-            try {
-                serverURL = new URL(urlAndJson[0].getUrl());
-
-                HttpURLConnection connection = (HttpURLConnection) serverURL.openConnection();
-
-                connection.setReadTimeout(READ_TIMEOUT);
-                connection.setConnectTimeout(CONNECTION_TIMEOUT);
-
-                connection.setRequestMethod(POST_METHOD);
-                connection.setDoInput(true);
-                connection.setDoOutput(true);
-                DataOutputStream outputStream = new DataOutputStream(connection.getOutputStream());
-                outputStream.writeBytes(urlAndJson[0].getJson().toString());
-                outputStream.flush();
-                outputStream.close();
-                outputStream.close();
-                connection.connect();
-
-
-                int responseCode = connection.getResponseCode();
-                if(responseCode == HttpsURLConnection.HTTP_OK) {
-
-                    String line;
-                    StringBuilder stringBuilder = new StringBuilder();
-                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                    while ((line = bufferedReader.readLine()) != null) {
-                        stringBuilder.append(line + "\n");
-                    }
-                    response = stringBuilder.toString();
-                }
-
-                connection.disconnect();
-            } catch (MalformedURLException e) {
-                Log.e(TAG, "MalformedURLException: " + e.getMessage());
-            } catch (IOException e) {
-                Log.e(TAG, "IOException: " + e.getMessage());
-            }
-
-        }
-
-        return jsonObject;
-    }*/
 }

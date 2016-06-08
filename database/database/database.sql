@@ -8,19 +8,19 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema inf-5ogruppo5
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema inf-5ogruppo5
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
-USE `mydb` ;
+CREATE SCHEMA IF NOT EXISTS `inf-5ogruppo5` DEFAULT CHARACTER SET utf8_general_ci ;
+USE `inf-5ogruppo5` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`regioni`
+-- Table `inf-5ogruppo5`.`regioni`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`regioni` (
+CREATE TABLE IF NOT EXISTS `inf-5ogruppo5`.`regioni` (
   `codRegione` VARCHAR(3) NOT NULL,
   `nomeRegione` VARCHAR(30) NOT NULL,
   PRIMARY KEY (`codRegione`))
@@ -28,9 +28,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`province`
+-- Table `inf-5ogruppo5`.`province`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`province` (
+CREATE TABLE IF NOT EXISTS `inf-5ogruppo5`.`province` (
   `codProvincia` VARCHAR(2) NOT NULL,
   `nomeProvincia` VARCHAR(35) NOT NULL,
   `codRegione` VARCHAR(3) NOT NULL,
@@ -38,16 +38,16 @@ CREATE TABLE IF NOT EXISTS `mydb`.`province` (
   INDEX `codRegioni_idx` (`codRegione` ASC),
   CONSTRAINT `codRegioni`
     FOREIGN KEY (`codRegione`)
-    REFERENCES `mydb`.`regioni` (`codRegione`)
+    REFERENCES `inf-5ogruppo5`.`regioni` (`codRegione`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`comuni`
+-- Table `inf-5ogruppo5`.`comuni`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`comuni` (
+CREATE TABLE IF NOT EXISTS `inf-5ogruppo5`.`comuni` (
   `codCatastale` VARCHAR(4) NOT NULL,
   `nomeComune` VARCHAR(30) NOT NULL,
   `cap` INT NOT NULL,
@@ -56,16 +56,16 @@ CREATE TABLE IF NOT EXISTS `mydb`.`comuni` (
   INDEX `codProvincia_idx` (`codProvincia` ASC),
   CONSTRAINT `codProvincia`
     FOREIGN KEY (`codProvincia`)
-    REFERENCES `mydb`.`province` (`codProvincia`)
+    REFERENCES `inf-5ogruppo5`.`province` (`codProvincia`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`ristoranti`
+-- Table `inf-5ogruppo5`.`ristoranti`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`ristoranti` (
+CREATE TABLE IF NOT EXISTS `inf-5ogruppo5`.`ristoranti` (
   `codRistorante` INT NOT NULL AUTO_INCREMENT,
   `indirizzo` VARCHAR(50) NOT NULL,
   `nomeRistorante` VARCHAR(50) NOT NULL,
@@ -79,49 +79,17 @@ CREATE TABLE IF NOT EXISTS `mydb`.`ristoranti` (
   INDEX `fk_ristoranti_comuni1_idx` (`codCatastale` ASC),
   CONSTRAINT `fk_ristoranti_comuni1`
     FOREIGN KEY (`codCatastale`)
-    REFERENCES `mydb`.`comuni` (`codCatastale`)
+    REFERENCES `inf-5ogruppo5`.`comuni` (`codCatastale`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
--- -----------------------------------------------------
--- Table `mydb`.`cibi`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`cibi` (
-  `codCiboPrezzo` INT NOT NULL AUTO_INCREMENT,
-  `nomeCibo` VARCHAR(45) NULL,
-  `prezzoCibo` FLOAT NULL,
-  PRIMARY KEY (`codCiboPrezzo`))
-ENGINE = InnoDB;
-
 
 -- -----------------------------------------------------
--- Table `mydb`.`menu`
+-- Table `inf-5ogruppo5`.`utente`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`menu` (
-  `codCibo` INT NOT NULL,
-  `codRistorante` INT NOT NULL,
-  INDEX `fk_menu_cibi1_idx` (`codCibo` ASC),
-  INDEX `fk_menu_ristoranti1_idx` (`codRistorante` ASC),
-  PRIMARY KEY (`codCibo`, `codRistorante`),
-  CONSTRAINT `codiceCibo`
-    FOREIGN KEY (`codCibo`)
-    REFERENCES `mydb`.`cibi` (`codCiboPrezzo`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `codiceRistorante`
-    FOREIGN KEY (`codRistorante`)
-    REFERENCES `mydb`.`ristoranti` (`codRistorante`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `mydb`.`utente`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`utente` (
+CREATE TABLE IF NOT EXISTS `inf-5ogruppo5`.`utente` (
   `codUtente` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
   `cognome` VARCHAR(45) NOT NULL,
@@ -138,33 +106,17 @@ CREATE TABLE IF NOT EXISTS `mydb`.`utente` (
   UNIQUE INDEX `username_UNIQUE` (`username` ASC),
   CONSTRAINT `fk_utente_comuni1`
     FOREIGN KEY (`codCatastale`)
-    REFERENCES `mydb`.`comuni` (`codCatastale`)
+    REFERENCES `inf-5ogruppo5`.`comuni` (`codCatastale`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
--- -----------------------------------------------------
--- Table `mydb`.`credenziali`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`credenziali` (
-  `username` VARCHAR(45) NOT NULL,
-  `password` VARCHAR(45) NOT NULL,
-  `codUtente` INT NOT NULL,
-  PRIMARY KEY (`username`),
-  INDEX `fk_credenziali_utente1_idx` (`codUtente` ASC),
-  CONSTRAINT `codUtente`
-    FOREIGN KEY (`codUtente`)
-    REFERENCES `mydb`.`utente` (`codUtente`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
 
 -- -----------------------------------------------------
--- Table `mydb`.`proprietari`
+-- Table `inf-5ogruppo5`.`proprietari`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`proprietari` (
+CREATE TABLE IF NOT EXISTS `inf-5ogruppo5`.`proprietari` (
   `codRistorante` INT NOT NULL,
   `codUtente` INT NOT NULL,
   PRIMARY KEY (`codUtente`, `codRistorante`),
@@ -172,21 +124,21 @@ CREATE TABLE IF NOT EXISTS `mydb`.`proprietari` (
   INDEX `fk_Proprietari_utente1_idx` (`codUtente` ASC),
   CONSTRAINT `fk_Proprietari_ristoranti1`
     FOREIGN KEY (`codRistorante`)
-    REFERENCES `mydb`.`ristoranti` (`codRistorante`)
+    REFERENCES `inf-5ogruppo5`.`ristoranti` (`codRistorante`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Proprietari_utente1`
     FOREIGN KEY (`codUtente`)
-    REFERENCES `mydb`.`utente` (`codUtente`)
+    REFERENCES `inf-5ogruppo5`.`utente` (`codUtente`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`tipologia_locale`
+-- Table `inf-5ogruppo5`.`tipologia_locale`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`tipologia_locale` (
+CREATE TABLE IF NOT EXISTS `inf-5ogruppo5`.`tipologia_locale` (
   `codTipo` INT NOT NULL AUTO_INCREMENT,
   `Tipo` VARCHAR(30) NOT NULL,
   PRIMARY KEY (`codTipo`))
@@ -194,9 +146,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`valutazioni`
+-- Table `inf-5ogruppo5`.`valutazioni`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`valutazioni` (
+CREATE TABLE IF NOT EXISTS `inf-5ogruppo5`.`valutazioni` (
   `codRistorante` INT NOT NULL,
   `codUtente` INT NOT NULL,
   `valutazione` SMALLINT(1) NOT NULL,
@@ -207,21 +159,21 @@ CREATE TABLE IF NOT EXISTS `mydb`.`valutazioni` (
   PRIMARY KEY (`codRistorante`, `codUtente`),
   CONSTRAINT `fk_Valutazioni_ristoranti1`
     FOREIGN KEY (`codRistorante`)
-    REFERENCES `mydb`.`ristoranti` (`codRistorante`)
+    REFERENCES `inf-5ogruppo5`.`ristoranti` (`codRistorante`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Valutazioni_utente1`
     FOREIGN KEY (`codUtente`)
-    REFERENCES `mydb`.`utente` (`codUtente`)
+    REFERENCES `inf-5ogruppo5`.`utente` (`codUtente`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`immagini`
+-- Table `inf-5ogruppo5`.`immagini`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`immagini` (
+CREATE TABLE IF NOT EXISTS `inf-5ogruppo5`.`immagini` (
   `codImmagine` INT NOT NULL AUTO_INCREMENT,
   `path` VARCHAR(255) NOT NULL,
   `isLogo` TINYINT(1) NOT NULL DEFAULT 0,
@@ -230,16 +182,16 @@ CREATE TABLE IF NOT EXISTS `mydb`.`immagini` (
   INDEX `fk_immagini_ristoranti1_idx` (`codRistorante` ASC),
   CONSTRAINT `fk_immagini_ristoranti1`
     FOREIGN KEY (`codRistorante`)
-    REFERENCES `mydb`.`ristoranti` (`codRistorante`)
+    REFERENCES `inf-5ogruppo5`.`ristoranti` (`codRistorante`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`tipologie`
+-- Table `inf-5ogruppo5`.`tipologie`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`tipologie` (
+CREATE TABLE IF NOT EXISTS `inf-5ogruppo5`.`tipologie` (
   `codTipo` INT NOT NULL,
   `codRistorante` INT NOT NULL,
   INDEX `fk_tipologie_tipologia_locale1_idx` (`codTipo` ASC),
@@ -247,21 +199,21 @@ CREATE TABLE IF NOT EXISTS `mydb`.`tipologie` (
   PRIMARY KEY (`codTipo`, `codRistorante`),
   CONSTRAINT `fk_tipologie_tipologia_locale1`
     FOREIGN KEY (`codTipo`)
-    REFERENCES `mydb`.`tipologia_locale` (`codTipo`)
+    REFERENCES `inf-5ogruppo5`.`tipologia_locale` (`codTipo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_tipologie_ristoranti1`
     FOREIGN KEY (`codRistorante`)
-    REFERENCES `mydb`.`ristoranti` (`codRistorante`)
+    REFERENCES `inf-5ogruppo5`.`ristoranti` (`codRistorante`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Orari`
+-- Table `inf-5ogruppo5`.`Orari`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Orari` (
+CREATE TABLE IF NOT EXISTS `inf-5ogruppo5`.`Orari` (
   `codOrario` INT NOT NULL AUTO_INCREMENT,
   `codRistorante` INT NOT NULL,
   `giorno` INT NULL,
@@ -271,16 +223,16 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Orari` (
   PRIMARY KEY (`codOrario`),
   CONSTRAINT `fk_Orari_ristoranti1`
     FOREIGN KEY (`codRistorante`)
-    REFERENCES `mydb`.`ristoranti` (`codRistorante`)
+    REFERENCES `inf-5ogruppo5`.`ristoranti` (`codRistorante`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Giorni`
+-- Table `inf-5ogruppo5`.`Giorni`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Giorni` (
+CREATE TABLE IF NOT EXISTS `inf-5ogruppo5`.`Giorni` (
   `codGiorno` INT NOT NULL,
   `giorno` VARCHAR(10) NULL,
   PRIMARY KEY (`codGiorno`))

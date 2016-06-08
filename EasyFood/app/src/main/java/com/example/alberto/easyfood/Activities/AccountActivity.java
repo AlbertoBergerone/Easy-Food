@@ -28,6 +28,12 @@ public class AccountActivity extends AppCompatActivity {
         TextView txtLastName = (TextView) findViewById(R.id.account_user_last_name);
         TextView txtEmail = (TextView) findViewById(R.id.account_user_email);
         Button btnUpdate = (Button) findViewById(R.id.btnUpdateUserInformation);
+        Button btnLogOut = (Button) findViewById(R.id.btnLogOutUser);
+
+        txtUsername.setText(user.get_username());
+        txtLastName.setText(user.get_last_name());
+        txtName.setText(user.get_name());
+        txtEmail.setText(user.get_email());
 
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,16 +43,23 @@ public class AccountActivity extends AppCompatActivity {
             }
         });
 
-        txtUsername.setText(user.get_username());
-        txtLastName.setText(user.get_last_name());
-        txtName.setText(user.get_name());
-        txtEmail.setText(user.get_email());
+        /* Logging out */
+        btnLogOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                user = null;
+                /* Setting flags to clean up all activities */
+                Intent logOutIntent = new Intent(AccountActivity.this, LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                AccountActivity.this.startActivity(logOutIntent);
+                finish();
+            }
+        });
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        /* Returning the user modified */
+        /* Returning the user (maybe it was modified) */
         Intent returnIntent = new Intent().putExtra("user", user);
         setResult(RESULT_OK, returnIntent);
         finish();

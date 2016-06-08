@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -12,11 +11,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.alberto.easyfood.DatabaseModule.InternetConnection;
+import com.example.alberto.easyfood.ServerCommunicationModule.InternetConnection;
 import com.example.alberto.easyfood.R;
 import com.example.alberto.easyfood.UserModule.User;
-
-import java.io.Serializable;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -58,7 +55,7 @@ public class SignUpActivity extends AppCompatActivity {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
                     if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                        setBackgroundDrawable(btnSignUp, R.drawable.transparent_button);
+                        setBackgroundDrawable(btnSignUp, R.drawable.transparent_button_pressed);
                         boolean areAllTheDetailsEntered = true;
 
                         if (InternetConnection.haveIInternetConnection(getApplicationContext())) {
@@ -87,8 +84,7 @@ public class SignUpActivity extends AppCompatActivity {
                                     /* I will try to sign up the new user */
                                         user = new User(String.valueOf(txtUsername.getText()), password, String.valueOf(txtName.getText()), String.valueOf(txtLastName.getText()), email);
                                         if (user.signupMe()) {
-                                            Intent mainActivityIntent = new Intent(SignUpActivity.this, MainActivity.class).putExtra("user", user);
-                                            Toast.makeText(getApplicationContext(), String.valueOf(user.get_userID()), Toast.LENGTH_SHORT).show();
+                                            Intent mainActivityIntent = new Intent(SignUpActivity.this, HomeActivity.class).putExtra("user", user);
                                             SignUpActivity.this.startActivity(mainActivityIntent);
                                         } else if (user.get_username() == null || user.get_username().isEmpty()) {
                                         /* Username already used */
@@ -123,7 +119,7 @@ public class SignUpActivity extends AppCompatActivity {
                         }
 
                     } else if (event.getAction() == MotionEvent.ACTION_UP) {
-                        setBackgroundDrawable(btnSignUp, R.drawable.transparent_button_pressed);
+                        setBackgroundDrawable(btnSignUp, R.drawable.transparent_button);
                     }
                     return true;
                 }

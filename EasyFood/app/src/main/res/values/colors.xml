@@ -4,6 +4,10 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
+    <color name="colorPrimary_overlay">#603F51B5</color>
+    <color name="colorPrimaryDark_overlay">#80303F9F</color>
+    <color name="colorAccent_overlay">#60FF4081</color>
+
 
     <color name="primary_colorLight">#ffd1d0</color>
     <color name="primary_color">#FFACAA</color>
