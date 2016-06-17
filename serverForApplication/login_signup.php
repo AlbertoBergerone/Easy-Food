@@ -18,9 +18,10 @@ define('USER', 'user');
 define('RESPONSE', 'response');
 
 /*** Response constants ***/
-define('ALREADY_USED', '');
+define('ALREADY_USED', 'already_used');
 define('ADDED', 'added');
 define('NOT_ADDED', 'not_added');
+define('DELETED', 'deleted');
 
 
 try {
@@ -41,7 +42,9 @@ try {
 			/*** If it is an update request ***/
 			print(json_encode(updateUser($user)));
 		}else if($data[REQUEST_TYPE] == USER_DELETE_REQUEST){
-			
+			if(deleteUser($user)){
+				json_encode($response[RESPONSE] = DELETED);
+			}
 		}else return null;
 	}else return null;
 	
@@ -131,6 +134,7 @@ function insertNewUser($user){
 			$response[RESPONSE] = NOT_ADDED;
 			$response[USER][ATTR_USER_EMAIL] = ALREADY_USED;
 		}
+		
 		if($response[RESPONSE] != NOT_ADDED){
 			/*** If I am here, the username does not exist ***/
 			/*** If I am here, there isn't anyone who used this email ***/
@@ -206,6 +210,16 @@ function updateUser($user){
 		}
 	}
 	return null;
+}
+
+function deleteUser($user){
+	global $conn;
+	if(isset($user[ATTR_USER_ID]) && !empty($user[ATTR_USER_ID])){
+		$stmt = $conn->prepare('DELETE  FROM'.TABLE_USER.' WHERE '.ATTR_USER_ID.' = :userID');
+		$stmt->bindParam(':userID', $user[ATTR_USER_ID]);
+		$stmt->execute();
+		return true;
+	}else return false;
 }
 
 /**

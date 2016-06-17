@@ -112,6 +112,7 @@
                 android:id="@+id/btnUpdateUser"
                 style="@style/DefaultButton"
                 android:width="300sp"
+                android:textColor="@color/colorPrimary"
                 android:text="@string/Update_profile"/>
 
             <Button
@@ -119,6 +120,7 @@
                 android:layout_marginTop="10sp"
                 style="@style/DefaultButton"
                 android:width="300sp"
+                android:textColor="@color/colorPrimary"
                 android:text="@string/Delete_profile"/>
         </LinearLayout>
     </RelativeLayout>

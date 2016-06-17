@@ -2,7 +2,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background">
+    android:background="@drawable/background2">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -136,9 +136,10 @@
             android:layout_below="@+id/blank_space">
             <LinearLayout
                 android:id="@+id/takeMeToSignUpActivity"
-                style="@style/FullscreenActionBarStyle"
+                style="@style/FullscreenTheme.NoActionBar"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:layout_width="match_parent"
                 tools:ignore="UselessParent">
                 <View
                     android:layout_width="fill_parent"

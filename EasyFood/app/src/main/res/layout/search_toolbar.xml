@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/search_toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fitsSystemWindows="true"
+    app:popupTheme="@style/AppTheme.PopupOverlay"
+    android:minHeight="?attr/actionBarSize"
+    android:background="@color/colorPrimary"
+    android:elevation="6dp">
+
+    <LinearLayout
+        android:id="@+id/search_container"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/search_bar_open_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="16dp"
+            android:src="@drawable/list_menu"
+            android:layout_gravity="center"/>
+
+        <EditText
+            android:id="@+id/search_text"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:gravity="center_vertical"
+            android:hint="@string/Search"
+            android:textColor="@color/white"
+            android:textColorHint="@color/grey"
+            android:imeOptions="actionSearch"
+            android:textCursorDrawable="@null"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingLeft="2dp"
+            android:singleLine="true"
+            />
+        <ImageView
+            android:id="@+id/clear_search_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:src="@drawable/close_button"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+</android.support.v7.widget.Toolbar>

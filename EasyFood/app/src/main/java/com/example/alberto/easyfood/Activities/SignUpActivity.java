@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import com.example.alberto.easyfood.ServerCommunicationModule.InternetConnection;
 import com.example.alberto.easyfood.R;
+import com.example.alberto.easyfood.UserModule.CurrentUser;
+import com.example.alberto.easyfood.UserModule.LoginManager;
 import com.example.alberto.easyfood.UserModule.User;
 
 /**
@@ -20,7 +22,7 @@ import com.example.alberto.easyfood.UserModule.User;
  * status bar and navigation/system bar) with user interaction.
  */
 public class SignUpActivity extends AppCompatActivity {
-    private User user;
+    LoginManager loginManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,7 @@ public class SignUpActivity extends AppCompatActivity {
         final EditText txtEmail = (EditText) findViewById(R.id.txtSignUpEmail);
         final Button btnSignUp = (Button) findViewById(R.id.btnSignUp);
 
+        loginManager = new LoginManager();
         /* Setting onClickListeners */
         /* A click on the text it will come back to the login activity */
         if (comeBackToLogin != null) {
@@ -80,33 +83,37 @@ public class SignUpActivity extends AppCompatActivity {
                                 if (password.equals(String.valueOf(txtRepeatPassword.getText()))) {
                                 /* Checking if the email seems to be valid */
                                     String email = String.valueOf(txtEmail.getText());
-                                    if (User.isValidEmail(email)) {
+                                    if (LoginManager.isValidEmail(email)) {
                                     /* I will try to sign up the new user */
-                                        user = new User(String.valueOf(txtUsername.getText()), password, String.valueOf(txtName.getText()), String.valueOf(txtLastName.getText()), email);
-                                        if (user.signupMe()) {
-                                            Intent mainActivityIntent = new Intent(SignUpActivity.this, HomeActivity.class).putExtra("user", user);
-                                            SignUpActivity.this.startActivity(mainActivityIntent);
-                                        } else if (user.get_username() == null || user.get_username().isEmpty()) {
-                                        /* Username already used */
+                                        loginManager.set_user(new User(String.valueOf(txtUsername.getText()), password, String.valueOf(txtName.getText()), String.valueOf(txtLastName.getText()), email));
+                                        if (loginManager.signUpUser()) {
+                                            /* Getting the user profile and setting it in the static property of CurrentUser class that will keep up user information in the whole app */
+                                            CurrentUser.set_currentUserProfile(loginManager.get_user());
+                                            Intent homeActivityIntent = new Intent(SignUpActivity.this, HomeActivity.class);
+                                            SignUpActivity.this.startActivity(homeActivityIntent);
+                                        } else if (loginManager.get_user().get_username() == null || loginManager.get_user().get_username().isEmpty()) {
+                                            /* Username already used */
                                             Toast.makeText(getApplicationContext(), R.string.username_already_used, Toast.LENGTH_LONG);
-                                        } else if (user.get_email() == null || user.get_email().isEmpty()) {
-                                        /* Email already used */
+                                            setBackgroundDrawable(txtUsername, R.drawable.error_edit_text);
+                                        } else if (loginManager.get_user().get_email() == null || loginManager.get_user().get_email().isEmpty()) {
+                                            /* Email already used */
                                             Toast.makeText(getApplicationContext(), R.string.email_already_used, Toast.LENGTH_LONG);
+                                            setBackgroundDrawable(txtEmail, R.drawable.error_edit_text);
                                         } else {
-                                        /* There was a problem with the server */
+                                            /* There was a problem with the server */
                                             Toast.makeText(getApplicationContext(), R.string.server_unreachable, Toast.LENGTH_LONG);
                                         }
                                     } else {
-                                    /* At least one of the input fields are empty */
+                                        /* At least one of the input fields are empty */
                                         Toast.makeText(getApplicationContext(), R.string.email_not_valid, Toast.LENGTH_SHORT).show();
                                         setBackgroundDrawable(txtEmail, R.drawable.error_edit_text);
                                     }
 
                                 } else {
-                                /* Setting an 'error background' */
+                                    /* Setting an 'error background' */
                                     setBackgroundDrawable(txtPassword, R.drawable.error_edit_text);
                                     setBackgroundDrawable(txtRepeatPassword, R.drawable.error_edit_text);
-                                /* Saying to the user to enter the same password */
+                                    /* Saying to the user to enter the same password */
                                     Toast.makeText(getApplicationContext(), R.string.passwords_not_equals, Toast.LENGTH_SHORT).show();
                                 }
                             } else {
