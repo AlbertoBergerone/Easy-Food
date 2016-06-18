@@ -14,7 +14,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.example.alberto.easyfood.GeolocationModule.GeolocationManager;
 import com.example.alberto.easyfood.R;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -28,6 +30,7 @@ public class MapPanelFragment extends Fragment implements OnMapReadyCallback {
     private SupportMapFragment mapFragment;
     private Toolbar toolbar;
     private View myView;
+    private GeolocationManager myLocationManager;
 
     @Nullable
     @Override
@@ -35,11 +38,16 @@ public class MapPanelFragment extends Fragment implements OnMapReadyCallback {
         initializingMap(savedInstanceState);
         myView = inflater.inflate(R.layout.fragment_map_panel, container, false);
 
+        myLocationManager = new GeolocationManager(MapPanelFragment.this.getActivity());
+
+        /* Setting the toolbar */
         toolbar = (Toolbar) myView.findViewById(R.id.default_toolbar);
         ((HomeActivity)MapPanelFragment.this.getActivity()).setSupportActionBar(toolbar);
-
+        /* Hiding the title of the toolbar */
         ((HomeActivity)MapPanelFragment.this.getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
+        /* Displaying the hamburger icon */
         ((HomeActivity)MapPanelFragment.this.getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ((HomeActivity)MapPanelFragment.this.getActivity()).getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu_white_24dp);
         setHasOptionsMenu(true);
         return myView;
     }
@@ -61,6 +69,14 @@ public class MapPanelFragment extends Fragment implements OnMapReadyCallback {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.default_menu, menu);
         super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        if(!myLocationManager.isGPSEnabled()){
+            Toast.makeText(MapPanelFragment.this.getActivity(), R.string.gps_not_enabled, Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override

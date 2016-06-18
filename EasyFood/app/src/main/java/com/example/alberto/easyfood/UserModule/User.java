@@ -81,6 +81,12 @@ public class User implements Serializable {
             return null;
     }
 
+    public String get_residence_and_province(){
+        if(_residence != null && _province != null)
+            return _residence + " (" + _province + ")";
+        else
+            return null;
+    }
     /* Getters */
     public int get_userID() {
         return _userID;

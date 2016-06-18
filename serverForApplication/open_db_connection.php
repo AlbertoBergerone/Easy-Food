@@ -40,7 +40,6 @@ define('ATTR_RATING', 'valutazione');
 define('ATTR_COMMENT_TITLE', 'titoloCommento');
 define('ATTR_COMMENT', 'commento');
 
-	
 
 /*** mysql hostname ***/
 $hostname = 'localhost';

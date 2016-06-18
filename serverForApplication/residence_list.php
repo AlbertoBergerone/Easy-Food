@@ -3,6 +3,8 @@
 /*** Opening the connection with the db ***/
 include 'open_db_connection.php';
 
+define('RESIDENCES', 'comuni');
+
 try {
 	/*** Getting data ***/
 	$json = file_get_contents("php://input");
@@ -10,7 +12,7 @@ try {
 	$data = json_decode($json, TRUE);
 	$residence = $data[ATTR_RESIDENCE_NAME];
 	if($residence != ""){
-		var_dump(getResidences($residence));
+		print(json_encode((getResidences($residence))));
 	}else return null;
 	
 } catch(Exception $e) {
@@ -30,14 +32,16 @@ $conn = null;
 function getResidences($residence){
 	global $conn;
 	/*** Preparing the SQL statement ***/
-	$stmt = $conn->prepare('SELECT * FROM '.{TABLE_RESIDENCES}.' WHERE '.ATTR_RESIDENCE_NAME.' LIKE :residence'); 
+	$stmt = $conn->prepare('SELECT '.ATTR_CADASTRAL_ID.', '.ATTR_RESIDENCE_NAME.', '.ATTR_PROVINCE_ID.' FROM '.TABLE_RESIDENCES.' WHERE '.ATTR_RESIDENCE_NAME.' LIKE :residence');
 	/*** Binding parameters ***/
-	$stmt->bindParam(':residence', '%'.$residence.'%');
+	$param = "$residence%";
+	$stmt->bindParam(':residence', $param);
 	/*** exceute the query ***/
-	$conn->exec($stmt); 
+	$stmt->execute(); 
 	
 	/*** Setting the type of array (in this case it will be an associative array)***/
-	return $stmt->FetchAll(PDO::FETCH_ASSOC);
+	$residences[RESIDENCES] = $stmt->FetchAll(PDO::FETCH_ASSOC);
+	return $residences;
 }
 
-?>
+?> 

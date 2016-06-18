@@ -30,6 +30,7 @@ import com.amigold.fundapter.FunDapter;
 import com.amigold.fundapter.extractors.StringExtractor;
 import com.example.alberto.easyfood.R;
 import com.example.alberto.easyfood.RestaurantModule.Restaurant;
+import com.example.alberto.easyfood.RestaurantModule.RestaurantManager;
 
 import java.util.ArrayList;
 
@@ -38,66 +39,71 @@ import java.util.ArrayList;
  */
 public class SearchFragment extends Fragment {
     private static final String TAG = "SearchFragment";
-    private EditText search_text;
-    private ImageView clear_search_text;
     private Toolbar toolbar;
     private View myView;
+    private ArrayList<Restaurant> myRestaurantList;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         myView = inflater.inflate(R.layout.fragment_search, container, false);
 
-
+        /* Setting the toolbar */
         toolbar = (Toolbar) myView.findViewById(R.id.default_toolbar);
         ((HomeActivity)SearchFragment.this.getActivity()).setSupportActionBar(toolbar);
+        /* Hiding the title of the toolbar */
         ((HomeActivity)SearchFragment.this.getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
+        /* Displaying the hamburger icon */
         ((HomeActivity)SearchFragment.this.getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ((HomeActivity)SearchFragment.this.getActivity()).getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu_white_24dp);
         setHasOptionsMenu(true);
 
+        Intent searchIntent = SearchFragment.this.getActivity().getIntent();
+        if(Intent.ACTION_SEARCH.equals(searchIntent.getAction())){
+            String queryString = searchIntent.getStringExtra(SearchManager.QUERY);
+            Toast.makeText(SearchFragment.this.getActivity(), queryString, Toast.LENGTH_LONG).show();
+            RestaurantManager restaurantManager = new RestaurantManager();
+            myRestaurantList = restaurantManager.getRestaurantsFromServer(queryString);
+            if(myRestaurantList != null){
+                /* Creating a dictionary to simplify the GUI/Adapter association */
+                BindDictionary<Restaurant> restaurantBindDictionary = new BindDictionary<>();
+                restaurantBindDictionary.addStringField(R.id.txt_list_restaurant_name, new StringExtractor<Restaurant>() {
+                    @Override
+                    public String getStringValue(Restaurant restaurant, int position) {
+                        return restaurant.get_restaurantName();
+                    }
+                });
+                restaurantBindDictionary.addStringField(R.id.txt_list_location, new StringExtractor<Restaurant>() {
+                    @Override
+                    public String getStringValue(Restaurant restaurant, int position) {
+                        return restaurant.get_full_address();
+                    }
+                });
+                restaurantBindDictionary.addStringField(R.id.txt_list_rating, new StringExtractor<Restaurant>() {
+                    @Override
+                    public String getStringValue(Restaurant restaurant, int position) {
+                        return String.valueOf(restaurant.get_rating());
+                    }
+                });
 
-        /* Da spostare dove dovrei effettuare la ricerca */
-        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-//        BindDictionary<Restaurant> restaurantBindDictionary = new BindDictionary<>();
-//        restaurantBindDictionary.addStringField(R.id.txt_list_restaurant_name, new StringExtractor<Restaurant>() {
-//            @Override
-//            public String getStringValue(Restaurant restaurant, int position) {
-//                return restaurant.get_restaurantName();
-//            }
-//        });
-//        restaurantBindDictionary.addStringField(R.id.txt_list_location, new StringExtractor<Restaurant>() {
-//            @Override
-//            public String getStringValue(Restaurant restaurant, int position) {
-//                return restaurant.get_full_address();
-//            }
-//        });
-//        restaurantBindDictionary.addStringField(R.id.txt_list_rating, new StringExtractor<Restaurant>() {
-//            @Override
-//            public String getStringValue(Restaurant restaurant, int position) {
-//                return String.valueOf(restaurant.get_rating());
-//            }
-//        });
-//
-//        /* Here I should get an array of restaurants */
-//        final ArrayList<Restaurant> restaurants = new ArrayList<>();
-//        FunDapter funAdapter = new FunDapter(SearchFragment.this.getActivity(), restaurants, R.layout.list_item_search, restaurantBindDictionary);
-//
-//        ListView listViewRestaurants = (ListView)myView.findViewById(R.id.searchResult_listView);
-//        listViewRestaurants.setAdapter(funAdapter);
-//
-//        listViewRestaurants.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                /* This is the selected restaurant */
-//                Restaurant selectedRestaurant = restaurants.get(position);
-//                /* Intent to a new activity that displays all the restaurant information */
-//                Intent restaurantInfoIntent = new Intent(SearchFragment.this.getActivity(), RestaurantDetailsActivity.class);
-//                restaurantInfoIntent.putExtra("Restaurant", selectedRestaurant);
-//                SearchFragment.this.getActivity().startActivity(restaurantInfoIntent);
-//            }
-//        });
-        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                FunDapter funAdapter = new FunDapter(SearchFragment.this.getActivity(), myRestaurantList, R.layout.list_item_search, restaurantBindDictionary);
 
+                ListView listViewRestaurants = (ListView)myView.findViewById(R.id.searchResult_listView);
+                listViewRestaurants.setAdapter(funAdapter);
+
+                listViewRestaurants.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        /* This is the selected restaurant */
+                        Restaurant selectedRestaurant = myRestaurantList.get(position);
+                        /* Intent to a new activity that displays all the restaurant information */
+                        Intent restaurantInfoIntent = new Intent(SearchFragment.this.getActivity(), RestaurantDetailsActivity.class);
+                        restaurantInfoIntent.putExtra("Restaurant", selectedRestaurant);
+                        SearchFragment.this.getActivity().startActivity(restaurantInfoIntent);
+                    }
+                });
+            }
+        }
 
         return myView;
     }
@@ -111,12 +117,5 @@ public class SearchFragment extends Fragment {
 
         super.onCreateOptionsMenu(menu, inflater);
     }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        ((HomeActivity)getActivity()).setSupportActionBar(toolbar);
-    }
-    
 
 }

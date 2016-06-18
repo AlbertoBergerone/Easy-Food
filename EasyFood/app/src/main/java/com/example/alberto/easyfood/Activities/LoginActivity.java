@@ -13,16 +13,16 @@ import android.widget.Toast;
 
 import com.example.alberto.easyfood.R;
 import com.example.alberto.easyfood.UserModule.CurrentUser;
-import com.example.alberto.easyfood.UserModule.LoginManager;
 import com.example.alberto.easyfood.UserModule.User;
 import com.example.alberto.easyfood.ServerCommunicationModule.InternetConnection;
+import com.example.alberto.easyfood.UserModule.UserManager;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
 public class LoginActivity extends AppCompatActivity {
-    LoginManager loginManager;
+    UserManager userManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
         final EditText txtUsername = (EditText) findViewById(R.id.txtLoginUsername);
         final EditText txtPassword = (EditText) findViewById(R.id.txtLoginPassword);
 
-        loginManager = new LoginManager();
+        userManager = new UserManager();
         /* Setting onClickListeners to trigger events */
         /* On a click on the login button it will try to contact the web server for login the user.
          * The server will check the correctness of user information. If they are valid it will return all the user information
@@ -63,9 +63,9 @@ public class LoginActivity extends AppCompatActivity {
 								/* Trying to login the user */
 								/* Creating a new User only with the username and the password properties.
 								* The other properties will be loaded only if the user is already signed */
-								loginManager.set_user(new User(String.valueOf(txtUsername.getText()), String.valueOf(txtPassword.getText())));
-								if(loginManager.loginUser()){
-                                    CurrentUser.set_currentUserProfile(loginManager.get_user());
+								userManager.set_user(new User(String.valueOf(txtUsername.getText()), String.valueOf(txtPassword.getText())));
+								if(userManager.loginUser()){
+                                    CurrentUser.set_currentUserProfile(userManager.get_user());
 									Intent homeActivityIntent = new Intent(LoginActivity.this, HomeActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 									LoginActivity.this.startActivity(homeActivityIntent);
                                     LoginActivity.this.finish();

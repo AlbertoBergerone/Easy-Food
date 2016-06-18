@@ -2,6 +2,7 @@
 
 /*** Opening the connection with the db ***/
 include 'open_db_connection.php';
+define('RESTAURANTS', 'ristoranti');
 
 try {
 	/*** Getting data ***/
@@ -37,9 +38,9 @@ function getRestaurants($data){
 			$stmt->bindParam($i, $binds[$i-1]);
 	try{
 		/*** If there are some information to change it will execute the insert statement ***/
-		if($i!=1)
-			$stmt->execute();
-		return $stmt->FetchAll(PDO::FETCH_ASSOC);
+		$stmt->execute();
+		$restaurants[RESTAURANTS] = $stmt->FetchAll(PDO::FETCH_ASSOC);
+		return $restaurants;
 	}catch(PDOException $e){
 		echo($e->getMessage());
 	}

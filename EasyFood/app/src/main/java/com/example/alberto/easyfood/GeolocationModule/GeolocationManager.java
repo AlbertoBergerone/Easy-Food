@@ -16,8 +16,7 @@ import android.support.v4.app.ActivityCompat;
 public class GeolocationManager implements LocationListener{
     private LocationManager _locationManager;
     private Context _context;
-    private float _latitude;
-    private float _longitude;
+
     public GeolocationManager(Context context) {
         _context = context;
         _locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
@@ -25,20 +24,23 @@ public class GeolocationManager implements LocationListener{
 
     /**
      * Method that checks if the GPS is enabled
-     * Method that
-     * @param context (Context) a context that is only used to get the SystemService
      * @return (boolean) TRUE -> GPS enabled; FALSE -> GPS not enabled
      */
-    public boolean isGPSEnabled(Context context) {
+    public boolean isGPSEnabled() {
         /* Checking if the GPS is enabled */
         return (_locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER));
     }
 
-    public Location getMyPosition(Context context) {
+    /**
+     * Method that returns my location
+     * If user didn't grant permissions (ACCESS_FINE_LOCATION, ACCESS_COARSE_LOCATION), it returns null
+     * @return (Location) my position
+     */
+    public Location getMyPosition() {
         Criteria criteria = new Criteria();
         /* Getting the bast provider near me */
         String provider = _locationManager.getBestProvider(criteria, false);
-        if (ActivityCompat.checkSelfPermission(_context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(_context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(_context, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(_context, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             Location location = _locationManager.getLastKnownLocation(provider);
             if (location != null){
                 onLocationChanged(location);

@@ -46,6 +46,7 @@
     <string name="email_already_used">Email already used</string>
     <string name="username_already_used">Username already used</string>
     <string name="general_error_message">An error occurred. Please restart the app</string>
+    <string name="gps_not_enabled">You must enable the GPS service to enjoy this feature</string>
 
     <string name="title_activity_sign_up">Sign Up</string>
     <string name="title_activity_main">Easy Food</string>
@@ -59,5 +60,4 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="Settings">Settings</string>
     <string name="Filters">Filters</string>
-    <string name="Searchable">Searchable</string>
 </resources>

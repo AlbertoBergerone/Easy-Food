@@ -28,6 +28,7 @@
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark">
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+        <item name="android:textColorSecondary">@color/white</item>
     </style>
 
     <style name="DrawerArrowStyle" parent="Base.Widget.AppCompat.DrawerArrowToggle">

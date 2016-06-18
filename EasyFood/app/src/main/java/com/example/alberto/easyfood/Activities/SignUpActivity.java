@@ -14,15 +14,15 @@ import android.widget.Toast;
 import com.example.alberto.easyfood.ServerCommunicationModule.InternetConnection;
 import com.example.alberto.easyfood.R;
 import com.example.alberto.easyfood.UserModule.CurrentUser;
-import com.example.alberto.easyfood.UserModule.LoginManager;
 import com.example.alberto.easyfood.UserModule.User;
+import com.example.alberto.easyfood.UserModule.UserManager;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
 public class SignUpActivity extends AppCompatActivity {
-    LoginManager loginManager;
+    UserManager userManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +39,7 @@ public class SignUpActivity extends AppCompatActivity {
         final EditText txtEmail = (EditText) findViewById(R.id.txtSignUpEmail);
         final Button btnSignUp = (Button) findViewById(R.id.btnSignUp);
 
-        loginManager = new LoginManager();
+        userManager = new UserManager();
         /* Setting onClickListeners */
         /* A click on the text it will come back to the login activity */
         if (comeBackToLogin != null) {
@@ -83,19 +83,19 @@ public class SignUpActivity extends AppCompatActivity {
                                 if (password.equals(String.valueOf(txtRepeatPassword.getText()))) {
                                 /* Checking if the email seems to be valid */
                                     String email = String.valueOf(txtEmail.getText());
-                                    if (LoginManager.isValidEmail(email)) {
+                                    if (UserManager.isValidEmail(email)) {
                                     /* I will try to sign up the new user */
-                                        loginManager.set_user(new User(String.valueOf(txtUsername.getText()), password, String.valueOf(txtName.getText()), String.valueOf(txtLastName.getText()), email));
-                                        if (loginManager.signUpUser()) {
+                                        userManager.set_user(new User(String.valueOf(txtUsername.getText()), password, String.valueOf(txtName.getText()), String.valueOf(txtLastName.getText()), email));
+                                        if (userManager.signUpUser()) {
                                             /* Getting the user profile and setting it in the static property of CurrentUser class that will keep up user information in the whole app */
-                                            CurrentUser.set_currentUserProfile(loginManager.get_user());
+                                            CurrentUser.set_currentUserProfile(userManager.get_user());
                                             Intent homeActivityIntent = new Intent(SignUpActivity.this, HomeActivity.class);
                                             SignUpActivity.this.startActivity(homeActivityIntent);
-                                        } else if (loginManager.get_user().get_username() == null || loginManager.get_user().get_username().isEmpty()) {
+                                        } else if (userManager.get_user().get_username() == null || userManager.get_user().get_username().isEmpty()) {
                                             /* Username already used */
                                             Toast.makeText(getApplicationContext(), R.string.username_already_used, Toast.LENGTH_LONG);
                                             setBackgroundDrawable(txtUsername, R.drawable.error_edit_text);
-                                        } else if (loginManager.get_user().get_email() == null || loginManager.get_user().get_email().isEmpty()) {
+                                        } else if (userManager.get_user().get_email() == null || userManager.get_user().get_email().isEmpty()) {
                                             /* Email already used */
                                             Toast.makeText(getApplicationContext(), R.string.email_already_used, Toast.LENGTH_LONG);
                                             setBackgroundDrawable(txtEmail, R.drawable.error_edit_text);
