@@ -4,7 +4,7 @@ define('TABLE_USER', 'utente');
 define('TABLE_REGIONS', 'regioni');
 define('TABLE_PROVINCES', 'province');
 define('TABLE_RESIDENCES', 'comuni');
-define('TABLE_RESTAURANTS', 'comuni');
+define('TABLE_RESTAURANTS', 'ristoranti');
 define('TABLE_HOURS', 'Orari');
 define('TABLE_RATINGS', 'valutazioni');
 define('TABLE_TYPOLOGIES', 'tipologie');
@@ -39,6 +39,8 @@ define('ATTR_RESTAURANT_EMAIL', 'emailRistorante');
 define('ATTR_RATING', 'valutazione');
 define('ATTR_COMMENT_TITLE', 'titoloCommento');
 define('ATTR_COMMENT', 'commento');
+define('ATTR_TYPE_ID', 'codTipo');
+define('ATTR_TYPE', 'Tipo');
 
 
 /*** mysql hostname ***/

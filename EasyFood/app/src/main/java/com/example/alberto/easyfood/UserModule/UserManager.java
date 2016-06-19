@@ -1,11 +1,9 @@
 package com.example.alberto.easyfood.UserModule;
 
-import android.content.Context;
 import android.util.Log;
-import android.widget.Toast;
-
 import com.example.alberto.easyfood.GeolocationModule.Residence;
 import com.example.alberto.easyfood.ServerCommunicationModule.CommunicationManager;
+import com.example.alberto.easyfood.Utilities.DB_Attributes;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -16,6 +14,7 @@ import java.util.ArrayList;
 
 /**
  * Created by Alberto on 13/04/2016.
+ * Class that contains methods to signUp, login, delete, update users. It is possible thanks to the CommunicationManager class that permits to contact the server web that contains all the user information
  */
 public class UserManager {
     private User _user;
@@ -37,19 +36,6 @@ public class UserManager {
     private static final String DELETED = "deleted";
     private static final String ADDED = "added";
     private static final String ALREADY_USED = "already_used";
-    /* Database attributes */
-    private static final String DB_USERNAME = "username";
-    private static final String DB_PASSWORD = "passwordUtente";
-    private static final String DB_NAME = "nome";
-    private static final String DB_LAST_NAME = "cognome";
-    private static final String DB_USER_EMAIL = "emailUtente";
-    private static final String DB_USER_ADDRESS = "indirizzoUtente";
-    private static final String DB_USER_PHONE = "telUtente";
-    private static final String DB_USER_ID = "codUtente";
-    private static final String DB_PROVINCE_ID = "codProvincia";
-    private static final String DB_CADASTRAL_ID = "codCatastale";
-    private static final String DB_RESIDENCE = "nomeComune";
-    private static final String DB_CAP = "cap";
 
     private static final String RESIDENCES = "comuni";
 
@@ -141,11 +127,11 @@ public class UserManager {
                 }else{
                     /* The user has not been signed */
                     /* Checking what is the problem */
-                    if(json_data.getString(DB_USER_EMAIL).equals(ALREADY_USED)){
+                    if(json_data.getString(DB_Attributes.DB_USER_EMAIL).equals(ALREADY_USED)){
                         /* The email is invalid */
                         this._user.set_email(null);
                     }
-                    if(json_data.getString(DB_USER_EMAIL).equals(ALREADY_USED)){
+                    if(json_data.getString(DB_Attributes.DB_USER_EMAIL).equals(ALREADY_USED)){
                         /* The username is already used */
                         this._user.set_username(null);
                     }
@@ -222,14 +208,14 @@ public class UserManager {
                 for(i = 0; i < jsonArray.length(); i++){
                     Residence tmp = new Residence();
 
-                    if(!jsonArray.getJSONObject(i).isNull(DB_CADASTRAL_ID))
-                        tmp.cadasralID = jsonArray.getJSONObject(i).getString(DB_CADASTRAL_ID);
-                    if(!jsonArray.getJSONObject(i).isNull(DB_RESIDENCE))
-                        tmp.provinceID = jsonArray.getJSONObject(i).getString(DB_RESIDENCE);
-                    if(!jsonArray.getJSONObject(i).isNull(DB_PROVINCE_ID))
-                        tmp.provinceID = jsonArray.getJSONObject(i).getString(DB_PROVINCE_ID);
-                    if(!jsonArray.getJSONObject(i).isNull(DB_CAP))
-                        tmp.provinceID = jsonArray.getJSONObject(i).getString(DB_CAP);
+                    if(!jsonArray.getJSONObject(i).isNull(DB_Attributes.DB_CADASTRAL_ID))
+                        tmp.cadasralID = jsonArray.getJSONObject(i).getString(DB_Attributes.DB_CADASTRAL_ID);
+                    if(!jsonArray.getJSONObject(i).isNull(DB_Attributes.DB_RESIDENCE))
+                        tmp.provinceID = jsonArray.getJSONObject(i).getString(DB_Attributes.DB_RESIDENCE);
+                    if(!jsonArray.getJSONObject(i).isNull(DB_Attributes.DB_PROVINCE_ID))
+                        tmp.provinceID = jsonArray.getJSONObject(i).getString(DB_Attributes.DB_PROVINCE_ID);
+                    if(!jsonArray.getJSONObject(i).isNull(DB_Attributes.DB_CAP))
+                        tmp.provinceID = jsonArray.getJSONObject(i).getString(DB_Attributes.DB_CAP);
 
                     ret.add(tmp);
                 }
@@ -249,8 +235,8 @@ public class UserManager {
             /* Getting residence information */
             try {
                 for(i = 0; i < jsonArray.length(); i++){
-                    if(!jsonArray.getJSONObject(i).isNull(DB_RESIDENCE) && !jsonArray.getJSONObject(i).isNull(DB_PROVINCE_ID))
-                        ret.add(jsonArray.getJSONObject(i).getString(DB_RESIDENCE) + " (" + jsonArray.getJSONObject(i).getString(DB_PROVINCE_ID) + ")");
+                    if(!jsonArray.getJSONObject(i).isNull(DB_Attributes.DB_RESIDENCE) && !jsonArray.getJSONObject(i).isNull(DB_Attributes.DB_PROVINCE_ID))
+                        ret.add(jsonArray.getJSONObject(i).getString(DB_Attributes.DB_RESIDENCE) + " (" + jsonArray.getJSONObject(i).getString(DB_Attributes.DB_PROVINCE_ID) + ")");
                 }
             } catch (JSONException e) {
                 Log.e(TAG, e.getMessage());
@@ -266,7 +252,7 @@ public class UserManager {
 
         if(!residence_initials.isEmpty()){
             try {
-                json.put(DB_RESIDENCE, residence_initials);
+                json.put(DB_Attributes.DB_RESIDENCE, residence_initials);
                 json = CommunicationManager.postData(URL_RESIDENCES, json);
                 if(json != null)
                     jsonArray = json.getJSONArray(RESIDENCES);
@@ -312,16 +298,16 @@ public class UserManager {
         JSONObject jsonObject = new JSONObject();
         try {
             /* adding user information to a JSONObject */
-            jsonObject.put(DB_USER_ID, _user.get_userID());
-            jsonObject.put(DB_NAME, _user.get_name());
-            jsonObject.put(DB_LAST_NAME, _user.get_last_name());
-            jsonObject.put(DB_USERNAME, _user.get_username());
-            jsonObject.put(DB_PASSWORD, _user.get_password());
-            jsonObject.put(DB_USER_ADDRESS, _user.get_address());
-            jsonObject.put(DB_USER_EMAIL, _user.get_email());
-            jsonObject.put(DB_USER_PHONE, _user.get_phone());
-            jsonObject.put(DB_RESIDENCE, _user.get_residence());
-            jsonObject.put(DB_PROVINCE_ID, _user.get_province());
+            jsonObject.put(DB_Attributes.DB_USER_ID, _user.get_userID());
+            jsonObject.put(DB_Attributes.DB_NAME, _user.get_name());
+            jsonObject.put(DB_Attributes.DB_LAST_NAME, _user.get_last_name());
+            jsonObject.put(DB_Attributes.DB_USERNAME, _user.get_username());
+            jsonObject.put(DB_Attributes.DB_PASSWORD, _user.get_password());
+            jsonObject.put(DB_Attributes.DB_USER_ADDRESS, _user.get_address());
+            jsonObject.put(DB_Attributes.DB_USER_EMAIL, _user.get_email());
+            jsonObject.put(DB_Attributes.DB_USER_PHONE, _user.get_phone());
+            jsonObject.put(DB_Attributes.DB_RESIDENCE, _user.get_residence());
+            jsonObject.put(DB_Attributes.DB_PROVINCE_ID, _user.get_province());
             /* return the JSONObject created */
             return jsonObject;
         } catch (JSONException e) {
@@ -352,55 +338,55 @@ public class UserManager {
      */
     private void fromJSON(JSONObject user){
         try {
-            if(user.getString(DB_USER_ID).equalsIgnoreCase("null") || user.getString(DB_USER_ID) == null || user.getString(DB_USER_ID).isEmpty() || user.getInt(DB_USER_ID) < 0)
+            if(user.getString(DB_Attributes.DB_USER_ID).equalsIgnoreCase("null") || user.getString(DB_Attributes.DB_USER_ID) == null || user.getString(DB_Attributes.DB_USER_ID).isEmpty() || user.getInt(DB_Attributes.DB_USER_ID) < 0)
                 _user.set_userID(-1);
             else
-                _user.set_userID(user.getInt(DB_USER_ID));
+                _user.set_userID(user.getInt(DB_Attributes.DB_USER_ID));
 
-            if(user.getString(DB_NAME).equalsIgnoreCase("null") || user.getString(DB_NAME) == null || user.getString(DB_NAME).isEmpty())
+            if(user.getString(DB_Attributes.DB_NAME).equalsIgnoreCase("null") || user.getString(DB_Attributes.DB_NAME) == null || user.getString(DB_Attributes.DB_NAME).isEmpty())
                 _user.set_name(null);
             else
-                _user.set_name(user.getString(DB_NAME));
+                _user.set_name(user.getString(DB_Attributes.DB_NAME));
 
-            if(user.getString(DB_LAST_NAME).equalsIgnoreCase("null") || user.getString(DB_LAST_NAME) == null || user.getString(DB_LAST_NAME).isEmpty())
+            if(user.getString(DB_Attributes.DB_LAST_NAME).equalsIgnoreCase("null") || user.getString(DB_Attributes.DB_LAST_NAME) == null || user.getString(DB_Attributes.DB_LAST_NAME).isEmpty())
                 _user.set_last_name(null);
             else
-                _user.set_last_name(user.getString(DB_LAST_NAME));
+                _user.set_last_name(user.getString(DB_Attributes.DB_LAST_NAME));
 
-            if(user.getString(DB_USERNAME) == null || user.getString(DB_USERNAME).isEmpty())
+            if(user.getString(DB_Attributes.DB_USERNAME) == null || user.getString(DB_Attributes.DB_USERNAME).isEmpty())
                 _user.set_username(null);
             else
-                _user.set_username(user.getString(DB_USERNAME));
+                _user.set_username(user.getString(DB_Attributes.DB_USERNAME));
 
-            if(user.getString(DB_PASSWORD) == null || user.getString(DB_PASSWORD).isEmpty())
+            if(user.getString(DB_Attributes.DB_PASSWORD) == null || user.getString(DB_Attributes.DB_PASSWORD).isEmpty())
                 _user.set_password(null);
             else
-                _user.set_password(user.getString(DB_PASSWORD));
+                _user.set_password(user.getString(DB_Attributes.DB_PASSWORD));
 
-            if(user.getString(DB_USER_ADDRESS).equalsIgnoreCase("null") || user.getString(DB_USER_ADDRESS) == null || user.getString(DB_USER_ADDRESS).isEmpty())
+            if(user.getString(DB_Attributes.DB_USER_ADDRESS).equalsIgnoreCase("null") || user.getString(DB_Attributes.DB_USER_ADDRESS) == null || user.getString(DB_Attributes.DB_USER_ADDRESS).isEmpty())
                 _user.set_address(null);
             else
-                _user.set_address(user.getString(DB_USER_ADDRESS));
+                _user.set_address(user.getString(DB_Attributes.DB_USER_ADDRESS));
 
-            if(user.getString(DB_USER_EMAIL).equalsIgnoreCase("null") || user.getString(DB_USER_EMAIL) == null || user.getString(DB_USER_EMAIL).isEmpty())
+            if(user.getString(DB_Attributes.DB_USER_EMAIL).equalsIgnoreCase("null") || user.getString(DB_Attributes.DB_USER_EMAIL) == null || user.getString(DB_Attributes.DB_USER_EMAIL).isEmpty())
                 _user.set_email(null);
             else
-                _user.set_email(user.getString(DB_USER_EMAIL));
+                _user.set_email(user.getString(DB_Attributes.DB_USER_EMAIL));
 
-            if(user.getString(DB_USER_PHONE).equalsIgnoreCase("null") || user.getString(DB_USER_PHONE) == null || user.getString(DB_USER_PHONE).isEmpty())
+            if(user.getString(DB_Attributes.DB_USER_PHONE).equalsIgnoreCase("null") || user.getString(DB_Attributes.DB_USER_PHONE) == null || user.getString(DB_Attributes.DB_USER_PHONE).isEmpty())
                 _user.set_phone(null);
             else
-                _user.set_phone(user.getString(DB_USER_PHONE));
+                _user.set_phone(user.getString(DB_Attributes.DB_USER_PHONE));
 
-            if(user.getString(DB_RESIDENCE).equalsIgnoreCase("null") || user.getString(DB_RESIDENCE) == null || user.getString(DB_RESIDENCE).isEmpty())
+            if(user.getString(DB_Attributes.DB_RESIDENCE).equalsIgnoreCase("null") || user.getString(DB_Attributes.DB_RESIDENCE) == null || user.getString(DB_Attributes.DB_RESIDENCE).isEmpty())
                 _user.set_residence(null);
             else
-                _user.set_residence(user.getString(DB_RESIDENCE));
+                _user.set_residence(user.getString(DB_Attributes.DB_RESIDENCE));
 
-            if(user.getString(DB_PROVINCE_ID).equalsIgnoreCase("null") || user.getString(DB_PROVINCE_ID) == null || user.getString(DB_PROVINCE_ID).isEmpty())
+            if(user.getString(DB_Attributes.DB_PROVINCE_ID).equalsIgnoreCase("null") || user.getString(DB_Attributes.DB_PROVINCE_ID) == null || user.getString(DB_Attributes.DB_PROVINCE_ID).isEmpty())
                 _user.set_province(null);
             else
-                _user.set_province(user.getString(DB_PROVINCE_ID));
+                _user.set_province(user.getString(DB_Attributes.DB_PROVINCE_ID));
 
         } catch (JSONException e) {
             Log.e(TAG, "Error parsing data " + e.toString());

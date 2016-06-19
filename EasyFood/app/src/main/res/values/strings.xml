@@ -24,6 +24,9 @@
     <string name="PhoneNumber">Phone Number</string>
     <string name="Residence">Residence</string>
     <string name="Address">Address</string>
+    <string name="Location">Location</string>
+    <string name="Type">Type</string>
+    <string name="Rating">Rating</string>
 
     <string name="Search">Search</string>
     <string name="Map">Map</string>
@@ -32,6 +35,7 @@
     <string name="input_empty_fields">It looks like some fields are empty</string>
     <string name="passwords_not_equals">Please, insert the same password</string>
     <string name="No_internet_connection">No internet connection. Please, check your settings and try again</string>
+    <string name="Missing_internet_connection_for_more_info">No internet connection. If you want to know more about the local</string>
 
     <string name="login_not_valid">Your credentials are not valid</string>
     <string name="server_unreachable">There was a problem with the server. Try later</string>

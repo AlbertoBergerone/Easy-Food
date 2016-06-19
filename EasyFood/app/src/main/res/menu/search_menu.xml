@@ -2,9 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/menu_filters"
-        android:title="@string/Filters"></item>
-    <item
         android:id="@+id/menu_search_icon"
         android:icon="@drawable/ic_search_white_24dp"
         android:title="@string/Search"

@@ -1,10 +1,12 @@
-package com.example.alberto.easyfood.Activities;
+package com.example.alberto.easyfood.Utilities;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.example.alberto.easyfood.Activities.MapPanelFragment;
+import com.example.alberto.easyfood.Activities.SearchFragment;
 import com.example.alberto.easyfood.R;
 
 /**

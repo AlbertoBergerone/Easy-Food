@@ -31,6 +31,7 @@ import com.amigold.fundapter.extractors.StringExtractor;
 import com.example.alberto.easyfood.R;
 import com.example.alberto.easyfood.RestaurantModule.Restaurant;
 import com.example.alberto.easyfood.RestaurantModule.RestaurantManager;
+import com.example.alberto.easyfood.ServerCommunicationModule.InternetConnection;
 
 import java.util.ArrayList;
 
@@ -39,6 +40,7 @@ import java.util.ArrayList;
  */
 public class SearchFragment extends Fragment {
     private static final String TAG = "SearchFragment";
+    private static final String RESTAURANT_EXTRA_NAME = "restaurant";
     private Toolbar toolbar;
     private View myView;
     private ArrayList<Restaurant> myRestaurantList;
@@ -63,45 +65,50 @@ public class SearchFragment extends Fragment {
             String queryString = searchIntent.getStringExtra(SearchManager.QUERY);
             Toast.makeText(SearchFragment.this.getActivity(), queryString, Toast.LENGTH_LONG).show();
             RestaurantManager restaurantManager = new RestaurantManager();
-            myRestaurantList = restaurantManager.getRestaurantsFromServer(queryString);
-            if(myRestaurantList != null){
-                /* Creating a dictionary to simplify the GUI/Adapter association */
-                BindDictionary<Restaurant> restaurantBindDictionary = new BindDictionary<>();
-                restaurantBindDictionary.addStringField(R.id.txt_list_restaurant_name, new StringExtractor<Restaurant>() {
-                    @Override
-                    public String getStringValue(Restaurant restaurant, int position) {
-                        return restaurant.get_restaurantName();
-                    }
-                });
-                restaurantBindDictionary.addStringField(R.id.txt_list_location, new StringExtractor<Restaurant>() {
-                    @Override
-                    public String getStringValue(Restaurant restaurant, int position) {
-                        return restaurant.get_full_address();
-                    }
-                });
-                restaurantBindDictionary.addStringField(R.id.txt_list_rating, new StringExtractor<Restaurant>() {
-                    @Override
-                    public String getStringValue(Restaurant restaurant, int position) {
-                        return String.valueOf(restaurant.get_rating());
-                    }
-                });
+            if(InternetConnection.haveIInternetConnection(SearchFragment.this.getActivity())){
 
-                FunDapter funAdapter = new FunDapter(SearchFragment.this.getActivity(), myRestaurantList, R.layout.list_item_search, restaurantBindDictionary);
+                myRestaurantList = restaurantManager.getRestaurantsForListView(queryString);
+                if(myRestaurantList != null){
+                    /* Creating a dictionary to simplify the GUI/Adapter association */
+                    BindDictionary<Restaurant> restaurantBindDictionary = new BindDictionary<>();
+                    restaurantBindDictionary.addStringField(R.id.txt_list_restaurant_name, new StringExtractor<Restaurant>() {
+                        @Override
+                        public String getStringValue(Restaurant restaurant, int position) {
+                            return restaurant.get_restaurantName();
+                        }
+                    });
+                    restaurantBindDictionary.addStringField(R.id.txt_list_location, new StringExtractor<Restaurant>() {
+                        @Override
+                        public String getStringValue(Restaurant restaurant, int position) {
+                            return restaurant.get_full_address();
+                        }
+                    });
+                    restaurantBindDictionary.addStringField(R.id.txt_list_rating, new StringExtractor<Restaurant>() {
+                        @Override
+                        public String getStringValue(Restaurant restaurant, int position) {
+                            return String.valueOf(restaurant.get_ratingToString());
+                        }
+                    });
 
-                ListView listViewRestaurants = (ListView)myView.findViewById(R.id.searchResult_listView);
-                listViewRestaurants.setAdapter(funAdapter);
+                    FunDapter funAdapter = new FunDapter(SearchFragment.this.getActivity(), myRestaurantList, R.layout.list_item_search, restaurantBindDictionary);
 
-                listViewRestaurants.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    ListView listViewRestaurants = (ListView)myView.findViewById(R.id.searchResult_listView);
+                    listViewRestaurants.setAdapter(funAdapter);
+
+                    listViewRestaurants.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         /* This is the selected restaurant */
-                        Restaurant selectedRestaurant = myRestaurantList.get(position);
+                            Restaurant selectedRestaurant = myRestaurantList.get(position);
                         /* Intent to a new activity that displays all the restaurant information */
-                        Intent restaurantInfoIntent = new Intent(SearchFragment.this.getActivity(), RestaurantDetailsActivity.class);
-                        restaurantInfoIntent.putExtra("Restaurant", selectedRestaurant);
-                        SearchFragment.this.getActivity().startActivity(restaurantInfoIntent);
-                    }
-                });
+                            Intent restaurantInfoIntent = new Intent(SearchFragment.this.getActivity(), RestaurantDetailsActivity.class);
+                            restaurantInfoIntent.putExtra(RESTAURANT_EXTRA_NAME, selectedRestaurant);
+                            SearchFragment.this.getActivity().startActivity(restaurantInfoIntent);
+                        }
+                    });
+                }
+            }else{
+                Toast.makeText(SearchFragment.this.getActivity(), R.string.No_internet_connection, Toast.LENGTH_LONG).show();
             }
         }
 

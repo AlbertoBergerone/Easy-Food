@@ -32,7 +32,7 @@ $conn = null;
 function getResidences($residence){
 	global $conn;
 	/*** Preparing the SQL statement ***/
-	$stmt = $conn->prepare('SELECT '.ATTR_CADASTRAL_ID.', '.ATTR_RESIDENCE_NAME.', '.ATTR_PROVINCE_ID.' FROM '.TABLE_RESIDENCES.' WHERE '.ATTR_RESIDENCE_NAME.' LIKE :residence');
+	$stmt = $conn->prepare('SELECT '.ATTR_CADASTRAL_ID.', '.ATTR_RESIDENCE_NAME.', '.ATTR_PROVINCE_ID.' FROM '.TABLE_RESIDENCES.' WHERE '.ATTR_RESIDENCE_NAME.' LIKE :residence ORDER BY '.ATTR_RESIDENCE_NAME.' LIMIT 10');
 	/*** Binding parameters ***/
 	$param = "$residence%";
 	$stmt->bindParam(':residence', $param);

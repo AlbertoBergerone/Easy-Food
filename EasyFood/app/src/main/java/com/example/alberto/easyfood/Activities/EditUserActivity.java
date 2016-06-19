@@ -2,12 +2,14 @@ package com.example.alberto.easyfood.Activities;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -55,8 +57,8 @@ public class EditUserActivity extends AppCompatActivity {
         /* Displaying user information */
         displayUserInfo();
 
-        Button btnUpdate = (Button) findViewById(R.id.btnUpdateUser);
-        Button btnDelete = (Button) findViewById(R.id.btnDeleteUser);
+        final Button btnUpdate = (Button) findViewById(R.id.btnUpdateUser);
+        final Button btnDelete = (Button) findViewById(R.id.btnDeleteUser);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.default_toolbar);
         setSupportActionBar(toolbar);
@@ -82,7 +84,7 @@ public class EditUserActivity extends AppCompatActivity {
                                 return item.get_full_residence();
                             }
                         });
-                        FunDapter funDapter = new FunDapter(EditUserActivity.this, residenceArray, R.id.edit_account_user_residence, residenceBindDictionary);
+                        FunDapter funDapter = new FunDapter(EditUserActivity.this, residenceArray, android.R.layout.simple_list_item_1, residenceBindDictionary);
                         txtResidence.setAdapter(funDapter);
                     }
                 }
@@ -94,86 +96,105 @@ public class EditUserActivity extends AppCompatActivity {
 
         /* The user is trying to update his profile */
         if (btnUpdate != null) {
-            btnUpdate.setOnClickListener(new View.OnClickListener() {
+            btnUpdate.setOnTouchListener(new View.OnTouchListener() {
                 @Override
-                public void onClick(View v) {
-                    if (InternetConnection.haveIInternetConnection(getApplicationContext())) {
-                        User user = new User(CurrentUser.get_currentUserProfile());
-                        user.set_name(String.valueOf(txtName.getText()));
-                        user.set_last_name(String.valueOf(txtLastName.getText()));
-                        if(!String.valueOf(txtResidence.getText()).isEmpty()){
-                            //user.set_province();
-                            user.set_address(String.valueOf(txtAddress.getText()));
-                            user.set_residence(String.valueOf(txtResidence.getText()));
-                        }
-                        if(!String.valueOf(txtPhone.getText()).isEmpty()){
-                            user.set_phone(String.valueOf(txtPhone.getText()));
-                        }
-                        if(!String.valueOf(txtEmail.getText()).isEmpty() && UserManager.isValidEmail(String.valueOf(txtEmail.getText()))){
-                            user.set_email(String.valueOf(txtEmail.getText()));
-                        }
-
-                        if(userManager.updateUser()){
-                            CurrentUser.set_currentUserProfile(userManager.get_user());
-                            if (!String.valueOf(txtEmail.getText()).equals(user.get_email())) {
-                                /* email already used but the other information were updated */
-                                Toast.makeText(getApplicationContext(), R.string.email_already_used_but_updated, Toast.LENGTH_LONG).show();
-                            }else {
-                                /* The user was updated successfully */
-                                Toast.makeText(getApplicationContext(), R.string.user_updated_successfully, Toast.LENGTH_LONG).show();
+                public boolean onTouch(View v, MotionEvent event) {
+                    if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                        setBackgroundDrawable(btnUpdate, R.drawable.primary_color_button_pressed);
+                        if (InternetConnection.haveIInternetConnection(getApplicationContext())) {
+                            User user = new User(CurrentUser.get_currentUserProfile());
+                            user.set_name(String.valueOf(txtName.getText()));
+                            user.set_last_name(String.valueOf(txtLastName.getText()));
+                            if (!String.valueOf(txtResidence.getText()).isEmpty()) {
+                                //user.set_province();
+                                user.set_address(String.valueOf(txtAddress.getText()));
+                                user.set_residence(String.valueOf(txtResidence.getText()));
                             }
-                            /* Displaying information after yhe update */
-                            displayUserInfo();
-                        }else{
-                            /* The user wasn't updated successfully */
-                            Toast.makeText(getApplicationContext(), R.string.user_not_updated, Toast.LENGTH_LONG).show();
+                            if (!String.valueOf(txtPhone.getText()).isEmpty()) {
+                                user.set_phone(String.valueOf(txtPhone.getText()));
+                            }
+                            if (!String.valueOf(txtEmail.getText()).isEmpty() && UserManager.isValidEmail(String.valueOf(txtEmail.getText()))) {
+                                user.set_email(String.valueOf(txtEmail.getText()));
+                            }
+                            userManager.set_user(user);
+                            if (userManager.updateUser()) {
+                                CurrentUser.set_currentUserProfile(userManager.get_user());
+                                if (!String.valueOf(txtEmail.getText()).equals(user.get_email())) {
+                                    /* email already used but the other information were updated */
+                                    Toast.makeText(getApplicationContext(), R.string.email_already_used_but_updated, Toast.LENGTH_LONG).show();
+                                } else {
+                                    /* The user was updated successfully */
+                                    Toast.makeText(getApplicationContext(), R.string.user_updated_successfully, Toast.LENGTH_LONG).show();
+                                }
+                                /* Displaying information after yhe update */
+                                displayUserInfo();
+                            } else {
+                                /* The user wasn't updated successfully */
+                                Toast.makeText(getApplicationContext(), R.string.user_not_updated, Toast.LENGTH_LONG).show();
+                            }
+                        } else {
+                            /* No Internet connection */
+                            Toast.makeText(getApplicationContext(), R.string.No_internet_connection, Toast.LENGTH_LONG).show();
                         }
-                    }else{
-                        /* No Internet connection */
-                        Toast.makeText(getApplicationContext(), R.string.No_internet_connection, Toast.LENGTH_LONG).show();
+                    }else if (event.getAction() == MotionEvent.ACTION_UP) {
+                        setBackgroundDrawable(btnUpdate, R.drawable.primary_color_button);
                     }
+                    return true;
                 }
             });
         }
 
         /* The user want to delete his account */
         if (btnDelete != null) {
-            btnDelete.setOnClickListener(new View.OnClickListener() {
+            btnDelete.setOnTouchListener(new View.OnTouchListener() {
                 @Override
-                public void onClick(View v) {
-                    new AlertDialog.Builder(getApplicationContext()).setTitle(R.string.delete_profile).setMessage(R.string.are_you_sure_delete_profile).setPositiveButton(R.string.Yes, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            /* Checking the status of the Internet connection */
-                            if (InternetConnection.haveIInternetConnection(getApplicationContext())) {
-                            /* The user will be deleted */
-                                userManager.set_user(CurrentUser.get_currentUserProfile());
-                                if (userManager.deleteUser()) {
-                                /* The user was deleted */
-                                    Toast.makeText(getApplicationContext(), R.string.user_deleted_successfully, Toast.LENGTH_LONG).show();
-                                    Intent logOutIntent = new Intent(EditUserActivity.this, LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                    EditUserActivity.this.startActivity(logOutIntent);
-                                    finish();
+                public boolean onTouch(View v, MotionEvent event) {
+                    if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                        setBackgroundDrawable(btnDelete, R.drawable.primary_color_button_pressed);
+                        new AlertDialog.Builder(getApplicationContext()).setTitle(R.string.delete_profile).setMessage(R.string.are_you_sure_delete_profile).setPositiveButton(R.string.Yes, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                /* Checking the status of the Internet connection */
+                                if (InternetConnection.haveIInternetConnection(getApplicationContext())) {
+                                /* The user will be deleted */
+                                    userManager.set_user(CurrentUser.get_currentUserProfile());
+                                    if (userManager.deleteUser()) {
+                                    /* The user was deleted */
+                                        Toast.makeText(getApplicationContext(), R.string.user_deleted_successfully, Toast.LENGTH_LONG).show();
+                                        Intent logOutIntent = new Intent(EditUserActivity.this, LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                        EditUserActivity.this.startActivity(logOutIntent);
+                                        finish();
+                                    } else {
+                                    /* An error occurred in the elimination */
+                                        Toast.makeText(getApplicationContext(), R.string.user_not_deleted, Toast.LENGTH_LONG).show();
+                                    }
                                 } else {
-                                /* An error occurred in the elimination */
-                                    Toast.makeText(getApplicationContext(), R.string.user_not_deleted, Toast.LENGTH_LONG).show();
+                                    /* No Internet connection */
+                                    Toast.makeText(getApplicationContext(), R.string.No_internet_connection, Toast.LENGTH_LONG).show();
                                 }
-                            }else{
-                                /* No Internet connection */
-                                Toast.makeText(getApplicationContext(), R.string.No_internet_connection, Toast.LENGTH_LONG).show();
+                                dialog.dismiss();
                             }
-                            dialog.dismiss();
-                        }
-                    }).setNegativeButton(R.string.No, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            /* Nothing to do */
-                            dialog.dismiss();
-                        }
-                    });
+                        }).setNegativeButton(R.string.No, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                /* Nothing to do */
+                                dialog.dismiss();
+                            }
+                        });
+                    }else if (event.getAction() == MotionEvent.ACTION_UP) {
+                        setBackgroundDrawable(btnDelete, R.drawable.primary_color_button);
+                    }
+                    return true;
                 }
             });
         }
+    }
+
+    private void setBackgroundDrawable(View view, int drawable){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+            view.setBackground(getDrawable(drawable));
+        else
+            view.setBackgroundDrawable(getResources().getDrawable(drawable));
     }
 
     /**
