@@ -15,211 +15,177 @@
 
         <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
 
-            <RelativeLayout
+            <LinearLayout
+                android:id="@+id/user_information_layout"
+                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp">
 
-                <LinearLayout
-                    android:id="@+id/user_information_layout"
-                    android:orientation="vertical"
+                <TextView
+                    android:id="@+id/userUsernameLabel"
+                    style="@style/DefaultLabel"
+                    android:textColor="@color/grey"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="@string/Username" />
+
+                <TextView
+                    android:id="@+id/account_user_username"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/userUsernameLabel"
-                        style="@style/DefaultLabel"
-                        android:textColor="@color/grey"
-                        android:paddingLeft="16dp"
-                        android:paddingRight="16dp"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:text="@string/Username" />
-
-                    <TextView
-                        android:id="@+id/account_user_username"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:maxLines="1"
-                        android:paddingLeft="16dp"
-                        android:paddingRight="16dp"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="" />
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="" />
 
 
 
-                    <View
-                        android:layout_width="fill_parent"
-                        android:layout_height="2sp"
-                        android:minHeight="2sp"
-                        android:background="@drawable/grey_line"/>
+                <View
+                    android:layout_marginTop="4sp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="2sp"
+                    android:background="@drawable/grey_line"/>
 
-                    <TextView
-                        android:id="@+id/userNameLabel"
-                        style="@style/DefaultLabel"
-                        android:textColor="@color/grey"
-                        android:paddingLeft="16dp"
-                        android:paddingRight="16dp"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:text="@string/Name" />
+                <TextView
+                    android:id="@+id/userNameLabel"
+                    style="@style/DefaultLabel"
+                    android:textColor="@color/grey"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="@string/Name" />
 
-                    <TextView
-                        android:id="@+id/account_user_name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:maxLines="1"
-                        android:paddingLeft="16dp"
-                        android:paddingRight="16dp"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="" />
+                <TextView
+                    android:id="@+id/account_user_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="" />
 
 
 
-                    <View
-                        android:layout_width="fill_parent"
-                        android:layout_height="2sp"
-                        android:minHeight="2sp"
-                        android:background="@drawable/grey_line"/>
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_marginTop="4sp"
+                    android:layout_height="2sp"
+                    android:background="@drawable/grey_line"/>
 
-                    <TextView
-                        android:id="@+id/userLastNameLabel"
-                        style="@style/DefaultLabel"
-                        android:textColor="@color/grey"
-                        android:paddingLeft="16dp"
-                        android:paddingRight="16dp"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:text="@string/Last_name" />
+                <TextView
+                    android:id="@+id/userLastNameLabel"
+                    style="@style/DefaultLabel"
+                    android:textColor="@color/grey"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="@string/Last_name" />
 
-                    <TextView
-                        android:id="@+id/account_user_last_name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:maxLines="1"
-                        android:paddingLeft="16dp"
-                        android:paddingRight="16dp"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="" />
+                <TextView
+                    android:id="@+id/account_user_last_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="" />
 
 
 
-                    <View
-                        android:layout_width="fill_parent"
-                        android:layout_height="2sp"
-                        android:minHeight="2sp"
-                        android:paddingLeft="16dp"
-                        android:paddingRight="16dp"
-                        android:background="@drawable/grey_line"/>
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_marginTop="4sp"
+                    android:layout_height="2sp"
+                    android:background="@drawable/grey_line"/>
 
-                    <TextView
-                        android:id="@+id/userEmailLabel"
-                        style="@style/DefaultLabel"
-                        android:textColor="@color/grey"
-                        android:paddingLeft="16dp"
-                        android:paddingRight="16dp"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:text="@string/Email"/>
+                <TextView
+                    android:id="@+id/userEmailLabel"
+                    style="@style/DefaultLabel"
+                    android:textColor="@color/grey"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="@string/Email"/>
 
-                    <TextView
-                        android:id="@+id/account_user_email"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:maxLines="1"
-                        android:paddingLeft="16dp"
-                        android:paddingRight="16dp"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="" />
+                <TextView
+                    android:id="@+id/account_user_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="" />
 
 
 
-                    <View
-                        android:layout_width="fill_parent"
-                        android:layout_height="2sp"
-                        android:minHeight="2sp"
-                        android:background="@drawable/grey_line"/>
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_marginTop="4sp"
+                    android:layout_height="2sp"
+                    android:background="@drawable/grey_line"/>
 
-                    <TextView
-                        android:id="@+id/userPhoneNumberLabel"
-                        style="@style/DefaultLabel"
-                        android:textColor="@color/grey"
-                        android:paddingLeft="16dp"
-                        android:paddingRight="16dp"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:text="@string/PhoneNumber"/>
+                <TextView
+                    android:id="@+id/userPhoneNumberLabel"
+                    style="@style/DefaultLabel"
+                    android:textColor="@color/grey"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="@string/PhoneNumber"/>
 
-                    <TextView
-                        android:id="@+id/account_user_phone_number"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:maxLines="1"
-                        android:paddingLeft="16dp"
-                        android:paddingRight="16dp"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="" />
+                <TextView
+                    android:id="@+id/account_user_phone_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="" />
 
 
 
-                    <View
-                        android:layout_width="fill_parent"
-                        android:layout_height="2sp"
-                        android:minHeight="2sp"
-                        android:background="@drawable/grey_line"/>
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_marginTop="4sp"
+                    android:layout_height="2sp"
+                    android:background="@drawable/grey_line"/>
 
-                    <TextView
-                        android:id="@+id/userResidenceLabel"
-                        style="@style/DefaultLabel"
-                        android:textColor="@color/grey"
-                        android:paddingLeft="16dp"
-                        android:paddingRight="16dp"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:text="@string/Residence"/>
+                <TextView
+                    android:id="@+id/userResidenceLabel"
+                    style="@style/DefaultLabel"
+                    android:textColor="@color/grey"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="@string/Residence"/>
 
-                    <TextView
-                        android:id="@+id/account_user_residence"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:maxLines="1"
-                        android:paddingLeft="16dp"
-                        android:paddingRight="16dp"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="" />
+                <TextView
+                    android:id="@+id/account_user_residence"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="" />
 
 
 
-                    <View
-                        android:layout_width="fill_parent"
-                        android:layout_height="2sp"
-                        android:minHeight="2sp"
-                        android:background="@drawable/grey_line"/>
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_marginTop="4sp"
+                    android:layout_height="2sp"
+                    android:background="@drawable/grey_line"/>
 
-                    <TextView
-                        android:id="@+id/userAddressLabel"
-                        style="@style/DefaultLabel"
-                        android:textColor="@color/grey"
-                        android:paddingLeft="16dp"
-                        android:paddingRight="16dp"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:text="@string/Address"/>
+                <TextView
+                    android:id="@+id/userAddressLabel"
+                    style="@style/DefaultLabel"
+                    android:textColor="@color/grey"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="@string/Address"/>
 
-                    <TextView
-                        android:id="@+id/account_user_address"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:maxLines="1"
-                        android:paddingLeft="16dp"
-                        android:paddingRight="16dp"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="" />
+                <TextView
+                    android:id="@+id/account_user_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="" />
 
-                    <View
-                        android:layout_width="fill_parent"
-                        android:layout_height="2sp"
-                        android:minHeight="2sp"
-                        android:background="@drawable/grey_line"/>
-                </LinearLayout>
-
-            </RelativeLayout>
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_marginTop="4sp"
+                    android:layout_height="2sp"
+                    android:background="@drawable/grey_line"/>
+            </LinearLayout>
 
         </ScrollView>
 

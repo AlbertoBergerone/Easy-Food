@@ -2,8 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="2dp">
+    android:layout_height="wrap_content"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp">
+
     <TextView
         android:id="@+id/list_item_key"
         android:layout_width="match_parent"
@@ -14,5 +17,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceListItem"
-        android:paddingTop="1dp"/>
+        android:layout_marginTop="1dp"/>
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2sp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/grey_line"/>
 </LinearLayout>

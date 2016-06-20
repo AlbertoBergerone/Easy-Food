@@ -63,7 +63,6 @@ public class SearchFragment extends Fragment {
         Intent searchIntent = SearchFragment.this.getActivity().getIntent();
         if(Intent.ACTION_SEARCH.equals(searchIntent.getAction())){
             String queryString = searchIntent.getStringExtra(SearchManager.QUERY);
-            Toast.makeText(SearchFragment.this.getActivity(), queryString, Toast.LENGTH_LONG).show();
             RestaurantManager restaurantManager = new RestaurantManager();
             if(InternetConnection.haveIInternetConnection(SearchFragment.this.getActivity())){
 

@@ -9,21 +9,22 @@ define('QUERY_TEXT', 'query_text');
 define('REQUEST', 'request_type');
 define('RESTAURANTS_FOR_LIST_VIEW', 'restaurants_for_list_view');
 define('RESTAURANT_LOCATIONS', 'restaurant_locations');
-define('RESTAURANT_INFORMATION', 'restaurant_informtion');
+define('RESTAURANT_INFORMATION', 'restaurant_information');
 
 try {
 	/*** Getting data ***/
 	$json = file_get_contents("php://input");
 	/*** Decoding json ***/
 	$data = json_decode($json, TRUE);
-	
 	if($data != null){
 		if($data[REQUEST] == RESTAURANTS_FOR_LIST_VIEW)
 			print(json_encode(getRestaurantsInfoForListView($data[QUERY_TEXT])));
 		else if($data[REQUEST] == RESTAURANT_LOCATIONS)
 			print(json_encode(getRestaurantLocations($data[ATTR_LONGITUDE], $data[ATTR_LATITUDE])));
-		else if($data[REQUEST] == RESTAURANT_INFORMATION)
+		else if($data[REQUEST] == RESTAURANT_INFORMATION){
+			var_dump($data);
 			print(json_encode(getRestaurant($data[ATTR_RESTAURANT_ID])));
+		}
 	}else return null;
 	
 } catch(Exception $e) {

@@ -84,18 +84,20 @@ public class RestaurantManager {
     }
 
     public Restaurant getRestaurant(int restaurantID) {
+        Restaurant retRestaurant = null;
+        Log.e(TAG, String.valueOf(restaurantID));
         try {
             JSONObject json = new JSONObject();
             json.put(REQUEST, RESTAURANT_INFORMATION);
             json.put(DB_Attributes.DB_RESTAURANT_ID, restaurantID);
             json = CommunicationManager.postData(SERVER_URL, json);
             if(json != null){
-                fromJSONtoRestaurant(json.getJSONObject(RESTAURANT));
+                retRestaurant = fromJSONtoRestaurant(json.getJSONObject(RESTAURANT));
             }
         } catch (JSONException e) {
             Log.e(TAG, "Malformed json string: " + e.getMessage());
         }
-        return null;
+        return retRestaurant;
     }
 
     private Restaurant fromJSONtoRestaurant(JSONObject json) {

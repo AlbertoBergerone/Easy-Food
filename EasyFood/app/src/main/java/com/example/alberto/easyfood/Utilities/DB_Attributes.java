@@ -21,7 +21,7 @@ public class DB_Attributes {
     public static final String DB_CADASTRAL_ID = "codCatastale";
     public static final String DB_RESIDENCE = "nomeComune";
     public static final String DB_CAP = "cap";
-    public static final String DB_RESTAURANT_ID = "codRistorante'";
+    public static final String DB_RESTAURANT_ID = "codRistorante";
     public static final String DB_RESTAURANT_NAME = "nomeRistorante";
     public static final String DB_RESTAURANT_ADDRESS = "indirizzoRistorante";
     public static final String DB_RESTAURANT_PHONE = "telRistornate";
