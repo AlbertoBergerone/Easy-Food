@@ -17,8 +17,6 @@ import java.net.URL;
 
 import javax.net.ssl.HttpsURLConnection;
 
-import static java.lang.String.valueOf;
-
 /**
  * Created by inf.bergeronea1610 on 21/03/2016.
  * Class that permits to communicate with a server.
@@ -43,21 +41,23 @@ public class CommunicationManager {
 	public static JSONObject postData(String url, JSONObject dataToBeSent){
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
-		JSONObject jsonObject = null;
+		JSONObject jsonObject = null; /* server response */
         if(dataToBeSent != null) {
             URL serverURL = null;
             StringBuilder stringBuilder = new StringBuilder();
             try {
+				/* Casting the url to a format that is needed below */
                 serverURL = new URL(url);
                 /* Opening a connection */
                 HttpURLConnection connection = (HttpURLConnection) serverURL.openConnection();
                 /* Setting timeout */
                 connection.setReadTimeout(READ_TIMEOUT);
                 connection.setConnectTimeout(CONNECTION_TIMEOUT);
-                /* Using the POST method sending data */
+                /* Setting the POST method to send */
                 connection.setRequestMethod(POST_METHOD);
                 connection.setDoInput(true);
                 connection.setDoOutput(true);
+				/* Sending data */
                 DataOutputStream outputStream = new DataOutputStream(connection.getOutputStream());
                 outputStream.writeBytes(dataToBeSent.toString());
                 outputStream.flush();
@@ -70,10 +70,9 @@ public class CommunicationManager {
                     /* If the response is a 200 http response it will get the message the server sent */
                     String line;
                     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                    while ((line = bufferedReader.readLine()) != null) {
+                    while ((line = bufferedReader.readLine()) != null)
                         stringBuilder.append(line + '\n');
-                    }
-
+                    
 					jsonObject = new JSONObject(stringBuilder.toString());
                 }
 

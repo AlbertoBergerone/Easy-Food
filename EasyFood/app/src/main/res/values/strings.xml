@@ -64,4 +64,5 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="Settings">Settings</string>
     <string name="Filters">Filters</string>
+    <string name="No_restaurant_found_near_you">It seems there are no restaurants near you</string>
 </resources>

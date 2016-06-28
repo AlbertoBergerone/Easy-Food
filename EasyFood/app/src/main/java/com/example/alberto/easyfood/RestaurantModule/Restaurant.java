@@ -5,6 +5,7 @@ import android.content.Context;
 import com.example.alberto.easyfood.R;
 import com.example.alberto.easyfood.Utilities.DB_Attributes;
 import com.example.alberto.easyfood.Utilities.Key_Value;
+import com.google.android.gms.maps.model.LatLng;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -21,13 +22,15 @@ public class Restaurant implements Serializable {
     private double _rating;
     private String _residence;
     private String _provinceID;
-    private String[] _type;
+    private ArrayList<String> _type;
     private String _phoneNumber;
     private String _email;
     private String _description;
 
     /* Constructors */
-    public Restaurant(){}
+    public Restaurant(){
+        _type = new ArrayList<>();
+    }
 
     /**
      * Getting an ArrayList containing key, value of the main properties of this restaurant
@@ -84,9 +87,9 @@ public class Restaurant implements Serializable {
     public String get_typeToString(){
         if(_type != null){
             StringBuilder ret = new StringBuilder();
-            for (int i = 0; i < _type.length; i++){
-                ret.append(_type[i]);
-                if(i != (_type.length -1)) ret.append(", ");
+            for (int i = 0; i < _type.size(); i++){
+                ret.append(_type.get(i));
+                if(i != (_type.size() -1)) ret.append(", ");
             }
             return ret.toString();
         }else return "";
@@ -97,21 +100,22 @@ public class Restaurant implements Serializable {
      * @param new_type
      */
     public void addType(String new_type) {
-        int i = 0;
-        boolean found = false;
         if(_type != null) {
-            while (i < _type.length && !found) {
-                if (_type[i] == new_type)
-                    found = true;
-                else i++;
-            }
-            if (!found)
-                _type[_type.length] = new_type;
+            if(!_type.contains(new_type))
+                _type.add(new_type);
         } else {
-            _type[0] = new_type;
+            _type = new ArrayList<>();
+            _type.add(new_type);
         }
     }
 
+    /**
+     * Getting the location of the restaurant
+     * @return LatLng object that contains the position of the restaurant
+     */
+    public LatLng get_position(){
+        return new LatLng(_latitude, _longitude);
+    }
 
     /* Getters and setters */
     public int get_restaurantID() {
@@ -178,11 +182,11 @@ public class Restaurant implements Serializable {
         this._provinceID = provinceID;
     }
 
-    public String[] get_type() {
+    public ArrayList<String> get_type() {
         return _type;
     }
 
-    public void set_type(String[] type) {
+    public void set_type(ArrayList<String> type) {
         this._type = type;
     }
 
