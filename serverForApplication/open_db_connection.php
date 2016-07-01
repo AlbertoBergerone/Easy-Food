@@ -41,6 +41,9 @@ define('ATTR_COMMENT_TITLE', 'titoloCommento');
 define('ATTR_COMMENT', 'commento');
 define('ATTR_TYPE_ID', 'codTipo');
 define('ATTR_TYPE', 'Tipo');
+define('ATTR_DAY', 'giorno');
+define('ATTR_OPENING', 'apertura');
+define('ATTR_CLOSURE', 'chiusura');
 
 
 /*** mysql hostname ***/

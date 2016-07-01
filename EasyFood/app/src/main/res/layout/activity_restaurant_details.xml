@@ -11,26 +11,20 @@
         layout="@layout/default_toolbar">
     </include>
 
-    <ScrollView
-        android:id="@+id/restaurant_info_main_container"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <LinearLayout
+        <FrameLayout
+            android:id="@+id/restaurant_info_map_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <ListView
-                android:id="@+id/restaurant_info_list"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            android:layout_height="200dp">
+        </FrameLayout>
+        <ListView
+            android:layout_below="@id/restaurant_info_map_container"
+            android:id="@+id/restaurant_info_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-            </ListView>
-            <include
-                android:id="@+id/map"
-                layout="@layout/map"
-                android:layout_width="match_parent"
-                android:layout_height="280dp"/>
-
-        </LinearLayout>
-    </ScrollView>
+        </ListView>
+    </RelativeLayout>
 </LinearLayout>

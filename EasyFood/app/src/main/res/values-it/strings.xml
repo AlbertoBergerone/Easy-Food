@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Easy Food</string>
+
+    <string name="sign_up_if_do_not_have_account">Non possiedi un profilo? Registrati!</string>
+    <string name="already_have_account">Possiedi già un profilo? Accedici.</string>
+    <string name="create_new_account">Crea un nuovo profilo</string>
+    <string name="Login">Login</string>
+    <string name="LogOut">Esci</string>
+    <string name="Sign_up">Registati</string>
+    <string name="Update">Modifica</string>
+    <string name="Delete_profile">Elimina il tuo profilo</string>
+    <string name="Edit_user">Modifica il tuo profilo</string>
+
+    <string name="Yes">Si</string>
+    <string name="No">No</string>
+
+    <string name="Username">Username</string>
+    <string name="Name">Nome</string>
+    <string name="Last_name">Cognome</string>
+    <string name="Email">Email</string>
+    <string name="Password">Password</string>
+    <string name="Repeat_password">Ripeti la password</string>
+    <string name="PhoneNumber">Numero di telefono</string>
+    <string name="Residence">Residenza</string>
+    <string name="Address">Indirizzo</string>
+    <string name="Location">Località</string>
+    <string name="Type">Tipologia</string>
+    <string name="Rating">Valutazione</string>
+
+    <string name="Settings">Impostazioni</string>
+    <string name="New_password">Password nuova</string>
+    <string name="Current_password">Password attuale</string>
+    <string name="Edit_password">Modifica la password</string>
+
+
+    <string name="Open_now">Aperti ora</string>
+    <string name="All_restaurants">Tutti i locali</string>
+    <string name="Search">Cerca</string>
+    <string name="Map">Mappa</string>
+    <string name="Account">Profilo</string>
+
+    <string name="input_empty_fields">Sembra che alcuni campi non siamo compilati</string>
+    <string name="passwords_not_equals">Per favore, inserisci la stessa password</string>
+    <string name="No_internet_connection">Non è disponibile alcuna connessione ad internet. Controlla le tue impostazioni e riprova</string>
+    <string name="login_not_valid">Credenziali non valide</string>
+    <string name="server_unreachable">Si è verificato un problema con il server. Per favore riprova più tardi.</string>
+    <string name="email_not_valid">Sembra che la tua email non sia valida</string>
+    <string name="user_deleted_successfully">Il tuo profilo è stato eliminato</string>
+    <string name="user_not_deleted">Ops..si è verificato un errore! Il tuo profilo non è stato eliminato</string>
+    <string name="user_updated_successfully">Il tuo profilo è stato aggiornato</string>
+    <string name="user_not_updated">Ops..si è verificato un errore! Il tuo profilo non è stato aggiornato</string>
+    <string name="email_already_used_but_updated">La tua email è già registrata. Le altre informazioni sono state comunque aggiornate</string>
+    <string name="delete_profile">Elimina profilo</string>
+    <string name="are_you_sure_delete_profile">Sei sicuro di voler eliminare il tuo profilo?</string>
+    <string name="email_already_used">Email già registrata</string>
+    <string name="username_already_used">Username già registrato</string>
+    <string name="general_error_message">Si è verificato un errore. Per favore riavvia Easy Food</string>
+    <string name="gps_not_enabled">Per poter usufruire di questa funzionalità devi attivare il GPS</string>
+    <string name="No_restaurant_found_near_you">Sembra che non ci siano locali vicino a te</string>
+    <string name="Impossible_to_get_your_location">Si è verificato un errore. Non è possibile rilevare la tua posizione</string>
+    <string name="password_not_valid">La password non è valida</string>
+
+    <string name="title_activity_sign_up">Registrati</string>
+    <string name="title_activity_main">Easy Food</string>
+    <string name="action_settings">Impostazioni</string>
+    <string name="title_activity_maps">Mappa</string>
+
+    <string name="navigation_drawer_open">Apertura menù di scorrimento</string>
+    <string name="navigation_drawer_close">Chiusura menù di scorrimento</string>
+</resources>

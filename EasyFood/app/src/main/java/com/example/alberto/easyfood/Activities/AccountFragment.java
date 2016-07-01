@@ -96,17 +96,21 @@ public class AccountFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == R.id.menu_log_out_account){
+        if(item.getItemId() == R.id.menu_edit_account){
+            /* Opening the activity where the user is able to modify his profile */
+            Intent editUserIntent = new Intent(AccountFragment.this.getActivity(), EditUserActivity.class);
+            AccountFragment.this.getActivity().startActivity(editUserIntent);
+        }else if(item.getItemId() == R.id.menu_edit_password){
+            /* Opening the activity where the user is able to modify his password */
+            Intent editPasswordIntent = new Intent(AccountFragment.this.getActivity(), EditPasswordActivity.class);
+            AccountFragment.this.getActivity().startActivity(editPasswordIntent);
+        }else if(item.getItemId() == R.id.menu_log_out_account){
             /* If the user clicked on logOut item it cleans all user information and it returns to the login activity */
             CurrentUser.set_currentUserProfile(null);
             /* Setting flags to clean up all activities, so the user can't return in the home activity clicking back button */
             Intent logOutIntent = new Intent(AccountFragment.this.getActivity(), LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             AccountFragment.this.getActivity().startActivity(logOutIntent);
             AccountFragment.this.getActivity().finish();
-        }else if(item.getItemId() == R.id.menu_edit_account){
-            /* Opening the activity where the user is able to modify his profile */
-            Intent editUserIntent = new Intent(AccountFragment.this.getActivity(), EditUserActivity.class);
-            AccountFragment.this.getActivity().startActivity(editUserIntent);
         }
         return super.onOptionsItemSelected(item);
     }

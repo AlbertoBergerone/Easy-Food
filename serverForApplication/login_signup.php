@@ -170,32 +170,45 @@ function updateUser($user){
 	global $conn;
 	if(isset($user->{ATTR_USER_ID}) && !empty($user->{ATTR_USER_ID})){
 		/*** Composing the SQL statement ***/
-		$statement = 'UPDATE '.TABLE_USER.' SET ';
+		$statement = 'UPDATE '.TABLE_USER.' SET '.ATTR_USER_ID.' = ? ';
+		$binds[] = $user->{ATTR_USER_ID};
 		if(isset($user->{ATTR_USER_EMAIL}) && !empty($user->{ATTR_USER_EMAIL})){
 			if(!isEmailAlreadyUsed($user->{ATTR_USER_EMAIL})){
 				/*** If I'm here the email is valid and it isn't already used ***/
 				/*** Updating email ***/
-				$statement .= ATTR_CONFIRMED_USER.' = false, '.ATTR_USER_EMAIL.' = ? ';
+				$statement .= ', '.ATTR_CONFIRMED_USER.' = false, '.ATTR_USER_EMAIL.' = ? ';
 				$binds[] = $user->ATTR_USER_EMAIL;
 			}
 		}
+		if(isset($user->{ATTR_NAME}) && !empty($user->{ATTR_NAME})){
+			/*** Updating phone number ***/
+			$statement .= ', '.ATTR_NAME.' = ? ';
+			$binds[] = $user->{ATTR_NAME};
+		}
+		if(isset($user->{ATTR_LAST_NAME}) && !empty($user->{ATTR_LAST_NAME})){
+			/*** Updating phone number ***/
+			$statement .= ', '.ATTR_LAST_NAME.' = ? ';
+			$binds[] = $user->{ATTR_LAST_NAME};
+		}
 		if(isset($user->{ATTR_USER_PHONE}) && !empty($user->{ATTR_USER_PHONE})){
 			/*** Updating phone number ***/
-			$statement .= ATTR_USER_PHONE.' = ? ';
+			$statement .= ', '.ATTR_USER_PHONE.' = ? ';
 			$binds[] = $user->{ATTR_USER_PHONE};
 		}
 		if(isset($user->{ATTR_USER_ADDRESS}) && !empty($user->{ATTR_USER_ADDRESS})){
 			/*** Updating address ***/
-			$statement .= ATTR_USER_ADDRESS.' = ? ';
+			$statement .= ', '.ATTR_USER_ADDRESS.' = ? ';
 			$binds[] = $user->{ATTR_USER_ADDRESS};
 		}
 		if(isset($user->{ATTR_PASSWORD}) && !empty($user->{ATTR_PASSWORD})){
-			/*** Updating password ***/
-			$statement .= ATTR_PASSWORD.' = ? ';
+			/*** Updating address ***/
+			$statement .= ', '.ATTR_PASSWORD.' = ? ';
 			$binds[] = $user->{ATTR_PASSWORD};
 		}
+		$statement .= ' WHERE '.ATTR_USER_ID.' = ? ';
+		$binds[] = $user->{ATTR_USER_ID};
 		/*** Preparing SQL statement ***/
-		$stmt = $conn->prepare($query);
+		$stmt = $conn->prepare($statement);
 		/*** Binding parameters ***/
 		for($i=1; $i <= count($binds); $i=$i+1)
 			/*** bindParam: first value has index = 1 ***/

@@ -51,9 +51,8 @@
                 android:resource="@xml/searchable"/>
             </activity>
         <activity android:name=".Activities.RestaurantDetailsActivity" />
-        <activity android:name=".Activities.EditUserActivity">
-
-        </activity>
+        <activity android:name=".Activities.EditUserActivity" />
+        <activity android:name=".Activities.EditPasswordActivity" />
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="@string/google_maps_key" />

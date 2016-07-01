@@ -28,9 +28,8 @@
                 <EditText
                     android:id="@+id/edit_account_user_name"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="@style/DefaultEditText"
                     android:inputType="textPersonName"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
                     android:hint="Name" />
 
 
@@ -38,49 +37,44 @@
                 <EditText
                     android:id="@+id/edit_account_user_last_name"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="@style/DefaultEditText"
                     android:inputType="textPersonName"
                     android:layout_marginTop="6dp"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
                     android:hint="LastName" />
 
 
                 <EditText
                     android:id="@+id/edit_account_user_email"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="@style/DefaultEditText"
                     android:inputType="textEmailAddress"
                     android:layout_marginTop="6dp"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
                     android:hint="Email" />
 
 
                 <EditText
                     android:id="@+id/edit_account_user_phone_number"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="@style/DefaultEditText"
                     android:inputType="phone"
                     android:layout_marginTop="6dp"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
                     android:hint="@string/PhoneNumber" />
 
 
                 <AutoCompleteTextView
                     android:id="@+id/edit_account_user_residence"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="@style/DefaultEditText"
                     android:inputType="textAutoComplete"
                     android:hint="@string/Residence"
-                    android:layout_marginTop="6dp"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
+                    android:layout_marginTop="6dp" />
 
                 <EditText
                     android:id="@+id/edit_account_user_address"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="@style/DefaultEditText"
                     android:inputType="textPostalAddress"
                     android:layout_marginTop="6dp"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
                     android:hint="@string/Address" />
 
             </LinearLayout>
@@ -99,7 +93,7 @@
                     style="@style/DefaultButton"
                     android:width="300sp"
                     android:textColor="@color/colorPrimary"
-                    android:text="@string/Update_profile"/>
+                    android:text="@string/Update"/>
 
                 <Button
                     android:id="@+id/btnDeleteUser"

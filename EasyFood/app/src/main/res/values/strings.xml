@@ -8,7 +8,7 @@
     <string name="Login">Login</string>
     <string name="LogOut">Log out</string>
     <string name="Sign_up">Sign up</string>
-    <string name="Update_profile">Update</string>
+    <string name="Update">Update</string>
     <string name="Delete_profile">Delete your profile</string>
     <string name="Edit_user">Edit your profile</string>
 
@@ -28,6 +28,13 @@
     <string name="Type">Type</string>
     <string name="Rating">Rating</string>
 
+    <string name="Settings">Settings</string>
+    <string name="New_password">New password</string>
+    <string name="Current_password">Current password</string>
+    <string name="Edit_password">Edit password</string>
+
+    <string name="Open_now">Open now</string>
+    <string name="All_restaurants">All the restaurants</string>
     <string name="Search">Search</string>
     <string name="Map">Map</string>
     <string name="Account">Account</string>
@@ -35,8 +42,6 @@
     <string name="input_empty_fields">It looks like some fields are empty</string>
     <string name="passwords_not_equals">Please, insert the same password</string>
     <string name="No_internet_connection">No internet connection. Please, check your settings and try again</string>
-    <string name="Missing_internet_connection_for_more_info">No internet connection. If you want to know more about the local</string>
-
     <string name="login_not_valid">Your credentials are not valid</string>
     <string name="server_unreachable">There was a problem with the server. Try later</string>
     <string name="email_not_valid">The email looks like to be not correct</string>
@@ -51,18 +56,15 @@
     <string name="username_already_used">Username already used</string>
     <string name="general_error_message">An error occurred. Please restart the app</string>
     <string name="gps_not_enabled">You must enable the GPS service to enjoy this feature</string>
+    <string name="No_restaurant_found_near_you">It seems there are no restaurants near you</string>
+    <string name="Impossible_to_get_your_location">A problem occurred. It is impossible to get your location</string>
+    <string name="password_not_valid">The password is not valid</string>
 
     <string name="title_activity_sign_up">Sign Up</string>
     <string name="title_activity_main">Easy Food</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_maps">Map</string>
-    <string name="title_activity_home2">HomeActivity2</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="Settings">Settings</string>
-    <string name="Filters">Filters</string>
-    <string name="No_restaurant_found_near_you">It seems there are no restaurants near you</string>
 </resources>

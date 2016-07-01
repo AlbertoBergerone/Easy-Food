@@ -4,6 +4,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:padding="16dp"
     android:gravity="center_vertical">
 
     <TextView
@@ -33,9 +35,4 @@
         android:singleLine="true"
         android:maxLines="1"
         android:textAppearance="?android:attr/textAppearanceListItemSmall" />
-
-    <View
-        android:layout_height="2sp"
-        android:layout_width="fill_parent"
-        android:background="@drawable/grey_line"/>
 </LinearLayout>

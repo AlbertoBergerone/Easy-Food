@@ -9,13 +9,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.amigold.fundapter.BindDictionary;
@@ -32,6 +31,8 @@ import java.util.ArrayList;
 
 /**
  * Created by inf.bergeronea1610 on 06/06/2016.
+ * EditUserActivity
+ * This is the activity that is used to change user information
  */
 public class EditUserActivity extends AppCompatActivity {
     private UserManager userManager;
@@ -60,11 +61,15 @@ public class EditUserActivity extends AppCompatActivity {
         final Button btnUpdate = (Button) findViewById(R.id.btnUpdateUser);
         final Button btnDelete = (Button) findViewById(R.id.btnDeleteUser);
 
+        /* Setting the toolbar */
         Toolbar toolbar = (Toolbar) findViewById(R.id.default_toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back_white_24dp);
+        this.setSupportActionBar(toolbar);
+        /* Hiding the title of the toolbar */
+        this.getSupportActionBar().setDisplayShowTitleEnabled(false);
+        /* Displaying the hamburger icon */
+        this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        this.getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back_white_24dp);
+
         userManager = new UserManager();
 
         txtResidence.addTextChangedListener(new TextWatcher() {
@@ -126,7 +131,7 @@ public class EditUserActivity extends AppCompatActivity {
                                     /* The user was updated successfully */
                                     Toast.makeText(getApplicationContext(), R.string.user_updated_successfully, Toast.LENGTH_LONG).show();
                                 }
-                                /* Displaying information after yhe update */
+                                /* Displaying information after the update */
                                 displayUserInfo();
                             } else {
                                 /* The user wasn't updated successfully */
@@ -156,16 +161,16 @@ public class EditUserActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 /* Checking the status of the Internet connection */
                                 if (InternetConnection.haveIInternetConnection(getApplicationContext())) {
-                                /* The user will be deleted */
+                                    /* The user will be deleted */
                                     userManager.set_user(CurrentUser.get_currentUserProfile());
                                     if (userManager.deleteUser()) {
-                                    /* The user was deleted */
+                                        /* The user was deleted */
                                         Toast.makeText(getApplicationContext(), R.string.user_deleted_successfully, Toast.LENGTH_LONG).show();
                                         Intent logOutIntent = new Intent(EditUserActivity.this, LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                         EditUserActivity.this.startActivity(logOutIntent);
                                         finish();
                                     } else {
-                                    /* An error occurred in the elimination */
+                                        /* An error occurred in the elimination */
                                         Toast.makeText(getApplicationContext(), R.string.user_not_deleted, Toast.LENGTH_LONG).show();
                                     }
                                 } else {
@@ -221,5 +226,10 @@ public class EditUserActivity extends AppCompatActivity {
             txtAddress.setText("");
     }
 
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == android.R.id.home)
+            onBackPressed();
+        return super.onOptionsItemSelected(item);
+    }
 }

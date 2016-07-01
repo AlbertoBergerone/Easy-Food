@@ -24,5 +24,13 @@ public class GeolocationManager {
         /* Checking if the GPS is enabled */
         return (((LocationManager) context.getSystemService(Context.LOCATION_SERVICE)).isProviderEnabled(LocationManager.GPS_PROVIDER));
     }
+
+    public static boolean isLatitudeValid(double latitude){
+        return (latitude >= -90 && latitude <= 90);
+    }
+
+    public static boolean isLongitudeValid(double longitude){
+        return (longitude >= -180 && longitude <= 180);
+    }
 }
 

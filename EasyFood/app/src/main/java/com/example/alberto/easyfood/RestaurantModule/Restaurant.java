@@ -17,8 +17,8 @@ public class Restaurant implements Serializable {
     private int _restaurantID;
     private String _restaurantName;
     private String _address;
-    private double _longitude;
-    private double _latitude;
+    private double _longitude = -181;
+    private double _latitude = -91;
     private double _rating;
     private String _residence;
     private String _provinceID;
@@ -62,12 +62,6 @@ public class Restaurant implements Serializable {
             key_valueRestaurantArrayList.add(new Key_Value(context.getResources().getString(R.string.PhoneNumber), get_phoneNumber()));
 
         return key_valueRestaurantArrayList;
-    }
-
-    public String get_full_address(){
-        if(_address != null && _residence != null && _provinceID != null)
-            return _address + ", " + _residence + " (" + _provinceID + ")";
-        else return null;
     }
 
     public String get_full_residence(){

@@ -26,6 +26,7 @@ public class RestaurantManager {
     private static final String RESTAURANTS_FOR_LIST_VIEW = "restaurants_for_list_view";
     private static final String RESTAURANT_INFORMATION = "restaurant_information";
     private static final String RESTAURANT_LOCATIONS = "restaurant_locations";
+    private static final String OPEN_NOW_FLAG = "open_now_flag";
 
     /**
      * Method that contacts the server sending a String that is the text for the research
@@ -123,13 +124,15 @@ public class RestaurantManager {
     /**
      * Getting from the server restaurant locations that are closed to the location is sent to it
      * @param location (LatLng) location to be sent
+     * @param open_now_flag (int) int that should be 1 if the server should return restaurants are opened now. 0 all the restaurants.
      * @return (ArrayList<Restaurant>)
      */
-    public ArrayList<Restaurant> getRestaurantLocations(LatLng location){
+    public ArrayList<Restaurant> getRestaurantLocations(LatLng location, int open_now_flag){
         ArrayList<Restaurant> restaurants = null;
         JSONObject json = new JSONObject();
         try {
             json.put(REQUEST, RESTAURANT_LOCATIONS);
+            json.put(OPEN_NOW_FLAG, open_now_flag);
             json.put(DB_Attributes.DB_LONGITUDE, location.longitude);
             json.put(DB_Attributes.DB_LATITUDE, location.latitude);
             /* Contacting the server */

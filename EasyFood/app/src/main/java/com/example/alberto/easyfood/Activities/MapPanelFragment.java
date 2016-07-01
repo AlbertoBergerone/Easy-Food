@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -24,12 +25,16 @@ import com.example.alberto.easyfood.GeolocationModule.GeolocationManager;
 import com.example.alberto.easyfood.R;
 import com.example.alberto.easyfood.RestaurantModule.Restaurant;
 import com.example.alberto.easyfood.RestaurantModule.RestaurantManager;
+import com.example.alberto.easyfood.ServerCommunicationModule.InternetConnection;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -41,13 +46,15 @@ import java.util.ArrayList;
  */
 public class MapPanelFragment extends Fragment implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
     private static final String TAG = "MapPanelFragment";
+    private static final int FLAG_TRUE = 1;
+    private static final int FLAG_FALSE = 0;
     private GoogleMap myMap;
     private SupportMapFragment mapFragment;
     private View myView;
     private ArrayList<Restaurant> restaurants;
     private ArrayList<Marker> markers;
     private GoogleApiClient myGoogleApiClient;
-    Location myLastLocation;
+    Location myLastLocation = null;
 
     @Nullable
     @Override
@@ -69,7 +76,7 @@ public class MapPanelFragment extends Fragment implements OnMapReadyCallback, Go
         if (myGoogleApiClient != null)
             myGoogleApiClient.connect();
         else
-            Toast.makeText(this.getActivity(), "connection failed cause null object", Toast.LENGTH_LONG).show();
+            Toast.makeText(this.getActivity(), R.string.Impossible_to_get_your_location, Toast.LENGTH_LONG).show();
 
         return myView;
     }
@@ -89,16 +96,38 @@ public class MapPanelFragment extends Fragment implements OnMapReadyCallback, Go
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.default_menu, menu);
+        inflater.inflate(R.menu.map_menu, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        if(!GeolocationManager.isGPSEnabled(this.getActivity())){
-            Toast.makeText(MapPanelFragment.this.getActivity(), R.string.gps_not_enabled, Toast.LENGTH_LONG).show();
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == R.id.menu_open_now_filter){
+            if(myLastLocation != null){
+                if(InternetConnection.haveIInternetConnection(this.getActivity())){
+                    /* If it is possible to get the current location and the internet connection is available I will get the restaurants */
+                    /* Getting the restaurants near me that are opened now */
+                    Object[] params = {new LatLng(myLastLocation.getLatitude(), myLastLocation.getLongitude()), FLAG_TRUE};
+                    /* Getting them with a thread */
+                    new GetRestaurantLocations().execute(params);
+                }else
+                    Toast.makeText(this.getActivity(), R.string.No_internet_connection, Toast.LENGTH_LONG).show();
+            }else
+                Toast.makeText(this.getActivity(), R.string.Impossible_to_get_your_location, Toast.LENGTH_LONG).show();
+        }else if(item.getItemId() == R.id.menu_all_restaurants){
+            if(myLastLocation != null){
+                if(InternetConnection.haveIInternetConnection(this.getActivity())){
+                    /* If it is possible to get the current location and the internet connection is available I will get the restaurants */
+                    /* Getting all the restaurants near me */
+                    Object[] params = {new LatLng(myLastLocation.getLatitude(), myLastLocation.getLongitude()), FLAG_FALSE};
+                    /* Getting them with a thread */
+                    new GetRestaurantLocations().execute(params);
+                }else
+                    Toast.makeText(this.getActivity(), R.string.No_internet_connection, Toast.LENGTH_LONG).show();
+            }else
+                Toast.makeText(this.getActivity(), R.string.Impossible_to_get_your_location, Toast.LENGTH_LONG).show();
         }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -114,23 +143,34 @@ public class MapPanelFragment extends Fragment implements OnMapReadyCallback, Go
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
+        /* Getting my last location */
         myLastLocation = LocationServices.FusedLocationApi.getLastLocation(myGoogleApiClient);
 
-        if(myLastLocation != null)
-            /* Getting - with a thread - an array list containing restaurant locations that are near me */
-            new GetRestaurantLocations().execute(new LatLng(myLastLocation.getLatitude(), myLastLocation.getLongitude()));
+        if(InternetConnection.haveIInternetConnection(this.getActivity()))
+            if (myLastLocation != null) {
+                /* Getting - with a thread - an array list containing restaurant locations that are near me */
+                Object[] params = {new LatLng(myLastLocation.getLatitude(), myLastLocation.getLongitude()), FLAG_FALSE};
+                new GetRestaurantLocations().execute(params);
+            } else if(!GeolocationManager.isGPSEnabled(this.getActivity()))
+                Toast.makeText(MapPanelFragment.this.getActivity(), R.string.gps_not_enabled, Toast.LENGTH_LONG).show();
+            else
+                Toast.makeText(this.getActivity(), R.string.Impossible_to_get_your_location, Toast.LENGTH_LONG).show();
+        else
+            Toast.makeText(this.getActivity(), R.string.No_internet_connection, Toast.LENGTH_LONG).show();
     }
 
     @Override
-    public void onConnectionSuspended(int i) {
-        Toast.makeText(this.getActivity(), "connection suspended", Toast.LENGTH_LONG).show();
-    }
+    public void onConnectionSuspended(int i) {}
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-        Toast.makeText(this.getActivity(), "connection failed", Toast.LENGTH_LONG).show();
+        if(!GeolocationManager.isGPSEnabled(this.getActivity()))
+            Toast.makeText(MapPanelFragment.this.getActivity(), R.string.gps_not_enabled, Toast.LENGTH_LONG).show();
+        else
+            Toast.makeText(this.getActivity(), R.string.Impossible_to_get_your_location, Toast.LENGTH_LONG).show();
     }
 
+    /* Method that creates a new GoogleApiClient object */
     protected synchronized void buildGoogleApiClient(){
         if(myGoogleApiClient == null){
             myGoogleApiClient = new GoogleApiClient.Builder(this.getActivity())
@@ -141,16 +181,24 @@ public class MapPanelFragment extends Fragment implements OnMapReadyCallback, Go
         }
     }
 
-    private class GetRestaurantLocations extends AsyncTask<LatLng, Void, ArrayList<Restaurant>>{
-
+    /* Class that contacts the server to get an array of restaurants with a background thread */
+    private class GetRestaurantLocations extends AsyncTask<Object, Void, ArrayList<Restaurant>>{
         @Override
-        protected ArrayList<Restaurant> doInBackground(LatLng... myLatsLngs) {
+        protected ArrayList<Restaurant> doInBackground(Object... params) {
             ArrayList<Restaurant> restaurantsArray = null;
-            if(myLatsLngs != null) {
+            if(params != null) {
                 /* Communicating with the server */
-                RestaurantManager restaurantManager = new RestaurantManager();
-                restaurantsArray = restaurantManager.getRestaurantLocations(myLatsLngs[0]);
+                try {
+                    /* Trying to cast parameters */
+                    LatLng myLatLng = (LatLng) params[0];
+                    Integer myFlag = (Integer) params[1];
+                    RestaurantManager restaurantManager = new RestaurantManager();
+                    restaurantsArray = restaurantManager.getRestaurantLocations(myLatLng, myFlag.intValue());
+                }catch (Exception e) {
+                    Log.e(TAG, "wrong threads params" + e.getMessage());
+                }
             }
+            /* Returning the restaurants array */
             return restaurantsArray;
         }
 
@@ -172,16 +220,20 @@ public class MapPanelFragment extends Fragment implements OnMapReadyCallback, Go
     private void addMarkersToMap(){
         /* Clearing the map */
         myMap.clear();
-        /* Clearing the map */
+        /* Clearing the markers array */
         markers.clear();
+        BitmapDescriptor markerIcon = BitmapDescriptorFactory.fromResource(R.drawable.ic_map_marker);
         /* Adding the markers to the map */
         for(int i = 0; i < restaurants.size(); i++){
             markers.add(myMap.addMarker(new MarkerOptions()
                     .position(restaurants.get(i).get_position())
-                    .snippet(restaurants.get(i).get_full_address())
-                    .title(restaurants.get(i).get_restaurantName())));
-            Log.e(TAG, markers.get(i).toString());
+                    .snippet(restaurants.get(i).get_address())
+                    .title(restaurants.get(i).get_restaurantName())
+                    .icon(markerIcon)));
         }
+
+        float zoom = 12;
+        myMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(myLastLocation.getLatitude(), myLastLocation.getLongitude()), zoom));
     }
 
 }

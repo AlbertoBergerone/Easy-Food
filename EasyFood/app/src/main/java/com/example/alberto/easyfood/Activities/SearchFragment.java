@@ -6,23 +6,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.amigold.fundapter.BindDictionary;
@@ -37,21 +29,20 @@ import java.util.ArrayList;
 
 /**
  * Created by Alberto on 30/05/2016.
+ * Search Fragment
  */
 public class SearchFragment extends Fragment {
     private static final String TAG = "SearchFragment";
     private static final String RESTAURANT_EXTRA_NAME = "restaurant";
-    private Toolbar toolbar;
-    private View myView;
     private ArrayList<Restaurant> myRestaurantList;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        myView = inflater.inflate(R.layout.fragment_search, container, false);
+        View myView = inflater.inflate(R.layout.fragment_search, container, false);
 
         /* Setting the toolbar */
-        toolbar = (Toolbar) myView.findViewById(R.id.default_toolbar);
+        Toolbar toolbar = (Toolbar) myView.findViewById(R.id.default_toolbar);
         ((HomeActivity)SearchFragment.this.getActivity()).setSupportActionBar(toolbar);
         /* Hiding the title of the toolbar */
         ((HomeActivity)SearchFragment.this.getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -79,7 +70,7 @@ public class SearchFragment extends Fragment {
                     restaurantBindDictionary.addStringField(R.id.txt_list_location, new StringExtractor<Restaurant>() {
                         @Override
                         public String getStringValue(Restaurant restaurant, int position) {
-                            return restaurant.get_full_address();
+                            return restaurant.get_address();
                         }
                     });
                     restaurantBindDictionary.addStringField(R.id.txt_list_rating, new StringExtractor<Restaurant>() {
@@ -91,15 +82,15 @@ public class SearchFragment extends Fragment {
 
                     FunDapter funAdapter = new FunDapter(SearchFragment.this.getActivity(), myRestaurantList, R.layout.list_item_search, restaurantBindDictionary);
 
-                    ListView listViewRestaurants = (ListView)myView.findViewById(R.id.searchResult_listView);
+                    ListView listViewRestaurants = (ListView) myView.findViewById(R.id.searchResult_listView);
                     listViewRestaurants.setAdapter(funAdapter);
 
                     listViewRestaurants.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        /* This is the selected restaurant */
+                            /* This is the selected restaurant */
                             Restaurant selectedRestaurant = myRestaurantList.get(position);
-                        /* Intent to a new activity that displays all the restaurant information */
+                            /* Intent to a new activity that displays all the restaurant information */
                             Intent restaurantInfoIntent = new Intent(SearchFragment.this.getActivity(), RestaurantDetailsActivity.class);
                             restaurantInfoIntent.putExtra(RESTAURANT_EXTRA_NAME, selectedRestaurant);
                             SearchFragment.this.getActivity().startActivity(restaurantInfoIntent);
