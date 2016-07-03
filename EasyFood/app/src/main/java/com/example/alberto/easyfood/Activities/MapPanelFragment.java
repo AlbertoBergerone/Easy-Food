@@ -60,16 +60,18 @@ public class MapPanelFragment extends Fragment implements OnMapReadyCallback, Go
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         initializingMap();
-        myView = inflater.inflate(R.layout.fragment_restaurant_details, container, false);
+        myView = inflater.inflate(R.layout.fragment_map_panel, container, false);
         markers = new ArrayList<>();
         /* Setting the toolbar */
         Toolbar toolbar = (Toolbar) myView.findViewById(R.id.default_toolbar);
         ((HomeActivity)MapPanelFragment.this.getActivity()).setSupportActionBar(toolbar);
-        /* Hiding the title of the toolbar */
-        ((HomeActivity)MapPanelFragment.this.getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
-        /* Displaying the back arrow icon */
-        ((HomeActivity)MapPanelFragment.this.getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        ((HomeActivity)MapPanelFragment.this.getActivity()).getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu_white_24dp);
+        if(((HomeActivity) this.getActivity()).getSupportActionBar() != null){
+            /* Hiding the title of the toolbar */
+            ((HomeActivity) this.getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
+            /* Displaying the back arrow icon */
+            ((HomeActivity) this.getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            ((HomeActivity) this.getActivity()).getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu_white_24dp);
+        }
         setHasOptionsMenu(true);
 
         buildGoogleApiClient();
