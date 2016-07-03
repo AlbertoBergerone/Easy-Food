@@ -13,8 +13,8 @@ define('RESTAURANT_LOCATIONS', 'restaurant_locations');
 define('RESTAURANT_INFORMATION', 'restaurant_information');
 define('OPEN_NOW_FILTER_ACTIVE', '1');
 define('OPEN_NOW_FLAG', 'open_now_flag');
-define('MIDNIGHT00', '00:00:00');
-define('MIDNIGHT24', '24:00:00');
+define('MIDNIGHT00', "'00:00:00'");
+define('MIDNIGHT24', "'24:00:00'");
 
 try {
 	/*** Getting data ***/

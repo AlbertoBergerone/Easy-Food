@@ -90,17 +90,20 @@ public class UserManager {
 		boolean amILogged = false;
 		/* Sending username and password to get other information if the user exists */
 		JSONObject userInfo = CommunicationManager.postData(URL_LOGIN_SIGNUP, toJSON(USER_LOGIN_REQUEST));
-        if(userInfo != null){
-			try{
+        try{
+            if(userInfo != null && userInfo.toString() != "null" && userInfo.getJSONObject(USER) != null && !userInfo.getJSONObject(USER).equals("null")){
                 /* Getting user information */
                 fromJSON(userInfo.getJSONObject(USER));
 				/* The login was successful */
 				amILogged = true;
-			}catch(JSONException e){
-				Log.e(TAG, "Error parsing data " + e.toString());
-			}
-		}else{
-            Log.e(TAG, "public boolean loginUser() - Error receiving data. The server returned null");
+
+		    }else{
+                Log.e(TAG, "public boolean loginUser() - Error receiving data. The server returned null");
+            }
+        }catch(JSONException e){
+            Log.e(TAG, "Error parsing data " + e.toString());
+        }catch (Exception e){
+            Log.e(TAG, e.toString());
         }
 		return amILogged;
     }

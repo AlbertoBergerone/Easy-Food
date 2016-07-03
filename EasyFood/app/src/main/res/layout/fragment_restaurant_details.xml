@@ -1,0 +1,17 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <FrameLayout
+        android:id="@+id/restaurant_map_container"
+        android:layout_width="match_parent"
+        android:layout_height="160dp">
+    </FrameLayout>
+    <ListView
+        android:layout_below="@id/restaurant_map_container"
+        android:id="@+id/restaurant_details_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </ListView>
+
+</RelativeLayout>

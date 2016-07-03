@@ -27,6 +27,7 @@
     <string name="Location">Location</string>
     <string name="Type">Type</string>
     <string name="Rating">Rating</string>
+    <string name="Details">Details</string>
 
     <string name="Settings">Settings</string>
     <string name="New_password">New password</string>
@@ -38,6 +39,7 @@
     <string name="Search">Search</string>
     <string name="Map">Map</string>
     <string name="Account">Account</string>
+    <string name="Rate">Rate</string>
 
     <string name="input_empty_fields">It looks like some fields are empty</string>
     <string name="passwords_not_equals">Please, insert the same password</string>
@@ -62,9 +64,9 @@
 
     <string name="title_activity_sign_up">Sign Up</string>
     <string name="title_activity_main">Easy Food</string>
-    <string name="action_settings">Settings</string>
     <string name="title_activity_maps">Map</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+
 </resources>

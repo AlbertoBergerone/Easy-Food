@@ -59,17 +59,21 @@ $conn = null;
  * Function that returns an array containing a user properties
  */
 function toUserArray($user){
-	$tmp[USER][ATTR_USER_ID] = $user[ATTR_USER_ID];
-	$tmp[USER][ATTR_USERNAME] = $user[ATTR_USERNAME];
-	$tmp[USER][ATTR_PASSWORD] = $user[ATTR_PASSWORD];
-	$tmp[USER][ATTR_NAME] = $user[ATTR_NAME];
-	$tmp[USER][ATTR_LAST_NAME] = $user[ATTR_LAST_NAME];
-	$tmp[USER][ATTR_USER_EMAIL] = $user[ATTR_USER_EMAIL];
-	$tmp[USER][ATTR_USER_ADDRESS] = $user[ATTR_USER_ADDRESS];
-	$tmp[USER][ATTR_USER_PHONE] = $user[ATTR_USER_PHONE];
-	$tmp[USER][ATTR_CONFIRMED_USER] = $user[ATTR_CONFIRMED_USER];
-	$tmp[USER][ATTR_RESIDENCE_NAME] = $user[ATTR_RESIDENCE_NAME];
-	$tmp[USER][ATTR_PROVINCE_ID] = $user[ATTR_PROVINCE_ID];
+	$tmp = null;
+	/*** Checking if the user is not null ***/
+	if($user != null){
+		$tmp[USER][ATTR_USER_ID] = $user[ATTR_USER_ID];
+		$tmp[USER][ATTR_USERNAME] = $user[ATTR_USERNAME];
+		$tmp[USER][ATTR_PASSWORD] = $user[ATTR_PASSWORD];
+		$tmp[USER][ATTR_NAME] = $user[ATTR_NAME];
+		$tmp[USER][ATTR_LAST_NAME] = $user[ATTR_LAST_NAME];
+		$tmp[USER][ATTR_USER_EMAIL] = $user[ATTR_USER_EMAIL];
+		$tmp[USER][ATTR_USER_ADDRESS] = $user[ATTR_USER_ADDRESS];
+		$tmp[USER][ATTR_USER_PHONE] = $user[ATTR_USER_PHONE];
+		$tmp[USER][ATTR_CONFIRMED_USER] = $user[ATTR_CONFIRMED_USER];
+		$tmp[USER][ATTR_RESIDENCE_NAME] = $user[ATTR_RESIDENCE_NAME];
+		$tmp[USER][ATTR_PROVINCE_ID] = $user[ATTR_PROVINCE_ID];
+	}
 	return $tmp;
 }
 
@@ -89,10 +93,12 @@ function getUserInformation_credentials($username, $password){
 	$stmt->bindParam(':password', $password);
 	/*** exceute the query ***/
 	$stmt->execute(); 
-	$tmp = $stmt->fetch(PDO::FETCH_ASSOC);
-	
+	$ret = $stmt->fetch(PDO::FETCH_ASSOC);
+	/*** Checking if the query returned something ***/
+	if(!$ret)
+		$ret = null;
 	/*** Fetching array (in this case it will be an associative array)***/
-	return ($tmp);
+	return ($ret);
 }
 
 /**
@@ -108,8 +114,11 @@ function getUserInformation_id($userID){
 	$stmt->bindParam(':userID', $userID);
 	/*** exceute the query ***/
 	$stmt->execute(); 
-	/*** Fetching array (in this case it will be an associative array)***/
-	return($stmt->fetch(PDO::FETCH_ASSOC));
+	/*** Fetching array (in this case it will be an associative array) ***/
+	$ret = $stmt->fetch(PDO::FETCH_ASSOC);
+	if($ret[USER_ID] == null || $ret[USER_ID] == 'null')
+		$ret = null;
+	return($ret);
 }
 
 

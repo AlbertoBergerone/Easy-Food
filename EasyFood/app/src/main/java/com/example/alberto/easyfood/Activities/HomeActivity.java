@@ -45,10 +45,6 @@ public class HomeActivity extends AppCompatActivity {
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         navigationView = (NavigationView) findViewById(R.id.nav_view);
 
-        View navHeaderView = navigationView.getHeaderView(0);
-        TextView navHeaderUsername = (TextView) navHeaderView.findViewById(R.id.txt_nav_username);
-        navHeaderUsername.setText(CurrentUser.get_currentUserProfile().get_username());
-
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
 
         drawer.addDrawerListener(actionBarDrawerToggle);
